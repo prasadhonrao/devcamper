@@ -28,7 +28,7 @@ if (ENV === 'development') {
 // Define routes
 app.use('/api/v1/bootcamps', bootcamps);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`API server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold);
 });
 
