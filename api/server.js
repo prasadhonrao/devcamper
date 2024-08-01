@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
+import colors from 'colors';
 import bootcamps from './routes/bootcamps.js';
 import connectDB from './config/db.js';
 
@@ -21,7 +22,6 @@ app.get('/', (req, res) => {
 
 // Define logging middleware using morgan
 if (ENV === 'development') {
-  console.log('Morgan enabled');
   app.use(morgan('dev'));
 }
 
@@ -29,12 +29,12 @@ if (ENV === 'development') {
 app.use('/api/v1/bootcamps', bootcamps);
 
 app.listen(PORT, () => {
-  console.log(`API server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+  console.log(`API server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold);
 });
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (error, promise) => {
-  console.error(`Error: ${error.message}`);
+  console.error(`Error: ${error.message}`.red);
   // Close server & exit process
   server.close(() => process.exit(1));
 });

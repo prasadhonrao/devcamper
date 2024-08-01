@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/prasadhonrao/mern-bootcamp#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.5.2",
