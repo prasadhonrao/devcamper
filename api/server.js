@@ -16,6 +16,9 @@ connectDB();
 
 const app = express();
 
+// Body parser
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.send('Welcome to MERN bootcamp API!');
 });

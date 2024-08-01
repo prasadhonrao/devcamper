@@ -41,7 +41,6 @@ const BootcampSchema = new mongoose.Schema(
       type: {
         type: String,
         enum: ['Point'],
-        required: true,
       },
       coordinates: {
         type: [Number],
@@ -57,14 +56,18 @@ const BootcampSchema = new mongoose.Schema(
       type: [String],
       required: [true, 'Please add at least one career'],
       enum: [
-        'Cloud',
         'Artificial Intelligence',
-        'Web Development',
-        'Mobile Development',
-        'UI/UX',
-        'Data Science',
         'Business',
+        'Cloud Computing',
+        'Cyber Security',
+        'Data Science',
+        'DevOps',
+        'Full Stack Development',
+        'Machine Learning',
+        'Mobile Development',
         'Other',
+        'UI/UX',
+        'Web Development',
       ],
     },
     averageRating: {
