@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "API for MERN Bootcamp web application",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +25,13 @@
   "bugs": {
     "url": "https://github.com/prasadhonrao/mern-bootcamp/issues"
   },
-  "homepage": "https://github.com/prasadhonrao/mern-bootcamp#readme"
+  "homepage": "https://github.com/prasadhonrao/mern-bootcamp#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+  
 }
