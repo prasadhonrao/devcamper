@@ -3,11 +3,11 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import bootcamps from './routes/bootcamps.js';
 
-const ENV = process.env.NODE_ENV || 'development';
-const PORT = process.env.PORT || 5000;
-
 // Load environment variables from .env file
 dotenv.config({ path: './config/config.env' });
+
+const ENV = process.env.NODE_ENV || 'development';
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 
 // Define logging middleware using morgan
 if (ENV === 'development') {
+  console.log('Morgan enabled');
   app.use(morgan('dev'));
 }
 
