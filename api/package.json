@@ -1,0 +1,26 @@
+{
+  "name": "mern-bootcamp-api",
+  "version": "1.0.0",
+  "description": "API for MERN Bootcamp web application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prasadhonrao/mern-bootcamp.git"
+  },
+  "keywords": [
+    "api",
+    "mern",
+    "node",
+    "express",
+    "mongo"
+  ],
+  "author": "Prasad Honrao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prasadhonrao/mern-bootcamp/issues"
+  },
+  "homepage": "https://github.com/prasadhonrao/mern-bootcamp#readme"
+}
