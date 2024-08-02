@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import slugify from 'slugify';
+import geocoder from '../utils/geocoder.js';
 
 const BootcampSchema = new mongoose.Schema(
   {
@@ -106,6 +107,43 @@ const BootcampSchema = new mongoose.Schema(
 // Create bootcamp slug from the name
 BootcampSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
+// Geocode & create location field
+BootcampSchema.pre('save', async function (next) {
+  try {
+    console.log('Geocoder Provider:', process.env.GEOCODER_PROVIDER);
+    console.log('Geocoder API Key:', process.env.GEOCODER_API_KEY);
+
+    if (!this.address) {
+      throw new Error('Address is required for geocoding');
+    }
+
+    const loc = await geocoder.geocode(this.address);
+    console.log('*** loc:', loc);
+
+    if (!loc || loc.length === 0) {
+      throw new Error('Geocoding failed, no location data returned');
+    }
+
+    this.location = {
+      type: 'Point',
+      coordinates: [loc[0].longitude, loc[0].latitude],
+      formattedAddress: loc[0].formattedAddress,
+      street: loc[0].streetName,
+      city: loc[0].city,
+      state: loc[0].stateCode,
+      zipcode: loc[0].zipcode,
+      country: loc[0].countryCode,
+    };
+
+    // Do not save address in DB
+    this.address = undefined;
+  } catch (error) {
+    console.error('Geocoding error:', error.message.red.bold);
+    return next(error);
+  }
   next();
 });
 
