@@ -59,16 +59,32 @@ const BootcampSchema = new mongoose.Schema(
       required: [true, 'Please add at least one career'],
       enum: [
         'Artificial Intelligence',
+        'AR/VR Development',
+        'Big Data',
+        'Blockchain',
         'Business',
+        'Business Analysis',
         'Cloud Computing',
         'Cyber Security',
         'Data Science',
         'DevOps',
+        'Digital Marketing',
+        'Digital Transformation',
+        'E-commerce',
         'Full Stack Development',
+        'Game Development',
+        'IT Support',
         'Machine Learning',
         'Mobile Development',
+        'Network Engineering',
         'Other',
-        'UI/UX',
+        'Product Management',
+        'Project Management',
+        'Robotics',
+        'Software Engineering',
+        'Software Testing',
+        'UI/UX Design',
+        'Web Design',
         'Web Development',
       ],
     },
@@ -113,15 +129,11 @@ BootcampSchema.pre('save', function (next) {
 // Geocode & create location field
 BootcampSchema.pre('save', async function (next) {
   try {
-    console.log('Geocoder Provider:', process.env.GEOCODER_PROVIDER);
-    console.log('Geocoder API Key:', process.env.GEOCODER_API_KEY);
-
     if (!this.address) {
       throw new Error('Address is required for geocoding');
     }
 
     const loc = await geocoder.geocode(this.address);
-    console.log('*** loc:', loc);
 
     if (!loc || loc.length === 0) {
       throw new Error('Geocoding failed, no location data returned');
