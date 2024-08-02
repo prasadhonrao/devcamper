@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import colors from 'colors';
 import bootcamps from './routes/bootcamps.js';
 import connectDB from './config/db.js';
+import errorHandler from './middleware/errorHandler.js';
 
 // Load environment variables from .env file
 dotenv.config({ path: './config/config.env' });
@@ -30,6 +31,8 @@ if (ENV === 'development') {
 
 // Define routes
 app.use('/api/v1/bootcamps', bootcamps);
+
+app.use(errorHandler);
 
 const server = app.listen(PORT, () => {
   console.log(`API server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold);
