@@ -3,6 +3,8 @@
         "bootcamp",
         "bootcamps",
         "dsphere",
-        "maxlength"
+        "maxlength",
+        "testgeocode",
+        "zipcode"
     ]
 }

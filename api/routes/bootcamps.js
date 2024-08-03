@@ -1,12 +1,20 @@
 import express from 'express';
-import { getBootcamps, getBootcamp, createBootcamp, updateBootcamp, deleteBootcamp } from '../controllers/bootcamps.js';
+import {
+  getBootcamps,
+  getBootcamp,
+  createBootcamp,
+  updateBootcamp,
+  deleteBootcamp,
+  getBootcampsInRadius,
+  testGeocode,
+} from '../controllers/bootcamps.js';
 
 const router = express.Router();
 
-router.get('/', getBootcamps);
-router.get('/:id', getBootcamp);
-router.post('/', createBootcamp);
-router.put('/:id', updateBootcamp);
-router.delete('/:id', deleteBootcamp);
+router.route('/testgeocode').post(testGeocode);
+router.route('/radius/:zipcode/:distance').get(getBootcampsInRadius);
+
+router.route('/').get(getBootcamps).post(createBootcamp);
+router.route('/:id').get(getBootcamp).put(updateBootcamp).delete(deleteBootcamp);
 
 export default router;
