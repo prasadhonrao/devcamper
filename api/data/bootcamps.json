@@ -10,7 +10,8 @@
     "housing": true,
     "jobAssistance": true,
     "jobGuarantee": false,
-    "acceptGi": true
+    "acceptGi": true,
+    "averageCost": 12000
   },
   {
     "name": "ModernTech Bootcamp",
@@ -23,7 +24,8 @@
     "housing": false,
     "jobAssistance": true,
     "jobGuarantee": false,
-    "acceptGi": true
+    "acceptGi": true,
+    "averageCost": 5000
   },
   {
     "name": "Codemasters",
@@ -36,7 +38,8 @@
     "housing": false,
     "jobAssistance": false,
     "jobGuarantee": false,
-    "acceptGi": false
+    "acceptGi": false,
+    "averageCost": 10000
   },
   {
     "name": "Devcentral Bootcamp",
@@ -49,6 +52,7 @@
     "housing": false,
     "jobAssistance": true,
     "jobGuarantee": true,
-    "acceptGi": true
+    "acceptGi": true,
+    "averageCost": 8000
   }
 ]
