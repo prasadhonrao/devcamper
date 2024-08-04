@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import colors from 'colors';
 import bootcamps from './routes/bootcamps.js';
+import courses from './routes/courses.js';
 import connectDB from './config/db.js';
 import errorHandler from './middleware/errorHandler.js';
 
@@ -31,6 +32,7 @@ if (ENV === 'development') {
 
 // Define routes
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/courses', courses);
 
 app.use(errorHandler);
 
