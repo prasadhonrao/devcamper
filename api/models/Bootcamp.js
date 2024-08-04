@@ -86,6 +86,8 @@ const BootcampSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
 
@@ -126,6 +128,14 @@ BootcampSchema.pre('save', async function (next) {
     return next(error);
   }
   next();
+});
+
+// Reverse populate with courses
+BootcampSchema.virtual('courses', {
+  ref: 'Course',
+  localField: '_id',
+  foreignField: 'bootcamp',
+  justOne: false,
 });
 
 const Bootcamp = mongoose.model('Bootcamp', BootcampSchema);
