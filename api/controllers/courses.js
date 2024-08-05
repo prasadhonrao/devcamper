@@ -56,4 +56,27 @@ const addCourse = asyncHandler(async (req, res, next) => {
   return res.status(201).json({ success: true, data: course });
 });
 
-export { getCourses, getCourse, addCourse };
+// @desc    Update course
+// @route   PUT /api/v1/bootcamps/:bootcampId/courses/:id
+// @access  Private
+const updateCourse = asyncHandler(async (req, res, next) => {
+  // Check if the course exists
+  let course = await Course.findById(req.params.id);
+  if (!course) {
+    return next(new ErrorResponse(`Course not found with id of ${req.params.id}`, 404));
+  }
+  // Check if the bootcamp exists
+  const bootcamp = await Bootcamp.findById(req.params.bootcampId);
+  if (!bootcamp) {
+    return next(new ErrorResponse(`Bootcamp not found with id of ${req.params.bootcampId}`, 404));
+  }
+
+  // Update the course
+  course = await Course.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+  return res.status(200).json({ success: true, data: course });
+});
+
+export { getCourses, getCourse, addCourse, updateCourse };
