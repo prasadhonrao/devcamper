@@ -26,4 +26,16 @@ const getCourses = asyncHandler(async (req, res, next) => {
   return res.status(200).json({ success: true, count: courses.length, data: courses });
 });
 
-export { getCourses };
+// @desc    Get single course
+// @route   GET /api/v1/courses
+// @access  Public
+const getCourse = asyncHandler(async (req, res, next) => {
+  const course = await Course.findById(req.params.id).populate({ path: 'bootcamp', select: 'name description' });
+  console.log(course);
+  if (!course) {
+    return next(new ErrorResponse(`Course not found with id of ${req.params.id}`, 404));
+  }
+  return res.status(200).json({ success: true, data: course });
+});
+
+export { getCourses, getCourse };
