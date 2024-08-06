@@ -1,7 +1,9 @@
+import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import colors from 'colors';
+import fileUpload from 'express-fileupload';
 import bootcamps from './routes/bootcamps.js';
 import courses from './routes/courses.js';
 import connectDB from './config/db.js';
@@ -29,6 +31,12 @@ app.get('/', (req, res) => {
 if (ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+// File upload middleware
+app.use(fileUpload());
+
+// Set static folder
+app.use(express.static(path.join(path.resolve(), 'public')));
 
 // Define routes
 app.use('/api/v1/bootcamps', bootcamps);
