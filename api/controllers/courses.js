@@ -83,10 +83,11 @@ const updateCourse = asyncHandler(async (req, res, next) => {
 // @route   DELETE /api/v1/bootcamps/:bootcampId/courses/:id
 // @access  Private
 const deleteCourse = asyncHandler(async (req, res, next) => {
-  const course = await Course.findByIdAndDelete(req.params.id);
+  const course = await Course.findById(req.params.id);
   if (!course) {
-    return next(new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404));
+    return next(new ErrorResponse(`Course not found with id of ${req.params.id}`, 404));
   }
+  await course.deleteOne();
   return res.status(200).json({ success: true, data: {} });
 });
 
