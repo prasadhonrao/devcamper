@@ -6,6 +6,7 @@ import colors from 'colors';
 import fileUpload from 'express-fileupload';
 import bootcamps from './routes/bootcamps.js';
 import courses from './routes/courses.js';
+import auth from './routes/auth.js';
 import connectDB from './config/db.js';
 import errorHandler from './middleware/errorHandler.js';
 
@@ -41,6 +42,7 @@ app.use(express.static(path.join(path.resolve(), 'public')));
 // Define routes
 app.use('/api/v1/bootcamps', bootcamps);
 app.use('/api/v1/courses', courses);
+app.use('/api/v1/auth', auth);
 
 app.use(errorHandler);
 
