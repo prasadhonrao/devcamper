@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import colors from 'colors';
 import fileUpload from 'express-fileupload';
+import cookieParser from 'cookie-parser';
 import bootcamps from './routes/bootcamps.js';
 import courses from './routes/courses.js';
 import auth from './routes/auth.js';
@@ -23,6 +24,9 @@ const app = express();
 
 // Body parser
 app.use(express.json());
+
+// Cookie parser
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
   res.send('Welcome to MERN bootcamp API!');
