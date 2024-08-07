@@ -88,24 +88,22 @@ const getBootcampsInRadius = asyncHandler(async (req, res, next) => {
     });
     return res.status(200).json({ success: true, count: bootcamps.length, data: bootcamps });
   } catch (error) {
-    throw new ErrorResponse('Geocoding failed'.error.message.red.bold, 500);
+    throw new ErrorResponse('Geocoding failed'.error.message, 500);
   }
 });
 
 const testGeocode = asyncHandler(async (req, res, next) => {
   const { address } = req.body;
-
+  let result;
   if (!address) {
     return res.status(400).json({ success: false, error: 'Address is required' });
   }
-
   try {
-    const result = await geocoder.geocode(address);
-    return res.status(200).json({ success: true, data: result });
+    result = await geocoder.geocode(address);
   } catch (error) {
-    console.error('Geocoding error:', error.message);
-    return next(error);
+    return next(new ErrorResponse(`Geocode failed for address ${address}`, 404));
   }
+  return res.status(200).json({ success: true, data: result });
 });
 
 // @desc    Upload photo for a bootcamp
