@@ -21,13 +21,12 @@ const protect = asyncHandler(async (req, res, next) => {
   try {
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(`Decoded token ${decoded}`);
+    // console.log(`Decoded token ${decoded}`);
 
     // Find user by id and set it to req.user so that we can use it in the controller
     req.user = await User.findById(decoded.id).select('-password'); // This is the id from JWT payload
     next();
   } catch (error) {
-    console.log(`Error verifying token ${error}`);
     return next(new ErrorResponse('Not authorized to access this route', 401));
   }
 });
