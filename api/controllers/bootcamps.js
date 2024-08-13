@@ -149,11 +149,20 @@ const testGeocode = asyncHandler(async (req, res, next) => {
 // @route   PUT /api/v1/bootcamps/:id/photo
 // @access  Private
 const uploadBootcampPhoto = asyncHandler(async (req, res, next) => {
-  const bootcamp = await Bootcamp.findById(req.params.id);
+  let bootcampId = req.params.id;
+  let bootcamp = await Bootcamp.findById(bootcampId);
+
+  // Check if the bootcamp exists
   if (!bootcamp) {
-    return next(new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404));
+    return next(new ErrorResponse(`Bootcamp not found with id of ${bootcampId}`, 404));
   }
 
+  // Make sure user is bootcamp owner or an admin user
+  if (bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`User ${req.user.id} is not authorized to update bootcamp photo`, 401));
+  }
+
+  // Make sure the user is sending a file
   if (!req.files) {
     return next(new ErrorResponse(`Please upload a file`, 400));
   }
