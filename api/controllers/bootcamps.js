@@ -71,9 +71,25 @@ const updateBootcamp = asyncHandler(async (req, res, next) => {
 // @route   DELETE /api/v1/bootcamps/:id
 // @access  Private
 const deleteBootcamp = asyncHandler(async (req, res, next) => {
-  const bootcamp = await Bootcamp.findByIdAndDelete(req.params.id);
+  let bootcampId = req.params.id;
+  let bootcamp = await Bootcamp.findById(bootcampId);
+
+  // Check if the bootcamp exists
   if (!bootcamp) {
-    return next(new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404));
+    return next(new ErrorResponse(`Bootcamp not found with id of ${bootcampId}`, 404));
+  }
+
+  // Make sure user is bootcamp owner or an admin user
+  if (bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`User ${req.user.id} is not authorized to delete this bootcamp`, 401));
+  }
+
+  // Delete the bootcamp
+  try {
+    await bootcamp.deleteOne();
+  } catch (error) {
+    console.log(error.message.red.bold);
+    return next(new ErrorResponse(`Error occurred while deleting bootcamp with id ${bootcampId}`, 500));
   }
   return res.status(200).json({ success: true, data: {} });
 });
