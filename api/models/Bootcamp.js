@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import slugify from 'slugify';
 import geocoder from '../utils/geocoder.js';
+import ErrorResponse from '../utils/errorResponse.js';
 
 const BootcampSchema = new mongoose.Schema(
   {
@@ -83,6 +84,11 @@ const BootcampSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -124,8 +130,7 @@ BootcampSchema.pre('save', async function (next) {
     // Do not save address in DB
     this.address = undefined;
   } catch (error) {
-    console.error('Geocoding error:', error.message.red.bold);
-    return next(error);
+    return next(new ErrorResponse('Geocoding failed', 500));
   }
   next();
 });
