@@ -11,10 +11,17 @@ import auth from './routes/auth.js';
 import connectDB from './config/db.js';
 import errorHandler from './middleware/errorHandler.js';
 
-// Load environment variables from .env file
-dotenv.config({ path: './config/config.env' });
-
+// Determine the environment and load the appropriate .env file
 const ENV = process.env.NODE_ENV || 'development';
+
+if (ENV === 'development') {
+  console.log('Loading development environment variables from .env file'.yellow.bold);
+  dotenv.config(); // Load from .env file in development
+} else {
+  console.log(`Loading ${ENV} environment variables from config/config.env file`.yellow.bold);
+  dotenv.config({ path: './config/config.env' }); // Load from config/config.env in other environments
+}
+
 const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
