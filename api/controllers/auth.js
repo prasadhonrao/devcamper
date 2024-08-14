@@ -121,6 +121,22 @@ const resetPassword = asyncHandler(async (req, res, next) => {
   sendTokenResponse(user, 200, res);
 });
 
+// @desc    Update user details
+// @route   PUT /api/v1/auth/updatedetails
+// @access  Private
+const updateDetails = asyncHandler(async (req, res, next) => {
+  const fieldsToUpdate = {
+    name: req.body.name,
+    email: req.body.email,
+  };
+
+  const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {
+    new: true,
+    runValidators: true,
+  });
+  return res.status(200).json({ success: true, data: user });
+});
+
 // Get token from model and create cookie and send response
 const sendTokenResponse = (user, statusCode, res) => {
   // Create token
@@ -140,4 +156,4 @@ const sendTokenResponse = (user, statusCode, res) => {
   return res.status(statusCode).cookie('token', token, options).json({ success: true, token });
 };
 
-export { register, login, getMe, forgotPassword, resetPassword };
+export { register, login, getMe, forgotPassword, resetPassword, updateDetails };
