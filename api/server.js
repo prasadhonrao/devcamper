@@ -9,6 +9,7 @@ import mongoSanitize from 'express-mongo-sanitize';
 import helmet from 'helmet';
 import xss from 'xss-clean';
 import rateLimit from 'express-rate-limit';
+import hpp from 'hpp';
 import bootcamps from './routes/bootcamps.js';
 import courses from './routes/courses.js';
 import auth from './routes/auth.js';
@@ -19,13 +20,12 @@ import errorHandler from './middleware/errorHandler.js';
 
 const ENV = process.env.NODE_ENV || 'development';
 if (ENV === 'development') {
-  dotenv.config(); // Load from .env file in development
+  dotenv.config();
 } else {
-  dotenv.config({ path: './config/config.env' }); // Load from config/config.env in other environments
+  dotenv.config({ path: './config/config.env' });
 }
 
 const PORT = process.env.PORT || 5000;
-
 // Connect to MongoDB
 connectDB();
 
@@ -38,12 +38,16 @@ app.use(mongoSanitize()); // Sanitize data
 app.use(helmet()); // Set security headers
 app.use(xss()); // Prevent cross site scripting attacks
 
-const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000, // 5000 requests per 10 minutes
-  max: 5000,
-});
-app.use(limiter); // Rate limiting
+const rateLimitMax = process.env.RATE_LIMIT_MAX || 1;
+const rateLimitWindowMs = process.env.RATE_LIMIT_WINDOW_MS || 15 * 60 * 1000; // Default to 15 minutes
 
+const limiter = rateLimit({
+  windowMs: rateLimitWindowMs, // Use environment variable or default to 15 minutes
+  max: rateLimitMax, // Use environment variable or default to 1
+});
+
+app.use(limiter); // Rate limiting
+app.use(hpp()); // Prevent http param pollution
 app.use(fileUpload()); // File upload
 app.use(express.static(path.join(path.resolve(), 'public'))); // Set static folder
 app.use('/api/v1/bootcamps', bootcamps);
