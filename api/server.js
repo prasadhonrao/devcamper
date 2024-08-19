@@ -10,6 +10,7 @@ import helmet from 'helmet';
 import xss from 'xss-clean';
 import rateLimit from 'express-rate-limit';
 import hpp from 'hpp';
+import cors from 'cors';
 import bootcamps from './routes/bootcamps.js';
 import courses from './routes/courses.js';
 import auth from './routes/auth.js';
@@ -49,6 +50,7 @@ const limiter = rateLimit({
 app.use(limiter); // Rate limiting
 app.use(hpp()); // Prevent http param pollution
 app.use(fileUpload()); // File upload
+app.use(cors()); // Enable CORS
 app.use(express.static(path.join(path.resolve(), 'public'))); // Set static folder
 app.use('/api/v1/bootcamps', bootcamps);
 app.use('/api/v1/courses', courses);
