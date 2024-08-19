@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import colors from 'colors';
 import fileUpload from 'express-fileupload';
 import cookieParser from 'cookie-parser';
+import mongoSanitize from 'express-mongo-sanitize';
 import bootcamps from './routes/bootcamps.js';
 import courses from './routes/courses.js';
 import auth from './routes/auth.js';
@@ -13,10 +14,7 @@ import reviews from './routes/reviews.js';
 import connectDB from './config/db.js';
 import errorHandler from './middleware/errorHandler.js';
 
-// Determine the environment and load the appropriate .env file
 const ENV = process.env.NODE_ENV || 'development';
-// console.log(`Loading ${ENV} environment variables`.yellow.bold);
-
 if (ENV === 'development') {
   dotenv.config(); // Load from .env file in development
 } else {
@@ -30,35 +28,23 @@ connectDB();
 
 const app = express();
 
-// Body parser
-app.use(express.json());
-
-// Cookie parser
-app.use(cookieParser());
-
-app.get('/', (req, res) => {
-  res.send('Welcome to MERN bootcamp API!');
-});
-
-// Define logging middleware using morgan
-if (ENV === 'development') {
-  app.use(morgan('dev'));
-}
-
-// File upload middleware
-app.use(fileUpload());
-
-// Set static folder
-app.use(express.static(path.join(path.resolve(), 'public')));
-
-// Define routes
+// Middleware registration
+app.use(express.json()); // Body parser
+app.use(cookieParser()); // Cookie parser
+app.use(mongoSanitize()); // Sanitize data
+app.use(fileUpload()); // File upload
+app.use(express.static(path.join(path.resolve(), 'public'))); // Set static folder
 app.use('/api/v1/bootcamps', bootcamps);
 app.use('/api/v1/courses', courses);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
 app.use('/api/v1/reviews', reviews);
-
 app.use(errorHandler);
+if (ENV === 'development' ? app.use(morgan('dev')) : null); // Logging
+
+app.get('/', (req, res) => {
+  res.send('Welcome to MERN bootcamp API!');
+});
 
 const server = app.listen(PORT, () => {
   console.log(`API server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold);
@@ -67,6 +53,5 @@ const server = app.listen(PORT, () => {
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (error, promise) => {
   console.error(`Error: ${error.message}`.red);
-  // Close server & exit process
   server.close(() => process.exit(1));
 });
