@@ -47,6 +47,19 @@ const login = asyncHandler(async (req, res, next) => {
   sendTokenResponse(user, 200, res);
 });
 
+// @desc    Log user out / clear cookie
+// @route   POST /api/v1/auth/logout
+// @access  Private
+const logout = asyncHandler(async (req, res, next) => {
+  // Clear the cookie
+  res.cookie('token', 'none', {
+    expires: new Date(Date.now() + 1 * 1000), // 1 second expiration
+    httpOnly: true,
+  });
+
+  return res.status(200).json({ success: true, data: {} });
+});
+
 // @desc    Get current logged in user
 // @route   GET /api/v1/auth/me
 // @access  Private
@@ -175,4 +188,4 @@ const sendTokenResponse = (user, statusCode, res) => {
   return res.status(statusCode).cookie('token', token, options).json({ success: true, token });
 };
 
-export { register, login, getMe, forgotPassword, resetPassword, updateDetails, updatePassword };
+export { register, login, getMe, forgotPassword, resetPassword, updateDetails, updatePassword, logout };
