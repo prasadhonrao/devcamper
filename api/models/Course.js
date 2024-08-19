@@ -82,5 +82,10 @@ CourseSchema.pre('deleteOne', { document: true, query: false }, async function (
   await this.constructor.getAverageCost(this.bootcamp);
 });
 
+// Call getAverageCost after update
+CourseSchema.post('findOneAndUpdate', async function (doc) {
+  await doc.constructor.getAverageCost(doc.bootcamp);
+});
+
 const Course = mongoose.model('Course', CourseSchema);
 export default Course;
