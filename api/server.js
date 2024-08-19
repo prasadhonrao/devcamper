@@ -9,17 +9,17 @@ import bootcamps from './routes/bootcamps.js';
 import courses from './routes/courses.js';
 import auth from './routes/auth.js';
 import users from './routes/users.js';
+import reviews from './routes/reviews.js';
 import connectDB from './config/db.js';
 import errorHandler from './middleware/errorHandler.js';
 
 // Determine the environment and load the appropriate .env file
 const ENV = process.env.NODE_ENV || 'development';
+// console.log(`Loading ${ENV} environment variables`.yellow.bold);
 
 if (ENV === 'development') {
-  console.log('Loading development environment variables from .env file'.yellow.bold);
   dotenv.config(); // Load from .env file in development
 } else {
-  console.log(`Loading ${ENV} environment variables from config/config.env file`.yellow.bold);
   dotenv.config({ path: './config/config.env' }); // Load from config/config.env in other environments
 }
 
@@ -56,6 +56,7 @@ app.use('/api/v1/bootcamps', bootcamps);
 app.use('/api/v1/courses', courses);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
+app.use('/api/v1/reviews', reviews);
 
 app.use(errorHandler);
 

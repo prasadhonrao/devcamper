@@ -2,14 +2,19 @@ import fs from 'fs';
 import mongoose from 'mongoose';
 import colors from 'colors';
 import dotenv from 'dotenv';
-
-// Load environment variables
-dotenv.config({ path: './config/config.env' });
-
-// Load models
 import Bootcamp from './models/Bootcamp.js';
 import Course from './models/Course.js';
 import User from './models/User.js';
+import Review from './models/Review.js';
+
+// Determine the environment and load the appropriate .env file
+const ENV = process.env.NODE_ENV || 'development';
+
+if (ENV === 'development') {
+  dotenv.config();
+} else {
+  dotenv.config({ path: './config/config.env' });
+}
 
 // Connect to MongoDB
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/mern-bootcamp-db';
@@ -19,6 +24,7 @@ await mongoose.connect(MONGO_URI);
 const bootcamps = JSON.parse(fs.readFileSync(`${process.cwd()}/data/bootcamps.json`, 'utf-8'));
 const courses = JSON.parse(fs.readFileSync(`${process.cwd()}/data/courses.json`, 'utf-8'));
 const users = JSON.parse(fs.readFileSync(`${process.cwd()}/data/users.json`, 'utf-8'));
+const reviews = JSON.parse(fs.readFileSync(`${process.cwd()}/data/reviews.json`, 'utf-8'));
 
 // Import into DB
 const importData = async () => {
@@ -26,6 +32,7 @@ const importData = async () => {
     await Bootcamp.create(bootcamps);
     await Course.create(courses);
     await User.create(users);
+    await Review.create(reviews);
     console.log('Data imported...'.green.inverse);
     process.exit();
   } catch (error) {
@@ -40,6 +47,7 @@ const deleteData = async () => {
     await Bootcamp.deleteMany();
     await Course.deleteMany();
     await User.deleteMany();
+    await Review.deleteMany();
     console.log('Data deleted...'.green.inverse);
     process.exit();
   } catch (error) {
