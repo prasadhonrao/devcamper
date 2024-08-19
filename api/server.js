@@ -6,6 +6,7 @@ import colors from 'colors';
 import fileUpload from 'express-fileupload';
 import cookieParser from 'cookie-parser';
 import mongoSanitize from 'express-mongo-sanitize';
+import helmet from 'helmet';
 import bootcamps from './routes/bootcamps.js';
 import courses from './routes/courses.js';
 import auth from './routes/auth.js';
@@ -32,6 +33,7 @@ const app = express();
 app.use(express.json()); // Body parser
 app.use(cookieParser()); // Cookie parser
 app.use(mongoSanitize()); // Sanitize data
+app.use(helmet()); // Set security headers
 app.use(fileUpload()); // File upload
 app.use(express.static(path.join(path.resolve(), 'public'))); // Set static folder
 app.use('/api/v1/bootcamps', bootcamps);
