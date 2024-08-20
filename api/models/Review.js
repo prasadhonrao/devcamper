@@ -64,13 +64,11 @@ ReviewSchema.statics.getAverageRating = async function (bootcampId) {
 
 // Call getAverageRating after save
 ReviewSchema.post('save', async function () {
-  console.log('Updating average rating after review save');
   await this.constructor.getAverageRating(this.bootcamp);
 });
 
 // Call getAverageRating before remove
 ReviewSchema.pre('deleteOne', { document: true, query: false }, async function () {
-  console.log('Updating average rating after review delete');
   await this.constructor.getAverageRating(this.bootcamp);
 });
 

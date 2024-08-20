@@ -111,12 +111,8 @@ const getBootcampsInRadius = asyncHandler(async (req, res, next) => {
     const lat = loc[0].latitude;
     const lng = loc[0].longitude;
 
-    console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-
     // Calc radius using radians
     const radius = distance / 3963;
-
-    console.log(`Radius: ${radius}`);
 
     const bootcamps = await Bootcamp.find({
       location: {

@@ -4,11 +4,9 @@ import dotenv from 'dotenv';
 
 const ENV = process.env.NODE_ENV || 'development';
 if (ENV === 'development') {
-  console.log('Loading development environment variables from .env file'.yellow.bold);
-  dotenv.config(); // Load from .env file in development
+  dotenv.config();
 } else {
-  console.log(`Loading ${ENV} environment variables from config/config.env file`.yellow.bold);
-  dotenv.config({ path: './config/config.env' }); // Load from config/config.env in other environments
+  dotenv.config({ path: './config/config.env' });
 }
 
 const transporter = nodemailer.createTransport({
@@ -30,7 +28,6 @@ const sendEmail = async (options) => {
   };
 
   const info = await transporter.sendMail(message);
-  console.log('Message sent: %s', info.messageId);
 };
 
 export default sendEmail;

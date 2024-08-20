@@ -112,8 +112,6 @@ const resetPassword = asyncHandler(async (req, res, next) => {
   // Get hashed token
   const resetPassword = crypto.createHash('sha256').update(req.params.resettoken).digest('hex');
 
-  console.log(`Reset password: ${resetPassword}`);
-
   // Find user by reset token
   const user = await User.findOne({ resetPasswordToken: resetPassword, resetPasswordExpire: { $gt: Date.now() } });
 
