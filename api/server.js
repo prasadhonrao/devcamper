@@ -16,6 +16,7 @@ import courses from './routes/courses.js';
 import auth from './routes/auth.js';
 import users from './routes/users.js';
 import reviews from './routes/reviews.js';
+import home from './routes/home.js';
 import connectDB from './config/db.js';
 import errorHandler from './middleware/errorHandler.js';
 
@@ -52,6 +53,7 @@ app.use(hpp()); // Prevent http param pollution
 app.use(fileUpload()); // File upload
 app.use(cors()); // Enable CORS
 app.use(express.static(path.join(path.resolve(), 'public'))); // Set static folder
+app.use('/api/v1', home);
 app.use('/api/v1/bootcamps', bootcamps);
 app.use('/api/v1/courses', courses);
 app.use('/api/v1/auth', auth);
@@ -59,10 +61,6 @@ app.use('/api/v1/users', users);
 app.use('/api/v1/reviews', reviews);
 app.use(errorHandler);
 if (ENV === 'development' ? app.use(morgan('dev')) : null); // Logging
-
-app.get('/', (req, res) => {
-  res.send('Welcome to MERN bootcamp API!');
-});
 
 const server = app.listen(PORT, () => {
   console.log(`API server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold);
