@@ -21,10 +21,11 @@ import connectDB from './config/db.js';
 import errorHandler from './middleware/errorHandler.js';
 
 const ENV = process.env.NODE_ENV || 'development';
+
 if (ENV === 'development') {
   dotenv.config();
 } else {
-  dotenv.config({ path: './config/config.env' });
+  dotenv.config({ path: '.env.production' });
 }
 
 const PORT = process.env.PORT || 5000;
