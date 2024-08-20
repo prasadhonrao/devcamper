@@ -16,9 +16,32 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}",
+							"raw": "{{url}}/api/v1",
 							"host": [
 								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"status"
 							]
 						}
 					},
