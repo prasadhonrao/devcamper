@@ -19,20 +19,16 @@ import reviews from './routes/reviews.js';
 import home from './routes/home.js';
 import connectDB from './config/db.js';
 import errorHandler from './middleware/errorHandler.js';
+import loadEnvironmentConfig from './config/env.js';
 
-const ENV = process.env.NODE_ENV || 'development';
-
-if (ENV === 'development') {
-  dotenv.config();
-} else {
-  dotenv.config({ path: '.env.production' });
-}
-
+// Load environment variables
+loadEnvironmentConfig();
 const PORT = process.env.PORT || 5000;
-// Connect to MongoDB
-connectDB();
 
 const app = express();
+
+// Connect to MongoDB
+connectDB();
 
 // Middleware registration
 app.use(express.json()); // Body parser
@@ -61,7 +57,7 @@ app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
 app.use('/api/v1/reviews', reviews);
 app.use(errorHandler);
-if (ENV === 'development' ? app.use(morgan('dev')) : null); // Logging
+if (process.env.NODE_ENV === 'development' ? app.use(morgan('dev')) : null); // Logging
 
 const server = app.listen(PORT, () => {
   console.log(`API server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold);

@@ -1,13 +1,7 @@
 import nodemailer from 'nodemailer';
-import util from 'util';
-import dotenv from 'dotenv';
+import loadEnvironmentConfig from '../config/env.js';
 
-const ENV = process.env.NODE_ENV || 'development';
-if (ENV === 'development') {
-  dotenv.config();
-} else {
-  dotenv.config({ path: './config/config.env' });
-}
+loadEnvironmentConfig();
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
