@@ -57,11 +57,11 @@ mern-bootcamp/
 
 ## Setup Instructions
 
-For detailed setup instructions, please refer to the [SETUP.md](SETUP.md) file.
+For detailed setup instructions, please refer to the [SETUP](SETUP.md) file.
 
 ## Contributing
 
-Contributions are welcome! Please see the [CONTRIBUTING](CONTRiBUTING.md) file for guidelines on how to contribute to this project.
+Contributions are welcome! Please see the [CONTRIBUTING](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
 
 ## License
 
