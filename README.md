@@ -55,10 +55,14 @@ mern-bootcamp/
 └── README.md         # Project documentation
 ```
 
+## Setup Instructions
+
+For detailed setup instructions, please refer to the [SETUP.md](SETUP.md) file.
+
 ## Contributing
 
-Contributions are welcome! Please fork the repository and create a pull request with your changes.
+Contributions are welcome! Please see the [CONTRIBUTING](CONTRiBUTING.md) file for guidelines on how to contribute to this project.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
