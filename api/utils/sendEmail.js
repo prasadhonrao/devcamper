@@ -20,8 +20,7 @@ const sendEmail = async (options) => {
     subject: options.subject, // Subject line
     text: options.message, // plain text body
   };
-
-  const info = await transporter.sendMail(message);
+  await transporter.sendMail(message);
 };
 
 export default sendEmail;
