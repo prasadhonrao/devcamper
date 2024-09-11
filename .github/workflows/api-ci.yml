@@ -2,7 +2,7 @@ name: API - Continuous Integration
 
 on:
   workflow_run:
-    workflows: ['API - Security']
+    workflows: ['API - Security Checks']
     types:
       - completed
 

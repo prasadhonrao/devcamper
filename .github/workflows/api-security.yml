@@ -2,7 +2,7 @@ name: API - Security Checks
 
 on:
   workflow_run:
-    workflows: ['API - Lint']
+    workflows: ['API - Linting']
     types:
       - completed
 
