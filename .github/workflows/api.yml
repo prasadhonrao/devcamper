@@ -91,7 +91,7 @@ jobs:
           npm run build
 
       - name: Upload code and build artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: code-and-build-artifacts
           path: |
@@ -104,7 +104,7 @@ jobs:
 
     steps:
       - name: Download code and build artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: code-and-build-artifacts
           path: .
@@ -115,7 +115,7 @@ jobs:
           node-version: '20'
 
       - name: Cache Node.js modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
