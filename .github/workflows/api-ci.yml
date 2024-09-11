@@ -1,4 +1,4 @@
-name: CI for API
+name: API - Continuous Integration
 
 on:
   push:

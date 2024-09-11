@@ -1,4 +1,4 @@
-name: Lint API Code Base
+name: API - Linting
 
 on:
   push:
