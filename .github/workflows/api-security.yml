@@ -1,16 +1,10 @@
 name: API - Security Checks
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'api/**'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'api/**'
+  workflow_run:
+    workflows: ['API - Lint']
+    types:
+      - completed
 
 jobs:
   codeql-analysis:

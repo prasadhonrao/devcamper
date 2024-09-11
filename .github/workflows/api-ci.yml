@@ -1,16 +1,10 @@
 name: API - Continuous Integration
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'api/**'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'api/**'
+  workflow_run:
+    workflows: ['API - Security']
+    types:
+      - completed
 
 jobs:
   build-and-test:

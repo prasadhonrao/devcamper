@@ -1,19 +1,14 @@
 name: API - Continuous Deployment
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'api/**'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'api/**'
+  workflow_run:
+    workflows: ['API - Continuous Integration']
+    types:
+      - completed
 
 jobs:
-  build:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -30,35 +25,7 @@ jobs:
           cd api
           npm install
 
-      - name: Build project
+      - name: Deploy
         run: |
-          cd api
-          npm run build
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: api-build
-          path: ./api
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: api-build
-          path: ./api
-
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: mern-bootcamp-api
-          slot-name: production
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ./api
+          # Add your deployment steps here
+          echo "Deploying the application..."
