@@ -5,7 +5,6 @@ import User from '../models/User.js';
 // @desc    Get all users
 // @route   GET /api/v1/users
 // @access  Private/Admin
-// eslint-disable-next-line no-unused-vars
 const getUsers = asyncHandler(async (req, res, next) => {
   return res.status(200).json(res.advancedResults);
 });
@@ -28,7 +27,6 @@ const getUser = asyncHandler(async (req, res, next) => {
 // @desc    Create user
 // @route   POST /api/v1/users
 // @access  Private/Admin
-// eslint-disable-next-line no-unused-vars
 const createUser = asyncHandler(async (req, res, next) => {
   const user = await User.create(req.body);
   return res.status(201).json({ success: true, data: user });
