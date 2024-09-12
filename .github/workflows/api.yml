@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
+  setup:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,22 +31,60 @@ jobs:
           cd api
           npm install
 
+      - name: Upload code and dependencies
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-and-dependencies
+          path: |
+            api/
+            !api/node_modules/
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: setup
+
+    steps:
+      - name: Download code and dependencies
+        uses: actions/download-artifact@v3
+        with:
+          name: code-and-dependencies
+          path: .
+
       - name: Run linter
         run: |
           cd api
           npm run lint
 
-  security:
+  dependency-check:
     runs-on: ubuntu-latest
     needs: lint
+
+    steps:
+      - name: Download code and dependencies
+        uses: actions/download-artifact@v3
+        with:
+          name: code-and-dependencies
+          path: .
+
+      - name: Run dependency check
+        run: |
+          cd api
+          npm audit
+
+  security:
+    runs-on: ubuntu-latest
+    needs: dependency-check
     permissions:
       actions: read
       contents: read
       security-events: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Download code and dependencies
+        uses: actions/download-artifact@v3
+        with:
+          name: code-and-dependencies
+          path: .
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
@@ -59,96 +97,54 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
 
-  build:
+  test:
     runs-on: ubuntu-latest
     needs: security
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Cache Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies
-        run: |
-          cd api
-          npm install
-
-      - name: Build project
-        run: |
-          cd api
-          npm run build
-
-      - name: Upload code and build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: code-and-build-artifacts
-          path: |
-            api/
-            !api/node_modules/
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Download code and build artifacts
+      - name: Download code and dependencies
         uses: actions/download-artifact@v3
         with:
-          name: code-and-build-artifacts
+          name: code-and-dependencies
           path: .
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies
-        run: |
-          cd api
-          npm install
 
       - name: Run tests
         run: |
           cd api
           npm test
 
-  deploy:
+  code-coverage:
     runs-on: ubuntu-latest
     needs: test
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Download code and dependencies
+        uses: actions/download-artifact@v3
         with:
-          node-version: '20'
+          name: code-and-dependencies
+          path: .
 
-      - name: Install dependencies
+      - name: Run tests with coverage
         run: |
           cd api
-          npm install
+          npm run test -- --coverage
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: api/coverage
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: code-coverage
+
+    steps:
+      - name: Download code and dependencies
+        uses: actions/download-artifact@v3
+        with:
+          name: code-and-dependencies
+          path: .
 
       - name: Deploy
         run: |
