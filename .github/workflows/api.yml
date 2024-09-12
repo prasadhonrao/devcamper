@@ -48,7 +48,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
-          path: .
+          path: ./api
 
       - name: Run linter
         run: |
@@ -64,7 +64,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
-          path: .
+          path: ./api
 
       - name: Run dependency check
         run: |
@@ -84,7 +84,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
-          path: .
+          path: ./api
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
@@ -106,7 +106,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
-          path: .
+          path: ./api
 
       - name: Run tests
         run: |
@@ -122,7 +122,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
-          path: .
+          path: ./api
 
       - name: Run tests with coverage
         run: |
@@ -144,7 +144,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
-          path: .
+          path: ./api
 
       - name: Deploy
         run: |
