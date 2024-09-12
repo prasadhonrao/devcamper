@@ -37,7 +37,6 @@ jobs:
           name: code-and-dependencies
           path: |
             api/
-            !api/node_modules/
 
   lint:
     runs-on: ubuntu-latest
