@@ -1,4 +1,4 @@
-name: API - Workflow
+name: API - End-to-End Workflow
 
 on:
   push:
@@ -19,10 +19,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -32,7 +32,7 @@ jobs:
           npm install
 
       - name: Upload code and dependencies
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: code-and-dependencies
           path: |
@@ -45,7 +45,7 @@ jobs:
 
     steps:
       - name: Download code and dependencies
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
           path: .
@@ -61,7 +61,7 @@ jobs:
 
     steps:
       - name: Download code and dependencies
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
           path: .
@@ -69,7 +69,7 @@ jobs:
       - name: Run dependency check
         run: |
           cd api
-          npm audit
+          npm audit --audit-level=high
 
   security:
     runs-on: ubuntu-latest
@@ -81,7 +81,7 @@ jobs:
 
     steps:
       - name: Download code and dependencies
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
           path: .
@@ -103,7 +103,7 @@ jobs:
 
     steps:
       - name: Download code and dependencies
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
           path: .
@@ -119,7 +119,7 @@ jobs:
 
     steps:
       - name: Download code and dependencies
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
           path: .
@@ -130,7 +130,7 @@ jobs:
           npm run test -- --coverage
 
       - name: Upload coverage report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: api/coverage
@@ -141,7 +141,7 @@ jobs:
 
     steps:
       - name: Download code and dependencies
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: code-and-dependencies
           path: .
