@@ -120,7 +120,7 @@ jobs:
         run: npm install --prefix api
 
       - name: Run tests with coverage
-        run: npm run test -- --coverage --prefix api
+        run: npm run test --prefix api -- --coverage
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
