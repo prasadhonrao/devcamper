@@ -1,8 +1,8 @@
-# MERN Bootcamp
+# DevCamper
 
 ## Overview
 
-MERN Bootcamp is a web application created to help users discover, rate, and review coding bootcamps. The platform provides a comprehensive solution for users to search for bootcamps based on location, browse reviews from other users, and submit their own feedback. Its primary goal is to provide a resource for aspiring coders to find the right bootcamp for their needs.
+DevCamper is a web application created to help users discover, rate, and review coding bootcamps. The platform provides a comprehensive solution for users to search for bootcamps based on location, browse reviews from other users, and submit their own feedback. Its primary goal is to provide a resource for aspiring coders to find the right bootcamp for their needs.
 
 Built using the MERN stack, the application leverages MongoDB, Express.js, React, and Node.js to deliver a full-stack experience. On the backend, Express.js and MongoDB are utilized to handle API requests and manage data storage. Meanwhile, the frontend is powered by React, which provides a dynamic and responsive user interface.
 
