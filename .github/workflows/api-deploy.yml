@@ -1,0 +1,35 @@
+name: API - Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'api/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'api/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --prefix api
+
+      - name: Deploy
+        run: |
+          # Add your deployment steps here
+          echo "Deploying the application..."
