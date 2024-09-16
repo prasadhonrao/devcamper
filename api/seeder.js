@@ -17,7 +17,7 @@ if (ENV === 'development') {
 }
 
 // Connect to MongoDB
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/mern-bootcamp-db';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/devCamper-db';
 await mongoose.connect(MONGO_URI);
 
 // Read JSON files
