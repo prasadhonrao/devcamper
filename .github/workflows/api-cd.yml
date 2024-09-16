@@ -68,7 +68,7 @@ jobs:
           server_port: 587
           username: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_PASSWORD }}
-          subject: ${{ job.status }}: Deployment Notification
+          subject: '${{ job.status }}: Deployment Notification'
           body: |
             The deployment has ${{ job.status }}!
             Repository: ${{ github.repository }}
@@ -81,4 +81,4 @@ jobs:
             Run Number: ${{ github.run_number }}
             Logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           to: ${{ secrets.NOTIFY_EMAIL }}
-          from: ${{ secrets.GMAIL_USERNAME }}        
+          from: ${{ secrets.GMAIL_USERNAME }}
