@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { FaGraduationCap, FaSignInAlt, FaUserPlus, FaLaptopCode, FaUser } from 'react-icons/fa';
+import { FaGraduationCap, FaSignInAlt, FaUserPlus, FaLaptopCode, FaUser, FaSearch } from 'react-icons/fa';
 import "../styles/bootstrap.css";
 import { useEffect, useState } from 'react';
 
@@ -22,7 +22,7 @@ function Header() {
   return (
     <>
       {/* <!-- Navbar --> */}
-      {getHeader == true ?
+      {/* {getHeader == true ?
         <nav class="navbar navbar-expand-md navbar-dark bg-primary">
           <div class="container">
             <a class="navbar-brand" href="index.html"
@@ -112,34 +112,34 @@ function Header() {
               </ul>
             </div>
           </div>
-        </nav>}
+        </nav>} */}
 
 
 
 
-      {/* // <Navbar expand="lg" className="bg-info" fixed="top">
-    //   <Container>
-    //     <Navbar.Brand as={Link} to="/">
-    //       <FaGraduationCap className="brand-logo" />
-    //       Bootcamp
-    //     </Navbar.Brand>
-    //     <Navbar.Toggle aria-controls="primary-navbar-nav" />
-    //     <Navbar.Collapse id="primary-navbar-nav">
-    //       <Nav className="ms-auto">
-    //         <Nav.Link as={Link} to="/login">
-    //           <FaSignInAlt /> Login
-    //         </Nav.Link>
-    //         <Nav.Link as={Link} to="/register">
-    //           <FaUserPlus /> Register
-    //         </Nav.Link>
-    //         <div className="nav-separator"></div>
-    //         <Nav.Link as={Link} to="/browse">
-    //           <FaSearch /> Browse Bootcamps
-    //         </Nav.Link>
-    //       </Nav>
-    //     </Navbar.Collapse>
-    //   </Container>
-    // </Navbar> */}
+      <Navbar expand="lg" className="bg-primary">
+        <Container>
+          <Navbar.Brand as={Link} to="/">
+            <FaGraduationCap className="brand-logo" />
+            DevCamper
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="primary-navbar-nav" />
+          <Navbar.Collapse id="primary-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link as={Link} to="/login">
+                <FaSignInAlt /> Login
+              </Nav.Link>
+              <Nav.Link as={Link} to="/register">
+                <FaUserPlus /> Register
+              </Nav.Link>
+              <div className="nav-separator"></div>
+              <Nav.Link as={Link} to="/browse">
+                <FaSearch /> Browse Bootcamps
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   );
 }
