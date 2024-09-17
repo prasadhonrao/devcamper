@@ -1,4 +1,5 @@
 import { LuLogIn } from "react-icons/lu";
+import { Row, Col, Form, Button } from 'react-bootstrap';
 
 function Login() {
     return (
@@ -15,36 +16,32 @@ function Login() {
                                         Log in to list your bootcamp or rate, review and favorite
                                         bootcamps
                                     </p>
-                                    <form>
-                                        <div className="form-group">
-                                            <label for="email">Email Address</label>
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                className="form-control"
-                                                placeholder="Enter email"
-                                                required
-                                            />
-                                        </div>
-                                        <div className="form-group mb-4">
-                                            <label for="password">Password</label>
-                                            <input
-                                                type="password"
-                                                name="password"
-                                                className="form-control"
-                                                placeholder="Enter password"
-                                                required
-                                            />
-                                        </div>
-                                        <div className="form-group">
-                                            <input
-                                                type="submit"
-                                                value="Login"
-                                                className="btn btn-primary btn-block"
-                                            />
-                                        </div>
-                                    </form>
-                                    <p>	Forgot Password? <a href="reset-password.html">Reset Password</a></p>
+                                    <Form action="bootcamps.html">
+                                        <Row className='py-3'>
+                                            <Col md={12} className="mt-3">
+                                                <Form.Group>
+                                                    <Form.Label>Email Address</Form.Label>
+                                                    <Form.Control type="email" name="email" placeholder="Enter email" autoComplete="off" required />
+                                                </Form.Group>
+                                            </Col>
+                                            <Col md={12} className="my-3">
+                                                <Form.Group>
+                                                    <Form.Label>Password</Form.Label>
+                                                    <Form.Control type="password" name="password" placeholder="Enter password" autoComplete="off" required />
+                                                </Form.Group>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col md={12}>
+                                                <div className="d-grid gap-2">
+                                                    <Button variant="primary" size="lg" type="submit">
+                                                        Login
+                                                    </Button>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                    </Form>
+                                    <p className="mt-2">Forgot Password? <a href="/reset_password">Reset Password</a></p>
                                 </div>
                             </div>
                         </div>
