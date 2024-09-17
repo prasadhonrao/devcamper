@@ -5,7 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "lint": "eslint .",
     "start": "cross-env NODE_ENV=production node server.js",
     "dev": "nodemon server.js",
     "data:import": "node seeder.js",
@@ -49,7 +50,11 @@
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
+    "@eslint/js": "^9.10.0",
     "cross-env": "^7.0.3",
+    "eslint": "^9.10.0",
+    "globals": "^15.9.0",
+    "jest": "^29.7.0",
     "nodemon": "^3.1.4"
   }
 }

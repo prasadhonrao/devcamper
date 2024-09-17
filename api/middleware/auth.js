@@ -25,7 +25,7 @@ const protect = asyncHandler(async (req, res, next) => {
     // Find user by id and set it to req.user so that we can use it in the controller
     req.user = await User.findById(decoded.id).select('-password'); // This is the id from JWT payload
     next();
-  } catch (error) {
+  } catch {
     return next(new ErrorResponse('Not authorized to access this route', 401));
   }
 });
