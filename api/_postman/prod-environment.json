@@ -4,7 +4,7 @@
 	"values": [
 		{
 			"key": "url",
-			"value": "http://DevCamper.io",
+			"value": "http://devcamper.io",
 			"type": "default",
 			"enabled": true
 		},

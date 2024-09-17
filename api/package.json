@@ -1,7 +1,7 @@
 {
-  "name": "DevCamper-api",
+  "name": "devcamper-api",
   "version": "1.0.0",
-  "description": "API for DevCamper web application",
+  "description": "API for devcamper web application",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prasadhonrao/DevCamper.git"
+    "url": "git+https://github.com/prasadhonrao/devcamper.git"
   },
   "keywords": [
     "api",
@@ -26,9 +26,9 @@
   "author": "Prasad Honrao",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/prasadhonrao/DevCamper/issues"
+    "url": "https://github.com/prasadhonrao/devcamper/issues"
   },
-  "homepage": "https://github.com/prasadhonrao/DevCamper#readme",
+  "homepage": "https://github.com/prasadhonrao/devcamper#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",

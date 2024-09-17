@@ -16,7 +16,7 @@ Before starting, make sure you have the following installed on your machine:
 ### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/prasadhonrao/DevCamper
+git clone https://github.com/prasadhonrao/devcamper
 cd DevCamper
 cd api
 ```
@@ -49,7 +49,7 @@ PORT=5000
 NODE_ENV=development
 
 # Database configuration
-MONGO_URI=mongodb://localhost:27017/DevCamper-dev-db
+MONGO_URI=mongodb://localhost:27017/devcamper-dev-db
 
 # Geocoder configuration
 GEOCODER_PROVIDER=mapquest

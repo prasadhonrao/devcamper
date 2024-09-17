@@ -9,7 +9,7 @@ We welcome contributions to the DevCamper project! By contributing, you can help
    Fork the repository on GitHub and clone your fork locally.
 
    ```sh
-   git clone https://github.com/your-username/DevCamper.git
+   git clone https://github.com/your-username/devcamper.git
    cd DevCamper
    ```
 
