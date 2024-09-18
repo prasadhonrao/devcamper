@@ -1,6 +1,6 @@
-# Contributing to MERN Bootcamp
+# Contributing to DevCamper
 
-We welcome contributions to the MERN Bootcamp project! By contributing, you can help improve the project and make it more useful for everyone.
+We welcome contributions to the DevCamper project! By contributing, you can help improve the project and make it more useful for everyone.
 
 ## How to Contribute
 
@@ -9,8 +9,8 @@ We welcome contributions to the MERN Bootcamp project! By contributing, you can 
    Fork the repository on GitHub and clone your fork locally.
 
    ```sh
-   git clone https://github.com/your-username/mern-bootcamp.git
-   cd mern-bootcamp
+   git clone https://github.com/your-username/devcamper.git
+   cd DevCamper
    ```
 
 2. **Create a branch:**
