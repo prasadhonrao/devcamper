@@ -3,9 +3,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaGraduationCap, FaSignInAlt, FaUserPlus, FaLaptopCode, FaUser, FaSearch } from 'react-icons/fa';
-import "../styles/bootstrap.css";
 import { useEffect, useState } from 'react';
 import { Image } from 'react-bootstrap';
+import "../styles/bootstrap.css";
 
 function Header() {
 
