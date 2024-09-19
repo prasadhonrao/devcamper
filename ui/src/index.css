@@ -1,7 +1,7 @@
 .nav-separator {
   width: 1px;
   height: 24px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #e05433 !important;
   margin: 0 10px;
   align-self: center;
 }
