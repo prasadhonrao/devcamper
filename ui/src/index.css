@@ -1,7 +1,7 @@
 .nav-separator {
   width: 1px;
   height: 24px;
-  background-color: #333;
+  background-color: rgba(255, 255, 255, 0.5);
   margin: 0 10px;
   align-self: center;
 }
@@ -17,13 +17,13 @@ img {
 .showcase {
   position: relative;
   background: url('./img/showcase.jpg') no-repeat center center/cover;
-  min-height: 100vh;
+  min-height: 91.5vh;
   color: #fff;
 }
 
 .showcase-inner {
   text-align: center;
-  padding-top: 20%;
+  padding-top: 15%;
   height: 100%;
   width: 80%;
   margin: auto;

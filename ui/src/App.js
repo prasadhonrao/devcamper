@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-
+import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -10,7 +10,7 @@ import BrowseBootcampsPage from './pages/BrowseBootcampsPage';
 function App() {
   return (
     <Router>
-      <Header />
+      <Layout />
       <div>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
