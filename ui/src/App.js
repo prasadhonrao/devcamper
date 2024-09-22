@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AboutPage from './pages/AboutPage';
-import BrowseBootcampsPage from './pages/BrowseBootcampsPage';
+import BootcampsPage from './pages/BootcampsPage';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route exact path="/login" element={<LoginPage />} />
           <Route exact path="/register" element={<RegisterPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/browse" element={<BrowseBootcampsPage />} />
+          <Route path="/browse" element={<BootcampsPage />} />
         </Routes>
       </div>
     </Router>
