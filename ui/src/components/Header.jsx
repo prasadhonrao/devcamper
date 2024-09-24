@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { FaGraduationCap, FaSignInAlt, FaUserPlus, FaLaptopCode, FaUser, FaSearch } from 'react-icons/fa';
+import { FaGraduationCap, FaSignInAlt, FaUserPlus, FaLaptopCode, FaUser, FaSearch,FaSignOutAlt } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Image } from 'react-bootstrap';
 import "../styles/bootstrap.css";
 
@@ -12,7 +13,7 @@ function Header() {
   const [getHeader, SetHeader] = useState(false);
 
   useEffect(() => {
-    if (window.location.href.includes('browse')) {
+    if (window.location.href.includes('addboot')) {
       SetHeader(true);
     } else {
       SetHeader(false);
@@ -23,7 +24,7 @@ function Header() {
   return (
     <>
       {/* <!-- Navbar --> */}
-      {/* {getHeader == true ?
+      {/*{getHeader == true ?
         <nav class="navbar navbar-expand-md navbar-dark bg-primary">
           <div class="container">
             <a class="navbar-brand" href="index.html"
@@ -113,7 +114,7 @@ function Header() {
               </ul>
             </div>
           </div>
-        </nav>} */}
+        </nav>}*/}
 
 
 
@@ -127,12 +128,28 @@ function Header() {
           <Navbar.Toggle aria-controls="primary-navbar-nav" />
           <Navbar.Collapse id="primary-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link as={Link} to="/login">
-                <FaSignInAlt /> Login
-              </Nav.Link>
-              <Nav.Link as={Link} to="/register">
-                <FaUserPlus /> Register
-              </Nav.Link>
+            <NavDropdown
+                                    title={
+                                        <>
+                                            <FaUser /> Account
+                                        </>
+                                    }
+                                    id="account-dropdown"
+                                >
+                                    <NavDropdown.Item as={Link} to="/manage-bootcamp">
+                                        Manage Bootcamp
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/manage-reviews">
+                                        Manage Reviews
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/manage-account">
+                                        Manage Account
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item as={Link} to="/login">
+                                        <FaSignOutAlt /> Logout
+                                    </NavDropdown.Item>
+                                </NavDropdown>
               <div className="nav-separator"></div>
               <Nav.Link as={Link} to="/browse">
                 <FaSearch /> Browse Bootcamps
@@ -141,6 +158,7 @@ function Header() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
     </>
   );
 }

@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AboutPage from './pages/AboutPage';
 import BootcampsPage from './pages/BootcampsPage';
+import AddBootcampPage from './pages/AddBootcampPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/register" element={<RegisterPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/browse" element={<BootcampsPage />} />
+          <Route path="/addboot" element={<AddBootcampPage />} />
         </Routes>
       </div>
     </Router>
