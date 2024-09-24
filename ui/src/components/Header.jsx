@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { FaGraduationCap, FaSignInAlt, FaUserPlus, FaLaptopCode, FaUser, FaSearch,FaSignOutAlt } from 'react-icons/fa';
+import { FaGraduationCap, FaSignInAlt, FaUserPlus, FaLaptopCode,FaSignOutAlt, FaUser, FaSearch } from 'react-icons/fa';
+import "../styles/bootstrap.css";
 import { useEffect, useState } from 'react';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Image } from 'react-bootstrap';
-import "../styles/bootstrap.css";
 
 function Header() {
 
@@ -24,7 +24,7 @@ function Header() {
   return (
     <>
       {/* <!-- Navbar --> */}
-      {/*{getHeader == true ?
+      {/* {getHeader == true ?
         <nav class="navbar navbar-expand-md navbar-dark bg-primary">
           <div class="container">
             <a class="navbar-brand" href="index.html"
@@ -114,7 +114,7 @@ function Header() {
               </ul>
             </div>
           </div>
-        </nav>}*/}
+        </nav>} */}
 
 
 
@@ -158,7 +158,6 @@ function Header() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
     </>
   );
 }
