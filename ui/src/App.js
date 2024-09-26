@@ -18,8 +18,8 @@ function App() {
           <Route exact path="/login" element={<LoginPage />} />
           <Route exact path="/register" element={<RegisterPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/browse" element={<BootcampsPage />} />
-          <Route path="/addboot" element={<AddBootcampPage />} />{/*Addbootcamp*/}
+          <Route path="/bootcamps" element={<BootcampsPage />} />
+          <Route path="/bootcamps/add" element={<AddBootcampPage />} />
         </Routes>
       </div>
     </Router>
