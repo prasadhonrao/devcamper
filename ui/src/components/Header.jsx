@@ -22,7 +22,7 @@ function Header() {
 
   return (
     <>
-      {/* <!-- Navbar --> */}
+      {/*<!-- Navbar -->*/}
       {/* {getHeader == true ?
         <nav class="navbar navbar-expand-md navbar-dark bg-primary">
           <div class="container">
