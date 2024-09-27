@@ -1,6 +1,5 @@
-const BrowseBootcampsPage = () => {
+const AddBootcampPage = () => {
     return (
-        //Addbootcamp
         <section class="container mt-5">
         <div className="container">
         <h1 class="mb-2">Add Bootcamp</h1>
@@ -168,4 +167,4 @@ const BrowseBootcampsPage = () => {
   );
 };
 
-export default BrowseBootcampsPage;
+export default AddBootcampPage;
