@@ -42,7 +42,7 @@ const updateUser = asyncHandler(async (req, res, next) => {
   });
 
   if (!user) {
-    return next(new ErrorResponse(`User not found with id of ${userId}`, 404));
+    return next(new ErrorResponse(`User ${user} not found`, 404));
   }
 
   return res.status(200).json({ success: true, data: user });
@@ -55,7 +55,7 @@ const deleteUser = asyncHandler(async (req, res, next) => {
   let user = await User.findByIdAndDelete(req.params.id);
 
   if (!user) {
-    return next(new ErrorResponse(`User not found with id of ${userId}`, 404));
+    return next(new ErrorResponse(`User ${user} not found`, 404));
   }
 
   return res.status(200).json({ success: true, data: {} });

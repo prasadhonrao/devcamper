@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to MERN bootcamp API!');
+  res.send('Welcome to DevCamper API!');
 });
 
 router.get('/status', (req, res) => {
