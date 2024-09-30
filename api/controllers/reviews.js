@@ -2,7 +2,6 @@ import ErrorResponse from '../utils/errorResponse.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Bootcamp from '../models/Bootcamp.js';
 import Review from '../models/Review.js';
-import User from '../models/User.js';
 
 // @desc    Get reviews
 // @route   GET /api/v1/reviews

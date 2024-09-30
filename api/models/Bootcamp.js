@@ -23,17 +23,14 @@ const BootcampSchema = new mongoose.Schema(
     slug: String,
     website: {
       type: String,
-      match: [
-        /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(#[-a-z\d_]*)?$/i,
-        'Please add a valid website URL',
-      ],
+      match: [/^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/.*)?$/, 'Please add a valid website URL'],
     },
     phone: {
       type: String,
     },
     email: {
       type: String,
-      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please add a valid email'],
+      match: [/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Please add a valid email'],
     },
     address: {
       type: String,
@@ -130,7 +127,7 @@ BootcampSchema.pre('save', async function (next) {
     // Do not save address in DB
     this.address = undefined;
   } catch (error) {
-    return next(new ErrorResponse('Geocoding failed', 500));
+    return next(new ErrorResponse(`Geocoding failed during save operation with error ${error.message}`, 500));
   }
   next();
 });

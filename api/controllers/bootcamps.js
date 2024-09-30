@@ -123,7 +123,7 @@ const getBootcampsInRadius = asyncHandler(async (req, res, next) => {
     });
     return res.status(200).json({ success: true, count: bootcamps.length, data: bootcamps });
   } catch (error) {
-    throw new ErrorResponse('Geocoding failed'.error.message, 500);
+    throw new ErrorResponse(`Geocoding failed with error ${error.message}`, 500);
   }
 });
 
@@ -135,7 +135,7 @@ const testGeocode = asyncHandler(async (req, res, next) => {
   }
   try {
     result = await geocoder.geocode(address);
-  } catch (error) {
+  } catch {
     return next(new ErrorResponse(`Geocode failed for address ${address}`, 404));
   }
   return res.status(200).json({ success: true, data: result });

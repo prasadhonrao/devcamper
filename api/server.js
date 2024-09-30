@@ -1,6 +1,5 @@
 import path from 'path';
 import express from 'express';
-import dotenv from 'dotenv';
 import morgan from 'morgan';
 import colors from 'colors';
 import fileUpload from 'express-fileupload';
@@ -64,7 +63,7 @@ const server = app.listen(PORT, () => {
 });
 
 // Handle unhandled promise rejections
-process.on('unhandledRejection', (error, promise) => {
+process.on('unhandledRejection', (error) => {
   console.error(`Error: ${error.message}`.red);
   server.close(() => process.exit(1));
 });

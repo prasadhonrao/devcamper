@@ -70,6 +70,7 @@ const addCourse = asyncHandler(async (req, res, next) => {
 // @access  Private
 const updateCourse = asyncHandler(async (req, res, next) => {
   let courseId = req.params.id;
+  let userId = req.user.id;
 
   // Check if the course exists
   let course = await Course.findById(courseId);
