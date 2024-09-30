@@ -1,6 +1,6 @@
-# MERN Bootcamp Project Setup Instructions
+# DevCamper Project Setup Instructions
 
-Welcome to the MERN Bootcamp project! This guide will walk you through the process of setting up the API server and the UI application. Please follow the steps carefully to get the application up and running.
+Welcome to the DevCamper project! This guide will walk you through the process of setting up the API server and the UI application. Please follow the steps carefully to get the application up and running.
 
 ## Prerequisites
 
@@ -16,8 +16,8 @@ Before starting, make sure you have the following installed on your machine:
 ### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/prasadhonrao/mern-bootcamp
-cd mern-bootcamp
+git clone https://github.com/prasadhonrao/devcamper
+cd DevCamper
 cd api
 ```
 
@@ -49,7 +49,7 @@ PORT=5000
 NODE_ENV=development
 
 # Database configuration
-MONGO_URI=mongodb://localhost:27017/mern-bootcamp-dev-db
+MONGO_URI=mongodb://localhost:27017/devcamper-dev-db
 
 # Geocoder configuration
 GEOCODER_PROVIDER=mapquest
