@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
@@ -21,8 +20,8 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/bootcamps" element={<BootcampsPage />} />
           <Route path="/bootcamps/add" element={<AddBootcampPage />} />
-          <Route path="/bootcamps/:bootcampId/reviews" element={<AddReviewPage/>}/>
-          </Routes>
+          <Route path="/bootcamps/:bootcampId/reviews/add" element={<AddReviewPage />} />
+        </Routes>
       </div>
     </Router>
   );
