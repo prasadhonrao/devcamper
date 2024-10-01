@@ -21,8 +21,8 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/bootcamps" element={<BootcampsPage />} />
           <Route path="/bootcamps/add" element={<AddBootcampPage />} />
-          <Route path="/review" element={<AddReviewPage />} />
-        </Routes>
+          <Route path="/bootcamps/:bootcampId/reviews" element={<AddReviewPage/>}/>
+          </Routes>
       </div>
     </Router>
   );

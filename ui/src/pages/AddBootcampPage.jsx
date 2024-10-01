@@ -155,7 +155,7 @@ const AddBootcampPage = () => {
                 <input
                     type="submit"
                     value="Submit Bootcamp"
-                    class="btn btn-success btn-block my-4"
+                    className="btn btn-primary btn-block"
                 />
                 {/*<a href="manage-bootcamp.html" class="btn btn-danger btn-block mb-4"
                     >Cancel</a
