@@ -26,7 +26,9 @@ jobs:
         working-directory: ./ui
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip . -x "node_modules/*" -x ".git/*" -x "tests/*"
+        run: |
+          cd build
+          zip -r ../release.zip .
         working-directory: ./ui
 
       - name: Upload artifact for deployment job
@@ -48,8 +50,11 @@ jobs:
           name: node-app
           path: .
 
-      - name: Unzip artifact
-        run: unzip release.zip
+      - name: Unzip artifact into wwwroot
+        run: unzip release.zip -d wwwroot
+
+      - name: List contents of wwwroot directory
+        run: ls -R wwwroot
 
       - name: 'Login to Azure'
         uses: azure/login@v1
@@ -61,4 +66,4 @@ jobs:
         with:
           app-name: 'devcamper-webapp' # Replace with your Azure App Service name
           slot-name: 'dev' # Specify the slot name (e.g., 'dev' for development slot)
-          package: . # Ensure this points to the correct directory or file
+          package: wwwroot
