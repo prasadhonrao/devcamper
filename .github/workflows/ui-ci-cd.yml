@@ -43,7 +43,7 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: node-app
           path: .
@@ -57,7 +57,7 @@ jobs:
           creds: ${{ secrets.Azure_Service_Principal }}
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'devcamper-webapp' # Replace with your Azure App Service name
           slot-name: 'dev' # Specify the slot name (e.g., 'dev' for development slot)
