@@ -3,17 +3,6 @@ import { Link } from 'react-router-dom';
 import { Nav, NavDropdown, Navbar, Container } from 'react-bootstrap';
 import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaUser, FaSearch } from 'react-icons/fa';
 
-// React and Hooks Imports
-import { useEffect, useState } from 'react';
-
-// Third-Party Library Imports
-import { Link } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaUser, FaSearch } from 'react-icons/fa';
-
 // Local Imports
 import '../styles/bootstrap.css';
 
