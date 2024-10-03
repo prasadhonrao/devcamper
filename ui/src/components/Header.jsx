@@ -2,13 +2,16 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Nav, NavDropdown, Navbar, Container } from 'react-bootstrap';
 import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaUser, FaSearch } from 'react-icons/fa';
+
+// Local Imports
 import '../styles/bootstrap.css';
 
 function Header() {
   const [getHeader, SetHeader] = useState(false);
 
   useEffect(() => {
-    if (window.location.href.includes('bootcamps')) {
+    const currentUrl = window.location.href;
+    if (currentUrl.includes('bootcamps') || currentUrl.includes('review')) {
       SetHeader(true);
     } else {
       SetHeader(false);
