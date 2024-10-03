@@ -29,7 +29,7 @@ jobs:
         working-directory: ./ui
         run: |
           cd build
-          zip -r release.zip ./*
+          zip -r ../release.zip ./*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -50,8 +50,11 @@ jobs:
           name: node-app
           path: .
 
+      - name: List contents of the downloaded artifact directory
+        run: ls -R .
+
       - name: Unzip artifact into wwwroot
-        run: unzip ./ui/release.zip -d wwwroot
+        run: unzip ./release.zip -d wwwroot
 
       - name: List contents of wwwroot directory
         run: ls -R wwwroot
