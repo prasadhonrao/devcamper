@@ -55,7 +55,7 @@ function BootcampList() {
                 <Card className="card mb-3">
                     <div className="row no-gutters">
                         <div className="col-md-4">
-                            <Card.Img variant="top" src="img/image_2.jpg" />
+                            <Card.Img variant="top" src="img/image_3.jpg" />
                         </div>
                         <div className="col-md-8">
                             <Card.Body className="card-body">
@@ -77,7 +77,7 @@ function BootcampList() {
                 <Card className="card mb-3">
                     <div className="row no-gutters">
                         <div className="col-md-4">
-                            <Card.Img variant="top" src="img/image_2.jpg" />
+                            <Card.Img variant="top" src="img/image_4.jpg" />
                         </div>
                         <div className="col-md-8">
                             <Card.Body className="card-body">
