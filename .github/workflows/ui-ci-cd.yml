@@ -73,3 +73,13 @@ jobs:
           app-name: 'devcamper-webapp' # Replace with your Azure App Service name
           slot-name: 'dev' # Specify the slot name (e.g., 'dev' for development slot)
           package: wwwroot
+
+      - name: 'Validate Deployment'
+        run: |
+          response=$(curl --write-out '%{http_code}' --silent --output /dev/null https://devcamper-webapp-dev.azurewebsites.net)
+          if [ "$response" -ne 200 ]; then
+            echo "Deployment validation failed with status code $response"
+            exit 1
+          else
+            echo "Deployment validation succeeded with status code $response"
+          fi
