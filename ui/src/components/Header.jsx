@@ -11,7 +11,7 @@ function Header() {
 
   useEffect(() => {
     const currentUrl = window.location.href;
-    if (currentUrl.includes('bootcamps') || currentUrl.includes('review')) {
+    if (currentUrl.includes('bootcamps') || currentUrl.includes('review') || currentUrl.includes('manage-course')) {
       SetHeader(true);
     } else {
       SetHeader(false);
@@ -22,7 +22,7 @@ function Header() {
     <>
       {/*<!-- Navbar -->*/}
       {getHeader === true ? (
-        <Navbar expand="lg" className="bg-primary">
+        <Navbar expand="lg" className="bg-primary" style={{borderBottom: "1px solid"}}>
           <Container>
             <Navbar.Brand as={Link} to="/">
               {/* <FaGraduationCap className="brand-logo" /> */}

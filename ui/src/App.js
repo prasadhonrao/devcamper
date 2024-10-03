@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage';
 import BootcampsPage from './pages/BootcampsPage';
 import AddBootcampPage from './pages/AddBootcampPage';
 import AddReviewPage from './pages/AddReviewPage';
+import ManageCourse from './pages/ManageCourse';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/bootcamps" element={<BootcampsPage />} />
           <Route path="/bootcamps/add" element={<AddBootcampPage />} />
           <Route path="/bootcamps/:bootcampId/reviews/add" element={<AddReviewPage />} />
+          <Route path="/manage-course" element={<ManageCourse />} />
         </Routes>
       </div>
     </Router>
