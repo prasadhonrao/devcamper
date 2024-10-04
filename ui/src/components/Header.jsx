@@ -10,8 +10,7 @@ function Header() {
   const [getHeader, SetHeader] = useState(false);
 
   useEffect(() => {
-    const currentUrl = window.location.href;
-    if (currentUrl.includes('bootcamps') || currentUrl.includes('review')) {
+    if (window.location.href.includes('bootcamps')) {
       SetHeader(true);
     } else {
       SetHeader(false);
