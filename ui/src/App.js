@@ -9,6 +9,7 @@ import AddBootcampPage from './pages/AddBootcampPage';
 import AddReviewPage from './pages/AddReviewPage';
 import ManageAccountPage from './pages/ManageAccountPage';
 import AddCoursePage from './pages/AddCoursePage';
+import ManageBootcampPage from './pages/ManageBootcampPage';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/bootcamps/:bootcampId/reviews/add" element={<AddReviewPage />} />
           <Route path="/bootcamps/:bootcampId/manageaccount/add" element={<ManageAccountPage />} />
           <Route path="/bootcamps/:bootcampId/addcourse/add" element={<AddCoursePage />} />
+          <Route path="/bootcamps/:bootcampId/managebootcamp/add" element={<ManageBootcampPage />} />
         </Routes>
       </div>
     </Router>
