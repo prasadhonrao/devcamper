@@ -1,3 +1,8 @@
+import myImage from 'C:/devcamper/ui/src/img/image_1.jpg'; 
+import myImage1 from 'C:/devcamper/ui/src/img/image_2.jpg';
+import myImage2 from 'C:/devcamper/ui/src/img/image_3.jpg';
+import myImage3 from 'C:/devcamper/ui/src/img/image_4.jpg';
+
 const BrowseBootcampsPage = () => {
   return (
     <section className="browse my-5">
@@ -80,7 +85,7 @@ const BrowseBootcampsPage = () => {
             <div className="card mb-3">
               <div className="row no-gutters">
                 <div className="col-md-4">
-                  <img src="/img/image_1.jpg" className="card-img" alt="..." />
+                  <img src={myImage} alt="..." />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
@@ -100,7 +105,7 @@ const BrowseBootcampsPage = () => {
             <div className="card mb-3">
               <div className="row no-gutters">
                 <div className="col-md-4">
-                  <img src="../img/image_2.jpg" className="card-img" alt="..." />
+                <img src={myImage1} alt="..." />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
@@ -119,7 +124,7 @@ const BrowseBootcampsPage = () => {
             <div className="card mb-3">
               <div className="row no-gutters">
                 <div className="col-md-4">
-                  <img src="../img/image_3.jpg" className="card-img" alt="..." />
+                <img src={myImage2} alt="..." />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
@@ -139,7 +144,7 @@ const BrowseBootcampsPage = () => {
             <div className="card mb-3">
               <div className="row no-gutters">
                 <div className="col-md-4">
-                  <img src="../img/image_4.jpg" className="card-img" alt="..." />
+                <img src={myImage3} alt="..." />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
