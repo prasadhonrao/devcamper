@@ -1,3 +1,25 @@
+import Bootcamp from '../../components/Bootcamp';
+
+const bootcamps = [
+  {
+    id: 1,
+    image: '/images/image_1.jpg',
+    name: 'Bootcamp 1',
+    rating: 4.5,
+    location: 'Location 1',
+    careers: ['Web Development', 'Data Science'],
+  },
+  {
+    id: 2,
+    image: '/images/image_2.jpg',
+    name: 'Bootcamp 2',
+    rating: 4.0,
+    location: 'Location 2',
+    careers: ['Web Development', 'UI/UX'],
+  },
+  // Add more bootcamp data as needed
+];
+
 const BootcampsPage = () => {
   return (
     <section className="browse my-5">
@@ -74,87 +96,12 @@ const BootcampsPage = () => {
               <input type="submit" value="Find Bootcamps" className="btn btn-primary btn-block" />
             </form>
           </div>
+
           {/* <!-- Main col --> */}
           <div className="col-md-8">
-            {/* <!-- Bootcamps --> */}
-            <div className="card mb-3">
-              <div className="row no-gutters">
-                <div className="col-md-4">
-                  <img src="/img/image_1.jpg" className="card-img" alt="..." />
-                </div>
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      <a href="/">
-                        Devworks Bootcamp
-                        <span className="float-right badge badge-success">8.8</span>
-                      </a>
-                    </h5>
-                    <span className="badge badge-dark mb-2">Boston, MA</span>
-                    <p className="card-text">Web Development, UI/UX, Mobile Development</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card mb-3">
-              <div className="row no-gutters">
-                <div className="col-md-4">
-                  <img src="../img/image_2.jpg" className="card-img" alt="..." />
-                </div>
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      <a href="/">
-                        ModernTech Bootcamp
-                        <span className="float-right badge badge-success">7.5</span>
-                      </a>
-                    </h5>
-                    <span className="badge badge-dark mb-2">Boston, MA</span>
-                    <p className="card-text">Web Development, UI/UX, Mobile Development</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="card mb-3">
-              <div className="row no-gutters">
-                <div className="col-md-4">
-                  <img src="../img/image_3.jpg" className="card-img" alt="..." />
-                </div>
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      <a href="/">
-                        Codemasters
-                        <span className="float-right badge badge-success">9.2</span>
-                      </a>
-                    </h5>
-                    <span className="badge badge-dark mb-2">Burlington, VT</span>
-                    <p className="card-text">Web Development, Data Science, Marketing</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card mb-3">
-              <div className="row no-gutters">
-                <div className="col-md-4">
-                  <img src="../img/image_4.jpg" className="card-img" alt="..." />
-                </div>
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      <a href="/">
-                        DevCentral Bootcamp
-                        <span className="float-right badge badge-success">6.4</span>
-                      </a>
-                    </h5>
-                    <span className="badge badge-dark mb-2">Kingston, RI</span>
-                    <p className="card-text">Web Development, UI/UX, Mobile Development, Marketing</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {bootcamps.map((bootcamp) => (
+              <Bootcamp key={bootcamp.id} bootcamp={bootcamp} />
+            ))}
 
             {/* <!-- Pagination --> */}
             <nav aria-label="Page navigation example">
