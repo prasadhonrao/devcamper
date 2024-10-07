@@ -1,12 +1,26 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
+
 import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
 import AboutPage from './pages/AboutPage';
-import BootcampsPage from './pages/BootcampsPage';
-import AddBootcampPage from './pages/AddBootcampPage';
-import AddReviewPage from './pages/AddReviewPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+import LoginPage from './pages/user/LoginPage';
+import RegisterPage from './pages/user/RegisterPage';
+import UserDetailsPage from './pages/user/UserDetailsPage';
+
+import BootcampsPage from './pages/bootcamps/BootcampsPage';
+import BootcampDetailsPage from './pages/bootcamps/BootcampDetailsPage';
+
+import ManageBootcampPage from './pages/bootcamps/ManageBootcampPage';
+import AddBootcampPage from './pages/bootcamps/AddBootcampPage';
+
+import ManageCoursesPage from './pages/bootcamps/ManageCoursesPage';
+import AddCoursePage from './pages/bootcamps/AddCoursePage';
+
+import BootcampReviewsPage from './pages/bootcamps/BootcampReviewsPage';
+import ManageReviewsPage from './pages/bootcamps/ManageReviewsPage';
+import AddReviewPage from './pages/bootcamps/AddReviewPage';
 
 function App() {
   return (
@@ -14,13 +28,21 @@ function App() {
       <Layout />
       <div>
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/login" element={<LoginPage />} />
-          <Route exact path="/register" element={<RegisterPage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/user/:userId" element={<UserDetailsPage />} />
           <Route path="/bootcamps" element={<BootcampsPage />} />
+          <Route path="/bootcamps/:bootcampId" element={<BootcampDetailsPage />} />
           <Route path="/bootcamps/add" element={<AddBootcampPage />} />
+          <Route path="/bootcamps/:bootcampId/manage" element={<ManageBootcampPage />} />
+          <Route path="/bootcamps/:bootcampId/courses/add" element={<AddCoursePage />} />
+          <Route path="/bootcamps/:bootcampId/courses/manage" element={<ManageCoursesPage />} />
+          <Route path="/bootcamps/:bootcampId/reviews" element={<BootcampReviewsPage />} />
+          <Route path="/bootcamps/:bootcampId/reviews/manage" element={<ManageReviewsPage />} />{' '}
           <Route path="/bootcamps/:bootcampId/reviews/add" element={<AddReviewPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </Router>

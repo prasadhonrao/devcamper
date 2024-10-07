@@ -1,4 +1,4 @@
-const BrowseBootcampsPage = () => {
+const BootcampsPage = () => {
   return (
     <section className="browse my-5">
       <div className="container">
@@ -193,4 +193,4 @@ const BrowseBootcampsPage = () => {
   );
 };
 
-export default BrowseBootcampsPage;
+export default BootcampsPage;
