@@ -4,26 +4,31 @@ services:
   api:
     image: prasadhonrao/devcamper-webapi:latest
     ports:
-      - '${PORT}:${PORT}'
+      - '${port}:${port}'
     environment:
-      - PORT=${PORT}
-      - NODE_ENV=${NODE_ENV}
-      - MONGO_URI=${MONGO_URI}
-      - GEOCODER_PROVIDER=${GEOCODER_PROVIDER}
-      - GEOCODER_API_KEY=${GEOCODER_API_KEY}
-      - FILE_UPLOAD_PATH=${FILE_UPLOAD_PATH}
-      - MAX_FILE_UPLOAD=${MAX_FILE_UPLOAD}
-      - JWT_SECRET=${JWT_SECRET}
-      - JWT_EXPIRE=${JWT_EXPIRE}
-      - JWT_COOKIE_EXPIRE=${JWT_COOKIE_EXPIRE}
-      - SMTP_HOST=${SMTP_HOST}
-      - SMTP_PORT=${SMTP_PORT}
-      - SMTP_EMAIL=${SMTP_EMAIL}
-      - SMTP_PASSWORD=${SMTP_PASSWORD}
-      - FROM_EMAIL=${FROM_EMAIL}
-      - FROM_NAME=${FROM_NAME}
-      - RATE_LIMIT_MAX=${RATE_LIMIT_MAX}
-      - RATE_LIMIT_WINDOW_MS=${RATE_LIMIT_WINDOW_MS}
+      - port=${port}
+      - node_env=${node_env}
+      - mongodb_host=${mongodb_host}
+      - mongodb_port=${mongodb_port}
+      - mongodb_username=${mongodb_username}
+      - mongodb_password=${mongodb_password}
+      - mongodb_db_name=${mongodb_db_name}
+      - mongodb_db_params=${mongodb_db_params}
+      - geocoder_provider=${geocoder_provider}
+      - geocoder_api_key=${geocoder_api_key}
+      - file_upload_path=${file_upload_path}
+      - max_file_upload=${max_file_upload}
+      - jwt_secret=${jwt_secret}
+      - jwt_expire=${jwt_expire}
+      - jwt_cookie_expire=${jwt_cookie_expire}
+      - smtp_host=${smtp_host}
+      - smtp_port=${smtp_port}
+      - smtp_email=${smtp_email}
+      - smtp_password=${smtp_password}
+      - from_email=${from_email}
+      - from_name=${from_name}
+      - rate_limit_max=${rate_limit_max}
+      - rate_limit_window_ms=${rate_limit_window_ms}
     depends_on:
       - mongo
 

@@ -2,8 +2,6 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
   try {
-    // const MONGO_URI = process.env.MONGO_URI;
-
     const {
       mongodb_host = 'localhost', // Default MongoDB host
       mongodb_port = '27017', // Default MongoDB port
