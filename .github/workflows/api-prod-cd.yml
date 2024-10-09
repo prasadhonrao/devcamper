@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 env:
-  DOCKER_IMAGE: prasadhonrao/devcamper-api
-  AZURE_WEBAPP_NAME: devcamper-api
+  DOCKER_IMAGE: prasadhonrao/devcamper-webapi
+  AZURE_WEBAPP_NAME: devcamper-webapi
 
 jobs:
   build:

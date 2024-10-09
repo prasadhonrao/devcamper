@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   api:
-    image: prasadhonrao/devcamper-api:latest
+    image: prasadhonrao/devcamper-webapi:latest
     ports:
       - '${PORT}:${PORT}'
     environment:
