@@ -1,9 +1,16 @@
-name: UI - CI/CD
+name: UI - PROD - CI/CD
 
 on:
   push:
     branches:
-      - development
+      - main
+    paths:
+      - 'ui/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'ui/**'
   workflow_dispatch:
 
 jobs:
