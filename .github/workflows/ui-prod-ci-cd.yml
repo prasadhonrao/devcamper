@@ -78,7 +78,6 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'devcamper-webapp' # Replace with your Azure App Service name
-          slot-name: 'dev' # Specify the slot name (e.g., 'dev' for development slot)
           package: wwwroot
 
       - name: 'Validate Deployment'
