@@ -3,7 +3,7 @@ import NodeGeocoder from 'node-geocoder';
 const options = {
   provider: 'mapquest',
   httpAdapter: 'https',
-  apiKey: process.env.GEOCODER_API_KEY,
+  apiKey: process.env.geocoder_api_key,
   formatter: null,
 };
 
