@@ -47,7 +47,7 @@ function Header() {
                   <NavDropdown.Item as={Link} to="/manage-bootcamp">
                     Manage Bootcamp
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/manage-reviews">
+                  <NavDropdown.Item as={Link} to="/bootcamps/:bootcampId/reviews/manage">
                     Manage Reviews
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/manage-account">
