@@ -1,7 +1,7 @@
 import { IoIosArrowBack } from "react-icons/io";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import CoursesList from '../../components/courses';
+import CoursesList from '../../components/Courses';
 
 const ManageCoursesPage = () => {
 
