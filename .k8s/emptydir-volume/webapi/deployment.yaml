@@ -6,7 +6,7 @@ metadata:
   labels:
     app: devcamper-webapi
 spec:
-  replicas: 5
+  replicas: 1
   minReadySeconds: 5
   progressDeadlineSeconds: 60
   revisionHistoryLimit: 10
@@ -32,100 +32,100 @@ spec:
             - name: mongodb_host
               valueFrom:
                 configMapKeyRef:
-                  name: devcamper-configmap
+                  name: devcamper-webapi-configmap
                   key: mongodb_host
             - name: mongodb_port
               valueFrom:
                 configMapKeyRef:
-                  name: devcamper-configmap
+                  name: devcamper-webapi-configmap
                   key: mongodb_port
-            - name: mongodb_username
-              valueFrom:
-                configMapKeyRef:
-                  name: devcamper-configmap
-                  key: mongodb_username
-            - name: mongodb_password
-              valueFrom:
-                configMapKeyRef:
-                  name: devcamper-configmap
-                  key: mongodb_password
             - name: mongodb_db_name
               valueFrom:
                 configMapKeyRef:
-                  name: devcamper-configmap
+                  name: devcamper-webapi-configmap
                   key: mongodb_db_name
             - name: mongodb_db_params
               valueFrom:
                 configMapKeyRef:
-                  name: devcamper-configmap
+                  name: devcamper-webapi-configmap
                   key: mongodb_db_params
             - name: geocoder_provider
               valueFrom:
                 configMapKeyRef:
-                  name: devcamper-configmap
+                  name: devcamper-webapi-configmap
                   key: geocoder_provider
             - name: jwt_cookie_expire
               valueFrom:
                 configMapKeyRef:
-                  name: devcamper-configmap
+                  name: devcamper-webapi-configmap
                   key: jwt_cookie_expire
             - name: file_upload_path
               valueFrom:
                 configMapKeyRef:
-                  name: devcamper-configmap
+                  name: devcamper-webapi-configmap
                   key: file_upload_path
             - name: max_file_upload
               valueFrom:
                 configMapKeyRef:
-                  name: devcamper-configmap
+                  name: devcamper-webapi-configmap
                   key: max_file_upload
             - name: rate_limit_window
               valueFrom:
                 configMapKeyRef:
-                  name: rate-limit-config
+                  name: devcamper-webapi-configmap
                   key: rate_limit_window
             - name: rate_limit_max
               valueFrom:
                 configMapKeyRef:
-                  name: rate-limit-config
+                  name: devcamper-webapi-configmap
                   key: rate_limit_max
+            - name: mongodb_username
+              valueFrom:
+                secretKeyRef:
+                  name: devcamper-webapi-secret
+                  key: mongodb_username
+            - name: mongodb_password
+              valueFrom:
+                secretKeyRef:
+                  name: devcamper-webapi-secret
+                  key: mongodb_password
             - name: geocoder_api_key
               valueFrom:
                 secretKeyRef:
-                  name: devcamper-secrets
+                  name: devcamper-webapi-secret
                   key: geocoder_api_key
             - name: smtp_host
               valueFrom:
                 secretKeyRef:
-                  name: devcamper-secrets
+                  name: devcamper-webapi-secret
                   key: smtp_host
             - name: smtp_port
               valueFrom:
                 secretKeyRef:
-                  name: devcamper-secrets
+                  name: devcamper-webapi-secret
                   key: smtp_port
             - name: smtp_email
               valueFrom:
                 secretKeyRef:
-                  name: devcamper-secrets
+                  name: devcamper-webapi-secret
                   key: smtp_email
             - name: smtp_password
               valueFrom:
                 secretKeyRef:
-                  name: devcamper-secrets
+                  name: devcamper-webapi-secret
                   key: smtp_password
             - name: from_email
               valueFrom:
                 secretKeyRef:
-                  name: devcamper-secrets
+                  name: devcamper-webapi-secret
                   key: from_email
             - name: from_name
               valueFrom:
                 secretKeyRef:
-                  name: devcamper-secrets
+                  name: devcamper-webapi-secret
                   key: from_name
             - name: jwt_secret
               valueFrom:
                 secretKeyRef:
-                  name: devcamper-secrets
+                  name: devcamper-webapi-secret
                   key: jwt_secret

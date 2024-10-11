@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: devcamper-db
+  name: devcamper-db-deployment
   namespace: devcamper-namespace
   labels:
     app: devcamper-db
@@ -24,18 +24,18 @@ spec:
             - name: MONGO_INITDB_DATABASE
               valueFrom:
                 configMapKeyRef:
-                  name: devcamper-configmap
-                  key: mongodb-db-name
+                  name: devcamper-db-configmap
+                  key: mongodb_db_name
             - name: MONGO_INITDB_ROOT_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: devcamper-db-secret
-                  key: mongodb-username
+                  key: mongodb_username
             - name: MONGO_INITDB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: devcamper-db-secret
-                  key: mongodb-password
+                  key: mongodb_password
           volumeMounts:
             - name: mongo-volume
               mountPath: /data/db
