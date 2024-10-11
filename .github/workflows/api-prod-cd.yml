@@ -1,4 +1,4 @@
-name: API - Continuous Deployment
+name: API - PROD - Continuous Deployment
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 env:
-  DOCKER_IMAGE: prasadhonrao/devcamper-api
-  AZURE_WEBAPP_NAME: devcamperapi
+  DOCKER_IMAGE: prasadhonrao/devcamper-webapi
+  AZURE_WEBAPP_NAME: devcamper-webapi
 
 jobs:
   build:
@@ -44,7 +44,7 @@ jobs:
       - name: Log in to Azure
         uses: azure/login@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_SERVICE_PRINCIPAL }}
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2

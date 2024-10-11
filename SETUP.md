@@ -29,7 +29,7 @@ npm install
 
 ### Step 3: Get Geocoder API key
 
-To enable location-based features, you need to sign up for a free account on [MapQuest Developer](https://developer.mapquest.com/) to get an API key. This key will be used to geocode addresses to coordinates and vice versa.
+To enable location-based features, you need to sign up for a free account on [MapQuest Developer](https://developer.mapquest.com/) to get an API key. This key will be used to geocoder addresses to coordinates and vice versa.
 
 ### Step 4: Get SMTP email credentials using Mailtrap
 
@@ -41,36 +41,41 @@ Generate a secure JWT secret key to sign and verify JSON Web Tokens. You can use
 
 ### Step 6: Configure environment variables
 
-Create a `.env` file in the root of the `api` directory and add the following environment variables. Replace the placeholders with your actual values. The `MONGO_URI` should point to your local MongoDB instance. The `GEOCODER_API_KEY` is the API key obtained from MapQuest. The `JWT_SECRET` is the secret key for JWT token generation. The `SMTP_*` variables are the SMTP credentials obtained from Mailtrap.
+Create a `.env` file in the root of the `api` directory and add the following environment variables. Replace the placeholders with your actual values. The `mongodb_host` should point to your MongoDB instance. The `geocoder_api_key` is the API key obtained from MapQuest. The `jwt_secret` is the secret key for JWT token generation. The `smtp_*` variables are the SMTP credentials obtained from Mailtrap.
 
 ```env
 # Server configuration
-PORT=5000
-NODE_ENV=development
+port=5000
+node_env=development
 
 # Database configuration
-MONGO_URI=mongodb://localhost:27017/devcamper-dev-db
+mongodb_host=localhost
+mongodb_port=27017
+mongodb_username='',
+mongodb_password='',
+mongodb_db_name='devcamper-db',
+mongodb_db_param='',
 
 # Geocoder configuration
-GEOCODER_PROVIDER=mapquest
-GEOCODER_API_KEY=<YOUR_API_KEY>  # Get your API key from https://developer.mapquest.com/
+geocoder_provider=mapquest
+geocoder_api_key=<your_api_key>  # Get your API key from https://developer.mapquest.com/
 
 # File upload configuration
-FILE_UPLOAD_PATH=./public/uploads
-MAX_FILE_UPLOAD=1000000
+file_upload_path=./public/uploads
+max_file_upload=1000000
 
 # JWT configuration
-JWT_SECRET=<YOUR_SECRET>
-JWT_EXPIRE=30d
-JWT_COOKIE_EXPIRE=30
+jwt_secret=<your_secret>
+jwt_expire=30d
+jwt_cookie_expire=30
 
 # Email configuration
-SMTP_HOST=<HOST_NAME>
-SMTP_PORT=<HOST_PORT>
-SMTP_EMAIL=<YOUR_EMAIL>
-SMTP_PASSWORD=<YOUR_PASSWORD>
-FROM_EMAIL=<YOUR_EMAIL>
-FROM_NAME=<YOUR_NAME>
+smtp_host=<host_name>
+smtp_port=<host_port>
+smtp_email=<your_email>
+smtp_password=<your_password>
+from_email=<your_email>
+from_name=<your_name>
 ```
 
 ### Step 4: Start the API server
@@ -87,7 +92,7 @@ For production mode, run:
 npm start
 ```
 
-The API server should now be running at `http://localhost:5000`.
+The API server should now be running at `http://localhost:3000`.
 
 ## 2. UI Application Setup
 
@@ -108,7 +113,7 @@ npm install
 Ensure that the frontend is configured to point to the API server. Open the `config.js` (or equivalent configuration file in the UI app) and verify that the API base URL is set to:
 
 ```js
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'http://localhost:3000';
 ```
 
 ### Step 4: Start the UI application

@@ -1,24 +1,17 @@
 import fs from 'fs';
-import mongoose from 'mongoose';
 import colors from 'colors';
-import dotenv from 'dotenv';
 import Bootcamp from './models/Bootcamp.js';
 import Course from './models/Course.js';
 import User from './models/User.js';
 import Review from './models/Review.js';
+import connectDB from './config/db.js';
+import loadEnvironmentConfig from './config/env.js';
 
-// Determine the environment and load the appropriate .env file
-const ENV = process.env.NODE_ENV || 'development';
-
-if (ENV === 'development') {
-  dotenv.config();
-} else {
-  dotenv.config({ path: './config/config.env' });
-}
+// Load environment variables
+loadEnvironmentConfig();
 
 // Connect to MongoDB
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/devcamper-db';
-await mongoose.connect(MONGO_URI);
+connectDB();
 
 // Read JSON files
 const bootcamps = JSON.parse(fs.readFileSync(`${process.cwd()}/_data/bootcamps.json`, 'utf-8'));

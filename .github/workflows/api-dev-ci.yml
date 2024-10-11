@@ -1,12 +1,7 @@
-name: API - Continuous Integration
+name: API - DEV - Continuous Integration
 
 on:
   push:
-    branches:
-      - development
-    paths:
-      - 'api/**'
-  pull_request:
     branches:
       - development
     paths:

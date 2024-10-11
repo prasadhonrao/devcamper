@@ -8,7 +8,7 @@ import {
   getBootcampsInRadius,
   testGeocode,
   uploadBootcampPhoto,
-} from '../controllers/bootcamps.jsx';
+} from '../controllers/bootcamps.js';
 
 import advancedResults from '../middleware/advancedResults.js';
 import Bootcamp from '../models/Bootcamp.js';
