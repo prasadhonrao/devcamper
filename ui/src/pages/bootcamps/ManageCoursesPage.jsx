@@ -1,10 +1,11 @@
 import { IoIosArrowBack } from "react-icons/io";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import CoursesList from '../../components/courseslist';
+import CoursesList from '../../components/courses';
 
 const ManageCoursesPage = () => {
 
+  //redirect to courses page (need to implement in future)
   function redirect_addCourses(e) {
     window.location.href = `/bootcamps/:bootcampId/courses/add`;
   }
