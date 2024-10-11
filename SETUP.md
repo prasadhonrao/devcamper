@@ -17,7 +17,7 @@ Before starting, make sure you have the following installed on your machine:
 
 ```bash
 git clone https://github.com/prasadhonrao/devcamper
-cd DevCamper
+cd devcamper
 cd api
 ```
 

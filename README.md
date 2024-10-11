@@ -38,21 +38,33 @@ With a focus on user-friendliness, the interface is clean and intuitive, ensurin
 ## Folder Structure
 
 ```plaintext
-mern-bootcamp/
-├── api/          # Backend code (Express.js)
-│   ├── config/       # Configuration files
-│   ├── controllers/  # API controllers
-│   ├── models/       # Mongoose models
-│   ├── routes/       # API routes
-│   ├── middleware/   # Custom middleware
-│   ├── utils/        # Utility functions
-│   ├── .env          # Environment variables
-│   └── server.js     # Entry point for the backend
-├── ui/               # Frontend code (React)
-│   ├── public/       # Public assets
-│   ├── src/          # React components and pages
-│   ├── .env          # Environment variables
-└── README.md         # Project documentation
+devcamper/
+├── .github                 # Files and directories for GitHub
+├── .k8s                    # Files and directories for Kubernetes based deployment
+├── .vscode                 # VSCode configuration related files
+├── api/                    # Backend code (Express.js)
+│   ├── config/             # Configuration files
+│   ├── controllers/        # API controllers
+│   ├── models/             # Mongoose models
+│   ├── routes/             # API routes
+│   ├── middleware/         # Custom middleware
+│   ├── utils/              # Utility functions
+│   ├── .env                # Environment variables
+│   └── server.js           # Entry point for the backend
+├── assets/                 # Images and other assets
+│   ├── html/               # HTML files
+│   ├── logos/              # Logos and icons
+├── ui/                     # Frontend code (React)
+│   ├── public/             # Public assets
+│   ├── src/                # React components and pages
+│   ├── .env                # Environment variables
+└── .gitignore              # Files and directories to be ignored by Git
+└── README.md               # Project documentation
+└── CODE_OF_CONDUCT.md      # Code of conduct
+└── CONTRIBUTING.md         # Guidelines for contributing
+└── LICENSE                 # Project license
+└── SETUP.md                # Setup instructions
+
 ```
 
 ## Setup Instructions
