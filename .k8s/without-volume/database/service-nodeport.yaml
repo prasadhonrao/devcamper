@@ -1,0 +1,15 @@
+# This service is created only to validate the connectivity to the database externally
+apiVersion: v1
+kind: Service
+metadata:
+  name: devcamper-db-nodeport-service
+  namespace: devcamper-namespace
+spec:
+  type: NodePort
+  selector:
+    app: devcamper-db
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+      nodePort: 32017
