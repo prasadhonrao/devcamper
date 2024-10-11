@@ -30,14 +30,15 @@ const connectDB = async () => {
       mongodb_uri += `${mongodb_username}:${mongodb_password}@`;
     }
 
-    mongodb_uri += `${mongodb_host}:${mongodb_port}/${mongodb_db_name}?`;
+    mongodb_uri += `${mongodb_host}:${mongodb_port}/${mongodb_db_name}`;
 
     if (mongodb_db_param) {
       mongodb_uri += `?${mongodb_db_param}`;
     }
 
-    console.log(`MongoDB URI: ${mongodb_uri}`.yellow.bold);
+    console.log(`Connecting to MongoDB: ${mongodb_uri}`.yellow.bold);
     await mongoose.connect(mongodb_uri);
+    console.log('Connected to MongoDB'.yellow.bold);
   } catch (error) {
     console.error(`Error occurred while connecting to MongoDB: ${error.message}`);
     process.exit(1);
