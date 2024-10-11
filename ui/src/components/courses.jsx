@@ -1,15 +1,8 @@
-import { IoIosArrowBack } from "react-icons/io";
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import { FaPencilAlt } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 
 const CoursesList = () => {
-
-    function redirect_addCourses(e) {
-        window.location.href = `/bootcamps/:bootcampId/courses/add`;
-    }
 
     return (
         <>
