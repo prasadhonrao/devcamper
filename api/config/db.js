@@ -8,7 +8,7 @@ const connectDB = async () => {
       mongodb_username = '',
       mongodb_password = '',
       mongodb_db_name = '',
-      mongodb_db_param = '',
+      mongodb_db_params = '',
     } = process.env;
 
     // Log environment variables for debugging
@@ -18,7 +18,7 @@ const connectDB = async () => {
     console.log(`mongodb_username: ${mongodb_username}`);
     console.log(`mongodb_password: ${mongodb_password}`);
     console.log(`mongodb_db_name: ${mongodb_db_name}`);
-    console.log(`mongodb_db_param: ${mongodb_db_param}`);
+    console.log(`mongodb_db_params: ${mongodb_db_params}`);
 
     if (!mongodb_host || !mongodb_db_name) {
       throw new Error('mongodb_host and mongodb_db_name must be defined');
@@ -32,8 +32,8 @@ const connectDB = async () => {
 
     mongodb_uri += `${mongodb_host}:${mongodb_port}/${mongodb_db_name}`;
 
-    if (mongodb_db_param) {
-      mongodb_uri += `?${mongodb_db_param}`;
+    if (mongodb_db_params) {
+      mongodb_uri += `?${mongodb_db_params}`;
     }
 
     console.log(`Connecting to MongoDB: ${mongodb_uri}`.yellow.bold);
