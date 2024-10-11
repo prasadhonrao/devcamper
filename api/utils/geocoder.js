@@ -1,4 +1,6 @@
 import NodeGeocoder from 'node-geocoder';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const options = {
   provider: 'mapquest',
