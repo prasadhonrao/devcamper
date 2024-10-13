@@ -81,7 +81,7 @@ const BootcampsPage = () => {
 
           {/* <!-- Main col --> */}
           <div className="col-md-8">
-            {bootcamps != undefined && bootcamps.length > 0 ? (
+            {bootcamps !== undefined && bootcamps.length > 0 ? (
               bootcamps.map((bootcamp) => <Bootcamp key={bootcamp.id} bootcamp={bootcamp} />)
             ) : (
               <h4>No bootcamps found</h4>
