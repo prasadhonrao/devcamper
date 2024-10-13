@@ -92,7 +92,7 @@ For production mode, run:
 npm start
 ```
 
-The API server should now be running at `http://localhost:3000`.
+The API server should now be running at `http://localhost:5000`.
 
 ## 2. UI Application Setup
 
@@ -113,7 +113,7 @@ npm install
 Ensure that the frontend is configured to point to the API server. Open the `config.js` (or equivalent configuration file in the UI app) and verify that the API base URL is set to:
 
 ```js
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'http://localhost:5000';
 ```
 
 ### Step 4: Start the UI application
