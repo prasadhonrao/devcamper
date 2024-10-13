@@ -55,3 +55,5 @@ const userService = {
     return res.json();
   },
 };
+
+export default userService;
