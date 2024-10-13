@@ -40,7 +40,7 @@ function Header() {
             <Nav className="ml-auto">
               {isAuthenticated ? (
                 <Dropdown>
-                  <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                  <Dropdown.Toggle as={Nav.Link} id="dropdown-basic">
                     <FaUser /> Account
                   </Dropdown.Toggle>
 
