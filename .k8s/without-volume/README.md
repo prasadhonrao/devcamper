@@ -1,14 +1,6 @@
 # Setup Instructions
 
-## Create Azure Storage Disk
-
-1. Create a new Azure Disk Storage Class by running the following command:
-
-   ```bash
-   az disk create --resource-group devcamper-rg --name devcamper-storage-disk --size-gb 10 --sku Standard_LRS
-   ```
-
-2. Provide the created disk path in persistent volume file py.yaml
+Follow the below instructions to setup the application in Kubernetes cluster without using Persistent Volume. Note that the data will be stored in the container and will be lost when the container restarts or when the pod is deleted.
 
 ## Database Secrets
 
@@ -50,7 +42,7 @@
 5. Create JWT secret and encode it in base64 format and provide it in webapi/secret.yaml file:
 
    ```bash
-    echo -n 'JWT_SECRET'
+    echo -n 'JWT_SECRET' | base64
    ```
 
 ## Deploy the Application
