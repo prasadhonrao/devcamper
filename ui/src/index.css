@@ -16,7 +16,7 @@ img {
 
 .showcase {
   position: relative;
-  background: url('./img/showcase.jpg') no-repeat center center/cover;
+  background: url('./../public/images/showcase.jpg') no-repeat center center/cover;
   min-height: 91.5vh;
   color: #fff;
 }

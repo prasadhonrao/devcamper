@@ -17,9 +17,10 @@ spec:
     spec:
       containers:
         - name: devcamper-db-container
-          image: mongo:4.4
+          image: mongo
           ports:
-            - containerPort: 27017
+            - name: mongodb
+              containerPort: 27017
           env:
             - name: MONGO_INITDB_DATABASE
               valueFrom:
@@ -41,4 +42,5 @@ spec:
               mountPath: /data/db
       volumes:
         - name: mongo-volume
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: devcamper-pvc
