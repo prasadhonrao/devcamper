@@ -53,6 +53,28 @@ Follow the below instructions to setup the application in Kubernetes cluster wit
    install.sh
    ```
 
+## Test the Application
+
+1. Navigate to the api folder and import data by running the following command. This will create devcamper database and insert data into it:
+
+   ```bash
+   npm run data:import
+   ```
+
+2. Navigate to MongoDB Compass and connect to the MongoDB instance using the following connection string. Please note that the username and password are the ones created earlier and the port is the NodePort of the MongoDB service:
+
+   ```bash
+   mongodb://admin:password@localhost:32017/
+   ```
+
+3. Delete the database pod using the following command:
+
+   ```bash
+   kubectl delete pod -l app=devcamper-db -n devcamper-namespace
+   ```
+
+4. Note that deployment creates a new pod but the data is lost as the data is stored in the container and not in the Persistent Volume.
+
 ## Uninstall the Application
 
 1. Uninstall the application by running the following command:

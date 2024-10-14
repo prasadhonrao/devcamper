@@ -37,3 +37,10 @@ spec:
                 secretKeyRef:
                   name: devcamper-db-secret
                   key: mongodb_password
+          resources:
+            limits:
+              memory: '2Gi'
+              cpu: '2'
+            requests:
+              memory: '1Gi'
+              cpu: '1'
