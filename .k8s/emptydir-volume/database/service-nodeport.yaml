@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: devcamper-db-service
+  name: devcamper-db-nodeport-service
   namespace: devcamper-namespace
 spec:
   type: NodePort
