@@ -7,8 +7,9 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
   azureDisk:
     kind: Managed
     diskName: devcamper-storage-disk
-    diskURI: <ENTER_AZURE_DISK_URI_HERE>
+    diskURI: /subscriptions/dcf53c44-1b3a-421b-a2e2-923444b13b6a/resourceGroups/DEVCAMPER-RG/providers/Microsoft.Compute/disks/devcamper-storage-disk
   storageClassName: azure-disk
