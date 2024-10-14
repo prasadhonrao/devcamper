@@ -1,7 +1,7 @@
 import { IoIosArrowBack } from "react-icons/io";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import CoursesList from '../../components/courses';
+import Courses from '../../components/Courses';
 
 const ManageCoursesPage = () => {
 
@@ -48,7 +48,7 @@ const ManageCoursesPage = () => {
                 </Card>
 
                 <Button className="btn btn-primary btn-block mb-4 col-12 my-4" onClick={(e) => {redirect_addCourses(e)}}>Add Bootcamp Course</Button>
-                <CoursesList />
+                <Courses />
               </div>
             </div>
           </div>

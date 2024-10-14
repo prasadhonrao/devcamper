@@ -2,7 +2,7 @@ import Table from 'react-bootstrap/Table';
 import { FaPencilAlt } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 
-const CoursesList = () => {
+const Courses = () => {
 
     return (
         <>
@@ -34,4 +34,4 @@ const CoursesList = () => {
     );
 };
 
-export default CoursesList;
+export default Courses;
