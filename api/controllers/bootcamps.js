@@ -17,7 +17,7 @@ const getBootcamps = asyncHandler(async (req, res, next) => {
 const getBootcamp = asyncHandler(async (req, res, next) => {
   let bootcampId = req.params.id;
 
-  const bootcamp = await Bootcamp.findById(bootcampId);
+  const bootcamp = await Bootcamp.findById(bootcampId).populate('courses');
   if (!bootcamp) {
     return next(new ErrorResponse(`Bootcamp not found with id of ${bootcampId}`, 404));
   }
