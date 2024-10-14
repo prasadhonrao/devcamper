@@ -30,9 +30,9 @@ function Header() {
             <img
               src={`${process.env.PUBLIC_URL}/logo.png`}
               alt="DevCamper"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
+              width="20"
+              height="20"
+              className="d-inline-block"
             />{' '}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
