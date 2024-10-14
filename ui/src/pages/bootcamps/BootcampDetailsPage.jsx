@@ -1,4 +1,5 @@
 import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 import { FaCheck } from "react-icons/fa";
 import { FaComments } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
@@ -32,12 +33,21 @@ const BootcampDetailsPage = () => {
   ];
 
 
-  function redirect_review (e){
+  function redirect_review(e) {
     window.location.href = `/bootcamps/:bootcampId/reviews`;
   }
 
-  function redirect_addreview (e){
+  function redirect_addreview(e) {
     window.location.href = `/bootcamps/:bootcampId/reviews/add`;
+  }
+
+  function NumberFormat(amount) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
   }
 
   return (
@@ -51,7 +61,7 @@ const BootcampDetailsPage = () => {
               {/* <!-- Description --> */}
               <p>Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer</p>
               {/* <!-- Avg cost --> */}
-              <p className="lead mb-4">Average Course Cost: <span className="text-primary">$10,000</span></p>
+              <p className="lead my-4">Average Course Cost: <span className="text-primary">$10,000</span></p>
               {/* <!-- Courses --> */}
               {CoursesDetails.map((data, key) => (
                 <>
@@ -60,8 +70,8 @@ const BootcampDetailsPage = () => {
                     <div className="card-body">
                       <h5 className="card-title">Duration: {data.duration} Weeks</h5>
                       <p className="card-text">{data.description}</p>
-                      <ul className="list-group mb-3">
-                        <li className="list-group-item">Cost: ${data.cost} USD</li>
+                      <ul className="list-group my-3">
+                        <li className="list-group-item">Cost: {NumberFormat(data.cost)} USD</li>
                         <li className="list-group-item">Skill Required: {data.skill}</li>
                         <li className="list-group-item">Scholarship Available: <FaCheck color="green" /> </li>
                       </ul>
@@ -79,17 +89,17 @@ const BootcampDetailsPage = () => {
               <h1 className="text-center my-4"><span className="badge badge-secondary badge-success rounded-circle p-3">8.8</span> Rating</h1>
               {/* <!-- Buttons --> */}
               <Button onClick={(e) => (redirect_review(e))} className="btn btn-dark btn-block my-3"><FaComments />  Read Reviews</Button>
-              <Button onClick={(e) => (redirect_addreview(e))} href="add-review.html" className="btn btn-light btn-block my-3"><FaPencil />  Write a Review</Button>
-              <Button onClick={(e) => (redirect_review(e))} href="#" target="_blank" className="btn btn-secondary btn-block my-3"><FaGlobe />  Visit Website</Button>
+              <Button onClick={(e) => (redirect_addreview(e))} className="btn btn-light btn-block my-3"><FaPencil />  Write a Review</Button>
+              <Button onClick={(e) => (redirect_review(e))} className="btn btn-secondary btn-block my-3"><FaGlobe />  Visit Website</Button>
               {/* <!-- Map --> */}
               {/* <div id='map' style={{ width: "100%", height: "300px" }}></div> */}
               {/* <!-- Perks --> */}
-              <ul className="list-group list-group-flush mt-4">
-                <li className="list-group-item"><FaCheck color="green" /> Housing</li>
-                <li className="list-group-item"><FaCheck color="green" /> Job Assistance</li>
-                <li className="list-group-item"><FaTimes /> Job Guarantee</li>
-                <li className="list-group-item"><FaCheck color="green" /> Accepts GI Bill</li>
-              </ul>
+              <ListGroup variant="flush">
+                <ListGroup.Item><FaCheck color="green" /> Housing</ListGroup.Item>
+                <ListGroup.Item><FaCheck color="green" /> Job Assistance</ListGroup.Item>
+                <ListGroup.Item><FaTimes color='red' /> Job Guarantee</ListGroup.Item>
+                <ListGroup.Item><FaCheck color="green" /> Accepts GI Bill</ListGroup.Item>
+              </ListGroup>
             </div>
           </div>
         </div>
