@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 
@@ -23,14 +24,23 @@ import ManageReviewsPage from './pages/bootcamps/ManageReviewsPage';
 import AddReviewPage from './pages/bootcamps/AddReviewPage';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
   return (
     <Router>
-      <Layout />
+      <Layout isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/user/:userId" element={<UserDetailsPage />} />
           <Route path="/bootcamps" element={<BootcampsPage />} />

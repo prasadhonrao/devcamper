@@ -1,25 +1,11 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Nav, Navbar, Container, Dropdown } from 'react-bootstrap';
 import { FaSignInAlt, FaUserPlus, FaSearch, FaUser, FaSignOutAlt, FaCogs, FaStar } from 'react-icons/fa';
 
-function Header() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    // Check if the user is logged in by checking the token in local storage
-    const token = localStorage.getItem('token');
-    if (token) {
-      setIsAuthenticated(true);
-    }
-  }, []);
-
+function Header({ isAuthenticated, setIsAuthenticated }) {
   const handleLogout = () => {
-    // Remove token from local storage and update state
     localStorage.removeItem('token');
     setIsAuthenticated(false);
-    // Redirect to home or login page
-    window.location.href = '/';
   };
 
   return (
@@ -43,7 +29,6 @@ function Header() {
                   <Dropdown.Toggle as={Nav.Link} id="dropdown-basic">
                     <FaUser /> Account
                   </Dropdown.Toggle>
-
                   <Dropdown.Menu>
                     <Dropdown.Item as={Link} to="/bootcamps/:bootcampId/manage">
                       <FaCogs /> Manage Bootcamps

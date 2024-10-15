@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LuLogIn } from 'react-icons/lu';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import authService from '../../services/authService';
 
-const LoginPage = () => {
+const LoginPage = ({ setIsAuthenticated }) => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -19,14 +22,12 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const res = await authService.login({ email, password });
-      console.log('User logged in successfully:', res);
-      // Save token to local storage
       localStorage.setItem('token', res.token);
-      // Redirect to bootcamps page or another page
-      window.location.href = '/bootcamps';
+      setIsAuthenticated(true);
+      navigate('/');
     } catch (error) {
+      setIsAuthenticated(false);
       console.error('Error logging in:', error);
-      // Handle login error (e.g., display error message)
     }
   };
 
