@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 import authService from '../../services/authService';
 
 const ManageAccountPage = () => {
-  const [user, setUser] = useState({
-    name: '',
-    email: '',
-  });
+  const navigate = useNavigate();
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const getUser = async () => {
@@ -17,21 +17,24 @@ const ManageAccountPage = () => {
 
   const onChange = (e) => {
     const { name, value } = e.target;
-    setUser({
-      ...user,
+    setUser((prevUser) => ({
+      ...prevUser,
       [name]: value,
-    });
+    }));
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await authService.updateUser(user);
-      alert('User updated successfully');
+      await authService.updateDetails({ name: user.name, email: user.email });
     } catch (error) {
       console.error(error);
       alert('Failed to update user. Please try again.');
     }
+  };
+
+  const redirectToUpdatePassword = () => {
+    navigate('/update-password');
   };
 
   return (
@@ -41,42 +44,35 @@ const ManageAccountPage = () => {
           <div className="card bg-white py-2 px-4">
             <div className="card-body">
               <h1 className="mb-2">Manage Account</h1>
-              <form>
-                <div className="form-group">
-                  <label>Name</label>
-                  <input
-                    type="text"
-                    name="title"
-                    className="form-control"
-                    placeholder="Name"
-                    value={user.name || ''}
-                    onChange={(e) => onChange(e)}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    className="form-control"
-                    placeholder="Email"
-                    value={user.email || ''}
-                    onChange={(e) => onChange(e)}
-                  />
-                </div>
-                <div className="form-group">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <input type="submit" value="Save" onClick={onSubmit} className="btn btn-success btn-block" />
-                    </div>
-                    <div className="col-md-6">
-                      <a href="update-password.html" className="btn btn-secondary btn-block">
+              <Form onSubmit={onSubmit}>
+                <Form.Group controlId="formName">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control type="text" name="name" placeholder="Name" value={user.name} onChange={onChange} />
+                </Form.Group>
+                <Form.Group controlId="formEmail" className="mb-4">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control type="email" name="email" placeholder="Email" value={user.email} onChange={onChange} />
+                </Form.Group>
+                <Form.Group>
+                  <Row>
+                    <Col md={6}>
+                      <Button type="submit" className="btn btn-primary btn-block" block>
+                        Save
+                      </Button>
+                    </Col>
+                    <Col md={6}>
+                      <Button
+                        type="button"
+                        className="btn btn-block btn-secondary"
+                        block
+                        onClick={redirectToUpdatePassword}
+                      >
                         Update Password
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </form>
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form.Group>
+              </Form>
             </div>
           </div>
         </div>
