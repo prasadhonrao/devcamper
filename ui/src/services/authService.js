@@ -1,3 +1,4 @@
+import { getToken } from '../helpers/auth';
 const API_BASE_URI = process.env.REACT_APP_DEVCAMPER_BASE_API_URI;
 
 const authService = {
@@ -40,12 +41,17 @@ const authService = {
   },
 
   getMe: async () => {
+    const token = getToken();
     const res = await fetch(`${API_BASE_URI}/auth/me`, {
       method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     if (!res.ok) {
       throw new Error('Failed to get user');
     }
+    console.log(`user in auth service: ${JSON.stringify(res)}`);
     return res.json();
   },
 
@@ -78,10 +84,12 @@ const authService = {
   },
 
   updateDetails: async (user) => {
+    const token = getToken();
     const res = await fetch(`${API_BASE_URI}/auth/updatedetails`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(user),
     });

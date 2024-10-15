@@ -8,7 +8,7 @@ import NotFoundPage from './pages/NotFoundPage';
 
 import LoginPage from './pages/user/LoginPage';
 import RegisterPage from './pages/user/RegisterPage';
-import UserDetailsPage from './pages/user/UserDetailsPage';
+import ManageAccountPage from './pages/user/ManageAccountPage';
 
 import BootcampsPage from './pages/bootcamps/BootcampsPage';
 import BootcampDetailsPage from './pages/bootcamps/BootcampDetailsPage';
@@ -22,6 +22,8 @@ import AddCoursePage from './pages/bootcamps/AddCoursePage';
 import BootcampReviewsPage from './pages/bootcamps/BootcampReviewsPage';
 import ManageReviewsPage from './pages/bootcamps/ManageReviewsPage';
 import AddReviewPage from './pages/bootcamps/AddReviewPage';
+
+import ProtectedRoute from './routes/ProtectedRoute';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -42,7 +44,14 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/user/:userId" element={<UserDetailsPage />} />
+          <Route
+            path="/account/manage"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <ManageAccountPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/bootcamps" element={<BootcampsPage />} />
           <Route path="/bootcamps/:bootcampId" element={<BootcampDetailsPage />} />
           <Route path="/bootcamps/add" element={<AddBootcampPage />} />

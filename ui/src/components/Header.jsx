@@ -36,8 +36,8 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
                     <Dropdown.Item as={Link} to="/manage-reviews">
                       <FaStar /> Manage Reviews
                     </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/account">
-                      <FaUser /> Account
+                    <Dropdown.Item as={Link} to="/account/manage">
+                      <FaUser /> Manage Account
                     </Dropdown.Item>
                     <Dropdown.Item onClick={handleLogout}>
                       <FaSignOutAlt /> Logout
