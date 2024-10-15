@@ -51,7 +51,6 @@ const authService = {
     if (!res.ok) {
       throw new Error('Failed to get user');
     }
-    console.log(`user in auth service: ${JSON.stringify(res)}`);
     return res.json();
   },
 
