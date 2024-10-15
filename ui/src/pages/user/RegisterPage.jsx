@@ -20,8 +20,6 @@ const RegisterPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(`Registering user: ${name} ${email} ${role}`);
-
       const res = await authService.register({ name, email, password, role });
       console.log('User registered successfully:', res);
       // Handle successful registration (e.g., redirect to login page)
