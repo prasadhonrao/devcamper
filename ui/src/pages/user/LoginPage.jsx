@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { LuLogIn } from 'react-icons/lu';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import authService from '../../services/authService';
 
 const LoginPage = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const { from } = location.state || { from: { pathname: '/' } };
 
   const [formData, setFormData] = useState({
     email: '',
@@ -24,7 +27,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
       const res = await authService.login({ email, password });
       localStorage.setItem('token', res.token);
       setIsAuthenticated(true);
-      navigate('/');
+      navigate(from);
     } catch (error) {
       setIsAuthenticated(false);
       console.error('Error logging in:', error);

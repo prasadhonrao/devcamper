@@ -60,7 +60,14 @@ function App() {
           <Route path="/bootcamps/:bootcampId/courses/manage" element={<ManageCoursesPage />} />
           <Route path="/bootcamps/:bootcampId/reviews" element={<BootcampReviewsPage />} />
           <Route path="/bootcamps/:bootcampId/reviews/manage" element={<ManageReviewsPage />} />{' '}
-          <Route path="/bootcamps/:bootcampId/reviews/add" element={<AddReviewPage />} />
+          <Route
+            path="/bootcamps/:bootcampId/reviews/add"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <AddReviewPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
