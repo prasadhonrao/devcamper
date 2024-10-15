@@ -45,7 +45,7 @@ function Header() {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item as={Link} to="/manage-bootcamps">
+                    <Dropdown.Item as={Link} to="/bootcamps/:bootcampId/manage">
                       <FaCogs /> Manage Bootcamps
                     </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/manage-reviews">

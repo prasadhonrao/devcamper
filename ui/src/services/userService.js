@@ -2,7 +2,7 @@ const API_BASE_URI = process.env.REACT_APP_DEVCAMPER_BASE_API_URI;
 
 const userService = {
   getUsers: async () => {
-    const res = await fetch(`${API_BASE_URI}/api/v1/users`);
+    const res = await fetch(`${API_BASE_URI}/users`);
     if (!res.ok) {
       throw new Error('Failed to fetch users');
     }
@@ -10,7 +10,7 @@ const userService = {
   },
 
   getUser: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/api/v1/users/${id}`);
+    const res = await fetch(`${API_BASE_URI}/users/${id}`);
     if (!res.ok) {
       throw new Error('Failed to fetch user');
     }
@@ -18,7 +18,7 @@ const userService = {
   },
 
   createUser: async (user) => {
-    const res = await fetch(`${API_BASE_URI}/api/v1/users`, {
+    const res = await fetch(`${API_BASE_URI}/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const userService = {
   },
 
   updateUser: async (id, user) => {
-    const res = await fetch(`${API_BASE_URI}/api/v1/users/${id}`, {
+    const res = await fetch(`${API_BASE_URI}/users/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const userService = {
   },
 
   deleteUser: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/api/v1/users/${id}`, {
+    const res = await fetch(`${API_BASE_URI}/users/${id}`, {
       method: 'DELETE',
     });
     if (!res.ok) {
