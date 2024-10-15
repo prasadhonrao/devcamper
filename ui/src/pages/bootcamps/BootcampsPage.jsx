@@ -1,27 +1,21 @@
+import { useState, useEffect } from 'react';
 import Bootcamp from '../../components/Bootcamp';
 import Pagination from '../../components/Pagination';
-
-const bootcamps = [
-  {
-    id: 1,
-    image: '/images/image_1.jpg',
-    name: 'Bootcamp 1',
-    rating: 4.5,
-    location: 'Location 1',
-    careers: ['Web Development', 'Data Science'],
-  },
-  {
-    id: 2,
-    image: '/images/image_2.jpg',
-    name: 'Bootcamp 2',
-    rating: 4.0,
-    location: 'Location 2',
-    careers: ['Web Development', 'UI/UX'],
-  },
-  // Add more bootcamp data as needed
-];
+import bootcampService from '../../services/bootcampService';
 
 const BootcampsPage = () => {
+  const [bootcamps, setBootcamps] = useState([]);
+
+  const fetchBootcamps = async () => {
+    const res = await bootcampService.getBootcamps();
+    setBootcamps(res.data);
+  };
+
+  // Load bootcamps from API
+  useEffect(() => {
+    fetchBootcamps();
+  }, []);
+
   return (
     <section className="browse my-5">
       <div className="container">
@@ -47,21 +41,8 @@ const BootcampsPage = () => {
               </form>
             </div>
 
-            <h4>Filter</h4>
+            {/* <h4>Filter</h4>
             <form>
-              {/* <!-- <div className="form-group">
-              <label> Career</label>
-              <select className="custom-select mb-2">
-                <option value="any" selected>Any</option>
-                <option value="Web Development">Web Development</option>
-                <option value="Mobile Development">Mobile Development</option>
-                <option value="UI/UX">UI/UX</option>
-                <option value="Data Science">Data Science</option>
-                <option value="Business">Business</option>
-                <option value="Other">Other</option>
-              </select>
-            </div> --> */}
-
               <div className="form-group">
                 <label> Rating</label>
                 <select className="custom-select mb-2">
@@ -95,15 +76,16 @@ const BootcampsPage = () => {
                 </select>
               </div>
               <input type="submit" value="Find Bootcamps" className="btn btn-primary btn-block" />
-            </form>
+            </form> */}
           </div>
 
           {/* <!-- Main col --> */}
           <div className="col-md-8">
-            {bootcamps.map((bootcamp) => (
-              <Bootcamp key={bootcamp.id} bootcamp={bootcamp} />
-            ))}
-
+            {bootcamps !== undefined && bootcamps.length > 0 ? (
+              bootcamps.map((bootcamp) => <Bootcamp key={bootcamp.id} bootcamp={bootcamp} />)
+            ) : (
+              <h4>No bootcamps found</h4>
+            )}
             {/* <!-- Pagination --> */}
             <Pagination />
           </div>

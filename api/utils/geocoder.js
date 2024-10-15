@@ -1,9 +1,11 @@
 import NodeGeocoder from 'node-geocoder';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const options = {
   provider: 'mapquest',
   httpAdapter: 'https',
-  apiKey: process.env.GEOCODER_API_KEY,
+  apiKey: process.env.geocoder_api_key,
   formatter: null,
 };
 

@@ -36,7 +36,7 @@ app.use(mongoSanitize()); // Sanitize data
 app.use(helmet()); // Set security headers
 app.use(xss()); // Prevent cross site scripting attacks
 
-const rateLimitMax = process.env.RATE_LIMIT_MAX || 1;
+const rateLimitMax = process.env.RATE_LIMIT_MAX || 100;
 const rateLimitWindowMs = process.env.RATE_LIMIT_WINDOW_MS || 15 * 60 * 1000; // Default to 15 minutes
 
 const limiter = rateLimit({
@@ -56,6 +56,7 @@ app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
 app.use('/api/v1/reviews', reviews);
 app.use(errorHandler);
+
 if (process.env.NODE_ENV === 'development' ? app.use(morgan('dev')) : null); // Logging
 
 const server = app.listen(PORT, () => {

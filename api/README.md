@@ -71,24 +71,29 @@ Before setting up the DevCamper API, you need to sign up for the following servi
 Create a `.env` file in the root of your project directory and configure the following environment variables. Replace the placeholder values with your own credentials and API keys obtained from earlier steps.
 
 ```plaintext
-PORT=6000
-NODE_ENV=development
-MONGO_URI=mongodb://localhost:27017/devcamper-db
-GEOCODER_PROVIDER=mapquest
-GEOCODER_API_KEY=your_mapquest_api_key
-FILE_UPLOAD_PATH=./public/uploads
-MAX_FILE_UPLOAD=1000000
-JWT_SECRET=your_jwt_secret
-JWT_EXPIRE=30d
-JWT_COOKIE_EXPIRE=30
-SMTP_HOST=your_smtp_host
-SMTP_PORT=your_smtp_port
-SMTP_EMAIL=your_smtp_email
-SMTP_PASSWORD=your_smtp_password
-FROM_EMAIL=your_from_email
-FROM_NAME=your_from_name
-RATE_LIMIT_MAX=100
-RATE_LIMIT_WINDOW_MS=60000
+port=6000
+node_env=development
+mongodb_host=localhost
+mongodb_port=27017
+mongodb_username=
+mongodb_password=
+mongodb_db_name=devcamper-db
+mongodb_db_param=
+geocoder_provider=mapquest
+geocoder_api_key=your_mapquest_api_key
+file_upload_path=./public/uploads
+max_file_upload=1000000
+jwt_secret=your_jwt_secret
+jwt_expire=30d
+jwt_cookie_expire=30
+smtp_host=your_smtp_host
+smtp_port=your_smtp_port
+smtp_email=your_smtp_email
+smtp_password=your_smtp_password
+from_email=your_from_email
+from_name=your_from_name
+rate_limit_max=100
+rate_limit_window_ms=60000
 ```
 
 ### Seed the Database
