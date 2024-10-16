@@ -6,13 +6,12 @@ import bootcampService from '../../services/bootcampService';
 const BootcampsPage = () => {
   const [bootcamps, setBootcamps] = useState([]);
 
-  const fetchBootcamps = async () => {
-    const res = await bootcampService.getBootcamps();
-    setBootcamps(res.data);
-  };
-
   // Load bootcamps from API
   useEffect(() => {
+    const fetchBootcamps = async () => {
+      const res = await bootcampService.getBootcamps();
+      setBootcamps(res.data);
+    };
     fetchBootcamps();
   }, []);
 

@@ -58,7 +58,7 @@ function App() {
           <Route path="/bootcamps/add" element={<AddBootcampPage />} />
           <Route path="/bootcamps/manage" element={<ManageBootcampsPage />} />
           <Route
-            path="/bootcamps:bootcampId/manage"
+            path="/bootcamps/:bootcampId/manage"
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
                 <ManageBootcampPage />

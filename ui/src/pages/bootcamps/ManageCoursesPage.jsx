@@ -1,24 +1,29 @@
+import { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 import { FaTimes, FaPencilAlt } from 'react-icons/fa';
 import { Button, Card, Table } from 'react-bootstrap';
+import bootcampService from '../../services/bootcampService';
 
 const ManageCoursesPage = () => {
-  //redirect to courses page (need to implement in future)
-  function redirect_addCourses(e) {
-    window.location.href = `/bootcamps/:bootcampId/courses/add`;
-  }
+  const { bootcampId } = useParams();
+  const [courses, setCourses] = useState([]);
+  const [bootcamp, setBootcamp] = useState('');
+  const navigate = useNavigate();
 
-  // temporary data
-  const courses = [
-    {
-      id: 1,
-      courses_name: 'Front End Web Development',
-    },
-    {
-      id: 2,
-      courses_name: 'Full Stack Web Development',
-    },
-  ];
+  useEffect(() => {
+    const fetchBootcampCourses = async () => {
+      const res = await bootcampService.getCoursesByBootcampId(bootcampId);
+      setBootcamp(res.bootcamp);
+      setCourses(res.data);
+    };
+    fetchBootcampCourses();
+  }, [bootcampId]);
+
+  //redirect to courses page (need to implement in future)
+  function navigateToAddCourse(e) {
+    navigate(`/bootcamps/${bootcampId}/courses/add`);
+  }
 
   return (
     <section className="container mt-5">
@@ -26,9 +31,9 @@ const ManageCoursesPage = () => {
         <div className="col-md-8 m-auto">
           <div className="card bg-white py-2 px-4">
             <div className="card-body">
-              <a href="manage-bootcamp.html" className="btn btn-link text-secondary my-3">
+              <Link to={`/bootcamps/${bootcampId}/manage`} className="btn btn-link text-secondary my-3">
                 <IoIosArrowBack /> Manage Bootcamp
-              </a>
+              </Link>
               <h1 className="mb-4">Manage Courses</h1>
               <Card className="card mb-3">
                 <div className="row no-gutters">
@@ -39,7 +44,7 @@ const ManageCoursesPage = () => {
                     <div className="card-body">
                       <h5 className="card-title">
                         <a href="bootcamp.html">
-                          Devworks Bootcamp
+                          {bootcamp.name}
                           <span className="float-right badge badge-success">4.9</span>
                         </a>
                       </h5>
@@ -53,13 +58,13 @@ const ManageCoursesPage = () => {
               <Button
                 className="btn btn-primary btn-block mb-4 col-12 my-4"
                 onClick={(e) => {
-                  redirect_addCourses(e);
+                  navigateToAddCourse(e);
                 }}
               >
                 Add Bootcamp Course
               </Button>
               {/* <BootcampCourses /> */}
-              <Table striped className="table table-striped">
+              {/* <Table striped className="table table-striped">
                 <thead>
                   <tr>
                     <th colSpan={2}>Title</th>
@@ -71,17 +76,17 @@ const ManageCoursesPage = () => {
                     <tr key={course.id}>
                       <td>{course.courses_name}</td>
                       <td>
-                        <a href="add-course.html" className="btn btn-secondary mx-2">
+                        <Link to="add-course.html" className="btn btn-secondary mx-2">
                           <FaPencilAlt />
-                        </a>
-                        <button className="btn btn-danger">
+                        </Link>
+                        <Link to="#" className="btn btn-danger">
                           <FaTimes />
-                        </button>
+                        </Link>
                       </td>
                     </tr>
                   ))}
                 </tbody>
-              </Table>
+              </Table> */}
             </div>
           </div>
         </div>

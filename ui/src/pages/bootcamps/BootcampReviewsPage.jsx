@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { FaPencil } from 'react-icons/fa6';
 import { AiOutlineLeft } from 'react-icons/ai';
@@ -12,13 +11,12 @@ const BootcampReviewsPage = () => {
   const [bootcamp, setBootcamp] = useState('');
 
   useEffect(() => {
-    const fetchBootcamp = async () => {
+    const fetchBootcampReviews = async () => {
       const res = await reviewService.getReviewsByBootcamp(bootcampId);
-      console.log(res);
       setBootcamp(res.bootcamp);
       setReviews(res.data);
     };
-    fetchBootcamp();
+    fetchBootcampReviews();
   }, [bootcampId]);
 
   return (

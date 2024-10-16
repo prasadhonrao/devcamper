@@ -71,8 +71,8 @@ const bootcampService = {
     return res.json();
   },
 
-  getBootcampCourses: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps/${id}/courses`);
+  getCoursesByBootcampId: async (bootcampId) => {
+    const res = await fetch(`${API_BASE_URI}/bootcamps/${bootcampId}/courses`);
     if (!res.ok) {
       throw new Error('Failed to fetch bootcamp courses');
     }

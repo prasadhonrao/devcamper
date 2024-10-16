@@ -9,8 +9,8 @@ const courseService = {
     return res.json();
   },
 
-  getCourse: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/${id}`);
+  getCourse: async (courseId) => {
+    const res = await fetch(`${API_BASE_URI}/${courseId}`);
     if (!res.ok) {
       throw new Error('Failed to fetch course');
     }
@@ -32,8 +32,8 @@ const courseService = {
     return res.json();
   },
 
-  updateCourse: async (id, course) => {
-    const res = await fetch(`${API_BASE_URI}/${id}`, {
+  updateCourse: async (courseId, course) => {
+    const res = await fetch(`${API_BASE_URI}/${courseId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -46,8 +46,8 @@ const courseService = {
     return res.json();
   },
 
-  deleteCourse: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/${id}`, {
+  deleteCourse: async (courseId) => {
+    const res = await fetch(`${API_BASE_URI}/${courseId}`, {
       method: 'DELETE',
     });
     if (!res.ok) {

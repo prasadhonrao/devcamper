@@ -9,7 +9,6 @@ const ManageBootcampPage = () => {
   useEffect(() => {
     const fetchBootcamp = async () => {
       const res = await bootcampService.getBootcamp(bootcampId);
-      //   console.log(res);
       setBootcamp(res.data);
     };
     fetchBootcamp();
@@ -58,17 +57,12 @@ const ManageBootcampPage = () => {
                 <Link to="/bootcamps/add" className="btn btn-success btn-block">
                   Edit Bootcamp Details
                 </Link>
-                <Link to="/bootcamps/:bootcampId/courses/manage" className="btn btn-primary btn-block">
+                <Link to={`/bootcamps/${bootcampId}}/courses/manage`} className="btn btn-primary btn-block">
                   Manage Courses
                 </Link>
                 <Link to="/bootcamps/:bootcampId/managebootcamp/add" className="btn btn-secondary btn-block">
                   Remove Bootcamp
                 </Link>
-
-                <p class="text-muted mt-5">* You can only add one bootcamp per account.</p>
-                <p class="text-muted">
-                  * You must be affiliated with the bootcamp in some way in order to add it to DevCamper.
-                </p>
               </div>
             </div>
           </div>
