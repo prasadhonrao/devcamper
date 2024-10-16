@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { TiUserAdd } from 'react-icons/ti';
-import authService from '../../services/authService';
+import userService from '../../services/userService';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ const RegisterPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await authService.register({ name, email, password, role });
+      const res = await userService.register({ name, email, password, role });
       console.log('User registered successfully:', res);
       // Handle successful registration (e.g., redirect to login page)
     } catch (error) {

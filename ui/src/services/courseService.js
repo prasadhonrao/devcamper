@@ -1,8 +1,8 @@
-const API_BASE_URI = process.env.REACT_APP_DEVCAMPER_BASE_API_URI;
+const API_BASE_URI = process.env.REACT_APP_DEVCAMPER_BASE_API_URI + '/courses';
 
 const courseService = {
   getCourses: async () => {
-    const res = await fetch(`${API_BASE_URI}/courses`);
+    const res = await fetch(`${API_BASE_URI}/`);
     if (!res.ok) {
       throw new Error('Failed to fetch courses');
     }
@@ -10,7 +10,7 @@ const courseService = {
   },
 
   getCourse: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/courses/${id}`);
+    const res = await fetch(`${API_BASE_URI}/${id}`);
     if (!res.ok) {
       throw new Error('Failed to fetch course');
     }
@@ -18,11 +18,7 @@ const courseService = {
   },
 
   createCourse: async (bootcampId, course, token) => {
-    console.log(`Token is ${token}`);
-    console.log(`Bootcamp ID is ${bootcampId}`);
-    console.log(`Course is ${JSON.stringify(course)}`);
-
-    const res = await fetch(`${API_BASE_URI}/bootcamps/${bootcampId}/courses`, {
+    const res = await fetch(`${API_BASE_URI}/bootcamps/${bootcampId}/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +33,7 @@ const courseService = {
   },
 
   updateCourse: async (id, course) => {
-    const res = await fetch(`${API_BASE_URI}/courses/${id}`, {
+    const res = await fetch(`${API_BASE_URI}/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +47,7 @@ const courseService = {
   },
 
   deleteCourse: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/courses/${id}`, {
+    const res = await fetch(`${API_BASE_URI}/${id}`, {
       method: 'DELETE',
     });
     if (!res.ok) {

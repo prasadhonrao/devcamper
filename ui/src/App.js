@@ -13,6 +13,7 @@ import ManageAccountPage from './pages/user/ManageAccountPage';
 import BootcampsPage from './pages/bootcamps/BootcampsPage';
 import BootcampDetailsPage from './pages/bootcamps/BootcampDetailsPage';
 
+import ManageBootcampsPage from './pages/bootcamps/ManageBootcampsPage';
 import ManageBootcampPage from './pages/bootcamps/ManageBootcampPage';
 import AddBootcampPage from './pages/bootcamps/AddBootcampPage';
 
@@ -55,7 +56,15 @@ function App() {
           <Route path="/bootcamps" element={<BootcampsPage />} />
           <Route path="/bootcamps/:bootcampId" element={<BootcampDetailsPage />} />
           <Route path="/bootcamps/add" element={<AddBootcampPage />} />
-          <Route path="/bootcamps/:bootcampId/manage" element={<ManageBootcampPage />} />
+          <Route path="/bootcamps/manage" element={<ManageBootcampsPage />} />
+          <Route
+            path="/bootcamps:bootcampId/manage"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <ManageBootcampPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/bootcamps/:bootcampId/courses/add" element={<AddCoursePage />} />
           <Route path="/bootcamps/:bootcampId/courses/manage" element={<ManageCoursesPage />} />
           <Route path="/bootcamps/:bootcampId/reviews" element={<BootcampReviewsPage />} />

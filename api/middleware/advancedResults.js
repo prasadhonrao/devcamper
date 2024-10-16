@@ -47,7 +47,6 @@ const advancedResults = (model, populate) => async (req, res, next) => {
   }
 
   // Executing query
-  console.log(`Query: ${query}`.blue);
   const results = await query;
 
   // If query is passed then total should be the count of the query result

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { LuLogIn } from 'react-icons/lu';
 import { Row, Col, Form, Button } from 'react-bootstrap';
-import authService from '../../services/authService';
+import userService from '../../services/userService';
 
 const LoginPage = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await authService.login({ email, password });
+      const res = await userService.login({ email, password });
       localStorage.setItem('token', res.token);
       setIsAuthenticated(true);
       navigate(from);
