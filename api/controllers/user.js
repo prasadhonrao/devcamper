@@ -5,7 +5,7 @@ import sendEmail from '../utils/sendEmail.js';
 import User from '../models/User.js';
 
 // @desc    Register user
-// @route   POST /api/v1/auth/register
+// @route   POST /api/v1/user/register
 // @access  Public
 const register = asyncHandler(async (req, res, next) => {
   const { name, email, password, role } = req.body;
@@ -22,7 +22,7 @@ const register = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Login user
-// @route   POST /api/v1/auth/login
+// @route   POST /api/v1/user/login
 // @access  Public
 const login = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
@@ -48,7 +48,7 @@ const login = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Log user out / clear cookie
-// @route   POST /api/v1/auth/logout
+// @route   POST /api/v1/users/logout
 // @access  Private
 const logout = asyncHandler(async (req, res, next) => {
   // Clear the cookie
@@ -61,7 +61,7 @@ const logout = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Get current logged in user
-// @route   GET /api/v1/auth/me
+// @route   GET /api/v1/users/me
 // @access  Private
 const getMe = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.user.id);
@@ -69,7 +69,7 @@ const getMe = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Forgot password
-// @route   POST /api/v1/auth/forgotpassword
+// @route   POST /api/v1/users/forgotpassword
 // @access  Public
 const forgotPassword = asyncHandler(async (req, res, next) => {
   const email = req.body.email;
@@ -106,7 +106,7 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Reset password
-// @route   PUT /api/v1/auth/resetpassword/:resettoken
+// @route   PUT /api/v1/users/resetpassword/:resettoken
 // @access  Public
 const resetPassword = asyncHandler(async (req, res, next) => {
   // Get hashed token
@@ -133,7 +133,7 @@ const resetPassword = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Update user details
-// @route   PUT /api/v1/auth/updatedetails
+// @route   PUT /api/v1/users/updatedetails
 // @access  Private
 const updateDetails = asyncHandler(async (req, res, next) => {
   const fieldsToUpdate = {
@@ -149,7 +149,7 @@ const updateDetails = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Update user password
-// @route   PUT /api/v1/auth/updatepassword
+// @route   PUT /api/v1/users/updatepassword
 // @access  Private
 const updatePassword = asyncHandler(async (req, res, next) => {
   // Find the user and include the password

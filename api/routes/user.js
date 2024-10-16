@@ -8,7 +8,7 @@ import {
   resetPassword,
   updateDetails,
   updatePassword,
-} from '../controllers/auth.js';
+} from '../controllers/user.js';
 import { protect } from '../middleware/auth.js';
 
 const router = express.Router();

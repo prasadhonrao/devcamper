@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "63d37a0b-5499-4f19-a0dc-5c45169d9ce9",
-		"name": "MERN Bootcamp API",
+		"name": "DevCamper",
 		"description": "This template contains a boilerplate for documentation that you can quickly customize and reuse.\n\n### How to use this template:\n\n- Replace the content given brackets (()) with your API's details.\n    \n- Tips are formatted in `codespan` - feel free to read and remove them.\n    \n\n---\n\n`Start with a brief overview of what your API offers.`\n\nThe ((product name)) provides many API products, tools, and resources that enable you to ((add product value here)).\n\n`You can also list the APIs you offer, link to the relevant pages, or do both in this section.`\n\n## **Getting started guide**\n\n`List the steps or points required to start using your APIs. Make sure to cover everything required to reach success with your API as quickly as possible.`\n\nTo start using the ((add APIs here)), you need to -\n\n`The points given below are from The Postman API's documentation. You can reference it to write your own getting started guide.`\n\n- You must use a valid API Key to send requests to the API endpoints. You can get your API key from Postman's [integrations dashboard](https://go.postman.co/settings/me/api-keys).\n    \n- The API has [rate and usage limits](https://learning.postman.com/docs/developer/postman-api/postman-api-rate-limits/).\n    \n- The API only responds to HTTPS-secured communications. Any requests sent via HTTP return an HTTP 301 redirect to the corresponding HTTPS resources.\n    \n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key.\n    \n\n## Authentication\n\n`Add details on the authorization keys/tokens required, steps that cover how to get them, and the relevant error codes.`\n\nThe ((product name)) API uses ((add your API's authorization type)) for authentication.\n\n`The details given below are from the Postman API's documentation. You can reference it to write your own authentication section.`\n\nPostman uses API keys for authentication. You can generate a Postman API key in the [API keys](https://postman.postman.co/settings/me/api-keys) section of your Postman account settings.\n\nYou must include an API key in each request to the Postman API with the X-Api-Key request header.\n\n### Authentication error response\n\nIf an API key is missing, malformed, or invalid, you will receive an HTTP 401 Unauthorized response code.\n\n## Rate and usage limits\n\n`Use this section to cover your APIs' terms of use. Include API limits, constraints, and relevant error codes, so consumers understand the permitted API usage and practices.`\n\n`The example given below is from The Postman API's documentation. Use it as a reference to write your APIs' terms of use.`\n\nAPI access rate limits apply at a per-API key basis in unit time. The limit is 300 requests per minute. Also, depending on your plan, you may have usage limits. If you exceed either limit, your request will return an HTTP 429 Too Many Requests status code.\n\nEach API response returns the following set of headers to help you identify your use status:\n\n| Header | Description |\n| --- | --- |\n| `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per minute. |\n| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |\n| `X-RateLimit-Reset` | The time at which the current rate limit window resets in UTC epoch seconds. |\n\n### 503 response\n\nAn HTTP `503` response from our servers indicates there is an unexpected spike in API access traffic. The server is usually operational within the next five minutes. If the outage persists or you receive any other form of an HTTP `5XX` error, [contact support](https://support.postman.com/hc/en-us/requests/new/).\n\n### **Need some help?**\n\n`Add links that customers can refer to whenever they need help.`\n\nIn case you have questions, go through our tutorials ((link to your video or help documentation here)). Or visit our FAQ page ((link to the relevant page)).\n\nOr you can check out our community forum, there’s a good chance our community has an answer for you. Visit our developer forum ((link to developer forum)) to review topics, ask questions, and learn from others.\n\n`You can also document or add links to libraries, code examples, and other resources needed to make a request.`",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1811327"
@@ -78,6 +78,166 @@
 								"api",
 								"v1",
 								"bootcamps"
+							]
+						},
+						"description": "### Get All Bootcamps\n\nThis endpoint makes an HTTP GET request to retrieve a list of bootcamps.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response\n\n- Status: 429\n    \n- Content-Type: text/html\n    \n\n##### Example Response\n\n``` json\n{\n    \"collections\": [\n        {\n            \"id\": \"\",\n            \"name\": \"\",\n            \"owner\": \"\",\n            \"createdAt\": \"\",\n            \"updatedAt\": \"\",\n            \"uid\": \"\",\n            \"isPublic\": true\n        }\n    ]\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.getpostman.com/collections",
+									"protocol": "https",
+									"host": [
+										"api",
+										"getpostman",
+										"com"
+									],
+									"path": [
+										"collections"
+									],
+									"query": [
+										{
+											"key": "workspace",
+											"value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
+											"description": "Optional. A workspace ID.",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"collections\": [\n        {\n            \"id\": \"dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"name\": \"Cloud API\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2022-04-12T10:29:46.000Z\",\n            \"updatedAt\": \"2022-04-12T10:29:56.000Z\",\n            \"uid\": \"12345678-dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"isPublic\": true\n        },\n        {\n            \"id\": \"12ece9e1-2abf-4edc-8e34-de66e74114d2\",\n            \"name\": \"Test Collection\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2022-01-13T10:21:46.000Z\",\n            \"updatedAt\": \"2022-02-12T11:29:56.000Z\",\n            \"uid\": \"12345678-12ece9e1-2abf-4edc-8e34-de66e74114d2\",\n            \"isPublic\": false,\n            \"fork\": {\n                \"label\": \"Test Fork\",\n                \"createdAt\": \"2022-06-16T19:51:44.069Z\",\n                \"from\": \"12345678-12ece9e1-2abf-4edc-8e34-de66e74114d2\"\n            }\n        },\n        {\n            \"id\": \"f695cab7-6878-eb55-7943-ad88e1ccfd65\",\n            \"name\": \"Postman Echo\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2021-04-11T09:18:26.000Z\",\n            \"updatedAt\": \"2022-05-01T15:29:32.000Z\",\n            \"uid\": \"12345678-f695cab7-6878-eb55-7943-ad88e1ccfd65\",\n            \"isPublic\": true\n        }\n    ]\n}"
+						},
+						{
+							"name": "Filter by Workspace",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.getpostman.com/collections?workspace=1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
+									"protocol": "https",
+									"host": [
+										"api",
+										"getpostman",
+										"com"
+									],
+									"path": [
+										"collections"
+									],
+									"query": [
+										{
+											"key": "workspace",
+											"value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
+											"description": "Optional. A workspace ID."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"collections\": [\n        {\n            \"id\": \"dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"name\": \"Cloud API\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2022-04-12T10:29:46.000Z\",\n            \"updatedAt\": \"2022-04-12T10:29:56.000Z\",\n            \"uid\": \"12345678-dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"isPublic\": true\n        }\n    ]\n}"
+						},
+						{
+							"name": "Rate Limit Exceeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.getpostman.com/collections",
+									"protocol": "https",
+									"host": [
+										"api",
+										"getpostman",
+										"com"
+									],
+									"path": [
+										"collections"
+									],
+									"query": [
+										{
+											"key": "workspace",
+											"value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
+											"description": "Optional. A workspace ID.",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"rateLimited\",\n    \"message\": \"Rate limit exceeded. Please retry after 1669048687\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Bootcamps Published By Publisher",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/bootcamps/publisher/5c8a1d5b0190b214360dc032",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bootcamps",
+								"publisher",
+								"5c8a1d5b0190b214360dc032"
 							]
 						},
 						"description": "### Get All Bootcamps\n\nThis endpoint makes an HTTP GET request to retrieve a list of bootcamps.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response\n\n- Status: 429\n    \n- Content-Type: text/html\n    \n\n##### Example Response\n\n``` json\n{\n    \"collections\": [\n        {\n            \"id\": \"\",\n            \"name\": \"\",\n            \"owner\": \"\",\n            \"createdAt\": \"\",\n            \"updatedAt\": \"\",\n            \"uid\": \"\",\n            \"isPublic\": true\n        }\n    ]\n}\n\n ```"
@@ -734,7 +894,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Test Bootcamp 1\",\n    \"description\": \"Learn DevOps practices.\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
+							"raw": "{\n    \"name\": \"Test Bootcamp 12\",\n    \"description\": \"Learn DevOps practices.\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/v1/bootcamps",
@@ -3935,7 +4095,7 @@
 							"raw": "{\n    \"name\": \"Full Stack Developer Bootcamp\",\n    \"description\": \"An intensive program to become a full stack developer.\",\n    \"website\": \"https://example.com\",\n    \"phone\": \"123-456-7890\",\n    \"email\": \"info@example.com\",\n    \"address\": \"123 Main St, Anytown, USA\",\n    \"careers\": [\n        \"Web Development\",\n        \"Full Stack Development\",\n        \"MERN\"\n    ],\n    \"photo\": \"no-photo.png\",\n    \"housing\": false,\n    \"jobAssistance\": true,\n    \"jobGuarantee\": false,\n    \"acceptGi\": true\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/bootcamps/5d713a66ec8f2b88b8f830b8",
+							"raw": "{{url}}/api/v1/bootcamps/670fbb0f37abecfcd6f199e6",
 							"host": [
 								"{{url}}"
 							],
@@ -3943,7 +4103,7 @@
 								"api",
 								"v1",
 								"bootcamps",
-								"5d713a66ec8f2b88b8f830b8"
+								"670fbb0f37abecfcd6f199e6"
 							]
 						},
 						"description": "Updates a collection using the [Postman Collection v2 schema format](https://schema.postman.com/json/collection/v2.1.0/docs/index.html). Include a `collection` object in the request body that contains the following required properties:\n\n- `info` — An **object** that contains the following properties:\n    - `name` — A **string** value that contains the collection's name.\n    - `schema` — A **string** that contains a URL to the collection's schema. For example, the `https://schema.getpostman.com/collection/v1` URL.\n- `item` — An **object** that contains the HTTP request and response information.\n    - `request` — An **object** that contains the collection's request information. For a complete list of values, refer to the `definitions.request` entry in the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json). If you pass an empty object for this value, the system defaults to an untitled GET request.\n\n**Note:**\n\n- For a complete list of available property values for this endpoint, use the following references available in the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json):\n    - `info` object — Use the `definitions.info` entry.\n    - `item` object — Use the `definitions.items` entry.\n- For all other possible values, refer to the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json).\n    \n\n### Important\n\nUse caution when using this endpoint. The system will replace the existing collection with the values passed in the request body."
@@ -4637,7 +4797,7 @@
 							"raw": "{\n    \"housing\": true\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/bootcamps/66bb3845afc78e23b8633605",
+							"raw": "{{url}}/api/v1/bootcamps/670fbb0f37abecfcd6f199e6",
 							"host": [
 								"{{url}}"
 							],
@@ -4645,7 +4805,7 @@
 								"api",
 								"v1",
 								"bootcamps",
-								"66bb3845afc78e23b8633605"
+								"670fbb0f37abecfcd6f199e6"
 							]
 						},
 						"description": "Updates a collection using the [Postman Collection v2 schema format](https://schema.postman.com/json/collection/v2.1.0/docs/index.html). Include a `collection` object in the request body that contains the following required properties:\n\n- `info` — An **object** that contains the following properties:\n    - `name` — A **string** value that contains the collection's name.\n    - `schema` — A **string** that contains a URL to the collection's schema. For example, the `https://schema.getpostman.com/collection/v1` URL.\n- `item` — An **object** that contains the HTTP request and response information.\n    - `request` — An **object** that contains the collection's request information. For a complete list of values, refer to the `definitions.request` entry in the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json). If you pass an empty object for this value, the system defaults to an untitled GET request.\n\n**Note:**\n\n- For a complete list of available property values for this endpoint, use the following references available in the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json):\n    - `info` object — Use the `definitions.info` entry.\n    - `item` object — Use the `definitions.items` entry.\n- For all other possible values, refer to the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json).\n    \n\n### Important\n\nUse caution when using this endpoint. The system will replace the existing collection with the values passed in the request body."
@@ -5791,7 +5951,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v1/bootcamps/66bb3845afc78e23b8633605",
+							"raw": "{{url}}/api/v1/bootcamps/5d713995b721c3bb38c1f5d0",
 							"host": [
 								"{{url}}"
 							],
@@ -5799,7 +5959,7 @@
 								"api",
 								"v1",
 								"bootcamps",
-								"66bb3845afc78e23b8633605"
+								"5d713995b721c3bb38c1f5d0"
 							]
 						},
 						"description": "Deletes a collection."
@@ -5931,7 +6091,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v1/bootcamps/66bb3845afc78e23b8633605",
+							"raw": "{{url}}/api/v1/bootcamps/670fbae137abecfcd6f199d3",
 							"host": [
 								"{{url}}"
 							],
@@ -5939,7 +6099,7 @@
 								"api",
 								"v1",
 								"bootcamps",
-								"66bb3845afc78e23b8633605"
+								"670fbae137abecfcd6f199d3"
 							]
 						},
 						"description": "Deletes a collection."
@@ -6221,7 +6381,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v1/bootcamps/66b350d939f91ac0654a96dc",
+							"raw": "{{url}}/api/v1/bootcamps/5d713995b721c3bb38c1f5d0",
 							"host": [
 								"{{url}}"
 							],
@@ -6229,7 +6389,7 @@
 								"api",
 								"v1",
 								"bootcamps",
-								"66b350d939f91ac0654a96dc"
+								"5d713995b721c3bb38c1f5d0"
 							]
 						},
 						"description": "Deletes a collection."
@@ -9765,7 +9925,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v1/bootcamps/66bb404f3080377c2b174548/courses",
+							"raw": "{{url}}/api/v1/bootcamps/670faa12c80944ccdbb62a2d/courses",
 							"host": [
 								"{{url}}"
 							],
@@ -9773,7 +9933,7 @@
 								"api",
 								"v1",
 								"bootcamps",
-								"66bb404f3080377c2b174548",
+								"670faa12c80944ccdbb62a2d",
 								"courses"
 							]
 						}
@@ -9786,7 +9946,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v1/courses/5d725cfec4ded7bcb480eaa7",
+							"raw": "{{url}}/api/v1/courses/5d725a4a7b292f5f8ceff789",
 							"host": [
 								"{{url}}"
 							],
@@ -9794,7 +9954,7 @@
 								"api",
 								"v1",
 								"courses",
-								"5d725cfec4ded7bcb480eaa7"
+								"5d725a4a7b292f5f8ceff789"
 							]
 						}
 					},
@@ -9837,7 +9997,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"IOS Development 2\",\r\n    \"description\": \"Get started building mobile applications for IOS using Swift and other tools\",\r\n    \"weeks\": \"4\",\r\n    \"tuition\": 5000,\r\n    \"minimumSkill\": \"beginner\",\r\n    \"scholarshipAvailable\": false\r\n}",
+							"raw": "{\"title\":\"Test Course\",\"description\":\"dfsadsdfsdfsf\",\"weeks\":\"11\",\"tuition\":\"11111\",\"minimumSkill\":\"beginner\",\"scholarshipAvailable\":true}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -9845,7 +10005,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/bootcamps/66bb404f3080377c2b174548/courses",
+							"raw": "{{url}}/api/v1/bootcamps/670faa12c80944ccdbb62a2d/courses",
 							"host": [
 								"{{url}}"
 							],
@@ -9853,7 +10013,7 @@
 								"api",
 								"v1",
 								"bootcamps",
-								"66bb404f3080377c2b174548",
+								"670faa12c80944ccdbb62a2d",
 								"courses"
 							]
 						}
@@ -9885,7 +10045,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/bootcamps/5d725a037b292f5f8ceff787/courses/66b0c70ce8b0eacfcd9518d6",
+							"raw": "{{url}}/api/v1/bootcamps/670faa12c80944ccdbb62a2d/courses/670fbcea285b3c23dd7857a3",
 							"host": [
 								"{{url}}"
 							],
@@ -9893,9 +10053,9 @@
 								"api",
 								"v1",
 								"bootcamps",
-								"5d725a037b292f5f8ceff787",
+								"670faa12c80944ccdbb62a2d",
 								"courses",
-								"66b0c70ce8b0eacfcd9518d6"
+								"670fbcea285b3c23dd7857a3"
 							]
 						}
 					},
@@ -9926,7 +10086,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/bootcamps/5d725a037b292f5f8ceff787/courses/66b0f61fa43449317323ec6e",
+							"raw": "{{url}}/api/v1/bootcamps/5d725a037b292f5f8ceff787/courses/670fbcea285b3c23dd7857a3",
 							"host": [
 								"{{url}}"
 							],
@@ -9936,7 +10096,7 @@
 								"bootcamps",
 								"5d725a037b292f5f8ceff787",
 								"courses",
-								"66b0f61fa43449317323ec6e"
+								"670fbcea285b3c23dd7857a3"
 							]
 						}
 					},
@@ -9992,1044 +10152,6 @@
 									"key": "limit",
 									"value": "1"
 								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Auth",
-			"item": [
-				{
-					"name": "Register User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.environment.set('token', pm.response.json().token)"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Prasad Honrao\",\r\n    \"email\": \"prasad@gmail.com\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/register/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"register",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Register User Without Name",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"role\": \"user\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/register/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"register",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Register User Without Email",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Admin Account\",\r\n    \"role\": \"user\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/register/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"register",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Register User With Incorrect Email",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Admin Account\",\r\n    \"email\": \"admin email address\",\r\n    \"role\": \"user\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/register/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"register",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Register User With Default User Role",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"John Doe\",\r\n\t\"email\": \"john@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/register/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"register",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Register User With Publisher Role",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Publisher Account\",\r\n    \"email\": \"publisher@gmail.com\",\r\n    \"role\": \"publisher\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/register",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Register User With Wrong Role",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Publisher Account\",\r\n    \"email\": \"publisher@gmail.com\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/register",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login As User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.environment.set('token', pm.response.json().token)"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"user@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/login/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"login",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login As Publisher",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.environment.set('token', pm.response.json().token)"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"publisher@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/login/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"login",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login As Admin",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.environment.set('token', pm.response.json().token)"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/login/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"login",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login User With Wrong Email",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"dummy@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/login/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"login",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login User With Wrong Password",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"1234567890\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/login/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"login",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Logged In User",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/me",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"me"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Logout User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.environment.set('token', 'none')"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/logout",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"logout"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Forgot Password Generate Token",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"john@gmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/forgotpassword",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"forgotpassword"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Reset Password",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/resetpassword/b74159831f19b7f44727d76d6272e86f965286ff",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"resetpassword",
-								"b74159831f19b7f44727d76d6272e86f965286ff"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update User Details",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"John Papa\",\r\n    \"email\": \"john@gmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/updatedetails",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"updatedetails"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update User Password",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"currentPassword\": \"123456789\",\r\n    \"newPassword\": \"987654321\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/auth/updatepassword",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"updatepassword"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Users",
-			"item": [
-				{
-					"name": "Get All Users",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/users/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/users/5d7a514b5d2c12c7449be042",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users",
-								"5d7a514b5d2c12c7449be042"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.environment.set('token', pm.response.json().token)"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Bill Gates\",\r\n    \"email\": \"bill@gmail.com\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/users",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"bill.gates@gmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/users/66c2f317f388213add6a9c2e",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users",
-								"66c2f317f388213add6a9c2e"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"bill.gates@gmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/users/66c2f47af388213add6a9c41",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users",
-								"66c2f47af388213add6a9c41"
 							]
 						}
 					},
@@ -11216,6 +10338,1104 @@
 							]
 						},
 						"description": "### Add Bootcamp Review\n\nThis endpoint makes an HTTP POST request to add a review for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n- Body (raw, JSON):\n    \n    - title (string, required) - The title of the review.\n        \n    - text (string, required) - The text content of the review.\n        \n    - rating (string, required) - The rating of the review.\n        \n\n### Response\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\",\n  \"stack\": \"string\"\n}\n\n ```\n\nThe response of this request is documented as a JSON schema."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('token', pm.response.json().token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Prasad Honrao\",\r\n    \"email\": \"honrao.prasad@gmail.com\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/register/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User Without Name",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"role\": \"user\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/register/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User Without Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Admin Account\",\r\n    \"role\": \"user\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/register/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User With Incorrect Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Admin Account\",\r\n    \"email\": \"admin email address\",\r\n    \"role\": \"user\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/register/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User With Default User Role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Scott Hanselman\",\r\n\t\"email\": \"scott@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/register/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User With Publisher Role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Publisher Account\",\r\n    \"email\": \"publisher12@gmail.com\",\r\n    \"role\": \"publisher\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User With Wrong Role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New User\",\r\n    \"email\": \"newuser@gmail.com\",\r\n    \"role\": \"super admin\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login As User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('token', pm.response.json().token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login As Publisher",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('token', pm.response.json().token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sasha@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login As Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('token', pm.response.json().token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User With Wrong Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dummy@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User With Wrong Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"1234567890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Logged In User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('token', 'none')"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password Generate Token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Content Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"honrao.prasad@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/forgotpassword",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"forgotpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Content Type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Content Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/auth/resetpassword/b74159831f19b7f44727d76d6272e86f965286ff",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"resetpassword",
+								"b74159831f19b7f44727d76d6272e86f965286ff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Content Type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Content Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Prasad Honrao\",\r\n    \"email\": \"honrao.prasad@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/updatedetails",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"updatedetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Content Type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Content Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\": \"123456\",\r\n    \"newPassword\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/updatepassword",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"updatepassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Password With Wrong Current Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Content Type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Content Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\": \"123456789\",\r\n    \"newPassword\": \"987654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/updatepassword",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"updatepassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Get All Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/admin/users/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/admin/users/5d7a514b5d2c12c7449be044",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users",
+								"5d7a514b5d2c12c7449be044"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('token', pm.response.json().token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bill Gates\",\r\n    \"email\": \"bill@gmail.com\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/admin/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"bill.gates@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/admin/users/670fa412b59cda04e428d669",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users",
+								"670fa412b59cda04e428d669"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/admin/users/670fa412b59cda04e428d669",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users",
+								"670fa412b59cda04e428d669"
+							]
+						}
 					},
 					"response": []
 				}

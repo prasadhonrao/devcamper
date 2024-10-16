@@ -3,14 +3,15 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/User.js';
 
 // @desc    Get all users
-// @route   GET /api/v1/users
+// @route   GET /api/v1/admin/users
 // @access  Private/Admin
 const getUsers = asyncHandler(async (req, res, next) => {
+  console.log('Getting all users for admin role');
   return res.status(200).json(res.advancedResults);
 });
 
 // @desc    Get single user
-// @route   GET /api/v1/users/:id
+// @route   GET /api/v1/admin/users/:id
 // @access  Private/Admin
 const getUser = asyncHandler(async (req, res, next) => {
   let userId = req.params.id;
@@ -25,7 +26,7 @@ const getUser = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Create user
-// @route   POST /api/v1/users
+// @route   POST /api/v1/admin/users
 // @access  Private/Admin
 const createUser = asyncHandler(async (req, res, next) => {
   const user = await User.create(req.body);
@@ -33,7 +34,7 @@ const createUser = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Update user
-// @route   PUT /api/v1/users/:id
+// @route   PUT /api/v1/admin/users/:id
 // @access  Private
 const updateUser = asyncHandler(async (req, res, next) => {
   let user = await User.findByIdAndUpdate(req.params.id, req.body, {
@@ -49,7 +50,7 @@ const updateUser = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Delete user
-// @route   DELETE /api/v1/users/:id
+// @route   DELETE /api/v1/admin/users/:id
 // @access  Private/Admin
 const deleteUser = asyncHandler(async (req, res, next) => {
   let user = await User.findByIdAndDelete(req.params.id);

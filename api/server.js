@@ -12,8 +12,8 @@ import hpp from 'hpp';
 import cors from 'cors';
 import bootcamps from './routes/bootcamps.js';
 import courses from './routes/courses.js';
-import auth from './routes/auth.js';
-import users from './routes/users.js';
+import user from './routes/user.js';
+import admin from './routes/admin.js';
 import reviews from './routes/reviews.js';
 import home from './routes/home.js';
 import connectDB from './config/db.js';
@@ -52,9 +52,9 @@ app.use(express.static(path.join(path.resolve(), 'public'))); // Set static fold
 app.use('/api/v1', home);
 app.use('/api/v1/bootcamps', bootcamps);
 app.use('/api/v1/courses', courses);
-app.use('/api/v1/auth', auth);
-app.use('/api/v1/users', users);
 app.use('/api/v1/reviews', reviews);
+app.use('/api/v1/user', user);
+app.use('/api/v1/admin', admin);
 app.use(errorHandler);
 
 if (process.env.NODE_ENV === 'development' ? app.use(morgan('dev')) : null); // Logging
