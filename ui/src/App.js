@@ -26,6 +26,8 @@ import AddReviewPage from './pages/bootcamps/AddReviewPage';
 
 import ProtectedRoute from './routes/ProtectedRoute';
 
+import { ToastContainer } from 'react-toastify';
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -39,6 +41,7 @@ function App() {
   return (
     <Router>
       <Layout isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+      <ToastContainer />
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />

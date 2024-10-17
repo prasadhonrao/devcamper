@@ -64,7 +64,7 @@ const ManageCoursesPage = () => {
                 Add Bootcamp Course
               </Button>
               {/* <BootcampCourses /> */}
-              {/* <Table striped className="table table-striped">
+              <Table striped className="table table-striped">
                 <thead>
                   <tr>
                     <th colSpan={2}>Title</th>
@@ -86,7 +86,7 @@ const ManageCoursesPage = () => {
                     </tr>
                   ))}
                 </tbody>
-              </Table> */}
+              </Table>
             </div>
           </div>
         </div>
