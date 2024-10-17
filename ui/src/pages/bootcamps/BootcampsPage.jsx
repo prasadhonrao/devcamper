@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-import Bootcamp from '../../components/Bootcamp';
-import Pagination from '../../components/Pagination';
+import { Bootcamp, Pagination } from '../../components';
+
 import bootcampService from '../../services/bootcampService';
 
 const BootcampsPage = () => {
@@ -15,10 +15,9 @@ const BootcampsPage = () => {
       try {
         const res = await bootcampService.getBootcamps();
         setBootcamps(res.data);
-        toast.success('Bootcamps loaded successfully');
-      } catch (error) {
-        setError(error.message);
-        toast.error('Failed to load bootcamps. Please try again later.');
+      } catch (err) {
+        setError(err.message);
+        toast.error(`Error occurred: ${err.message}`);
       }
     };
     fetchBootcamps();
@@ -88,20 +87,15 @@ const BootcampsPage = () => {
           </div>
 
           {/* <!-- Main col --> */}
-          {/* Display error if there is any error otherwise display bootcamps */}
-          {error ? (
-            <div className="alert alert-danger">{error}</div>
-          ) : (
-            <div className="col-md-8">
-              {bootcamps !== undefined && bootcamps.length > 0 ? (
-                bootcamps.map((bootcamp) => <Bootcamp key={bootcamp.id} bootcamp={bootcamp} />)
-              ) : (
-                <h4>No bootcamps found</h4>
-              )}
-              {/* <!-- Pagination --> */}
-              <Pagination />
-            </div>
-          )}
+          <div className="col-md-8">
+            {!error && bootcamps !== undefined && bootcamps.length > 0 ? (
+              bootcamps.map((bootcamp) => <Bootcamp key={bootcamp.id} bootcamp={bootcamp} />)
+            ) : (
+              <h4>No bootcamps found</h4>
+            )}
+            {/* <!-- Pagination --> */}
+            <Pagination />
+          </div>
         </div>
       </div>
     </section>

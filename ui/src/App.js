@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
-import Header from './components/Header';
-import Footer from './components/Footer';
-
+import { Header, Footer } from './components';
 import { HomePage, AboutPage, NotFoundPage } from './pages';
 import { LoginPage, RegisterPage, ManageAccountPage } from './pages/user';
 import {
@@ -20,7 +19,6 @@ import {
 } from './pages/bootcamps';
 
 import ProtectedRoute from './routes/ProtectedRoute';
-import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
