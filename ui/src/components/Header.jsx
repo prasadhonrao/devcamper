@@ -9,7 +9,7 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
   };
 
   return (
-    <>
+    <header>
       <Navbar expand="lg" className="bg-primary">
         <Container>
           <Navbar.Brand as={Link} to="/">
@@ -62,7 +62,7 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </>
+    </header>
   );
 }
 
