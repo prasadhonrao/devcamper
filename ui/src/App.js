@@ -13,6 +13,7 @@ import ManageAccountPage from './pages/user/ManageAccountPage';
 import BootcampsPage from './pages/bootcamps/BootcampsPage';
 import BootcampDetailsPage from './pages/bootcamps/BootcampDetailsPage';
 
+import ManageBootcampsPage from './pages/bootcamps/ManageBootcampsPage';
 import ManageBootcampPage from './pages/bootcamps/ManageBootcampPage';
 import AddBootcampPage from './pages/bootcamps/AddBootcampPage';
 
@@ -24,6 +25,8 @@ import ManageReviewsPage from './pages/bootcamps/ManageReviewsPage';
 import AddReviewPage from './pages/bootcamps/AddReviewPage';
 
 import ProtectedRoute from './routes/ProtectedRoute';
+
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -38,6 +41,7 @@ function App() {
   return (
     <Router>
       <Layout isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+      <ToastContainer />
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -55,12 +59,27 @@ function App() {
           <Route path="/bootcamps" element={<BootcampsPage />} />
           <Route path="/bootcamps/:bootcampId" element={<BootcampDetailsPage />} />
           <Route path="/bootcamps/add" element={<AddBootcampPage />} />
-          <Route path="/bootcamps/:bootcampId/manage" element={<ManageBootcampPage />} />
+          <Route path="/bootcamps/manage" element={<ManageBootcampsPage />} />
+          <Route
+            path="/bootcamps/:bootcampId/manage"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <ManageBootcampPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/bootcamps/:bootcampId/courses/add" element={<AddCoursePage />} />
           <Route path="/bootcamps/:bootcampId/courses/manage" element={<ManageCoursesPage />} />
           <Route path="/bootcamps/:bootcampId/reviews" element={<BootcampReviewsPage />} />
           <Route path="/bootcamps/:bootcampId/reviews/manage" element={<ManageReviewsPage />} />{' '}
-          <Route path="/bootcamps/:bootcampId/reviews/add" element={<AddReviewPage />} />
+          <Route
+            path="/bootcamps/:bootcampId/reviews/add"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <AddReviewPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>

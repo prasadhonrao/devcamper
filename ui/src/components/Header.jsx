@@ -30,7 +30,7 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
                     <FaUser /> Account
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item as={Link} to="/bootcamps/:bootcampId/manage">
+                    <Dropdown.Item as={Link} to="/bootcamps/manage">
                       <FaCogs /> Manage Bootcamps
                     </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/manage-reviews">

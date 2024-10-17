@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import authService from '../../services/authService';
+import userService from '../../services/userService';
 
 const ManageAccountPage = () => {
   const navigate = useNavigate();
@@ -9,7 +9,7 @@ const ManageAccountPage = () => {
 
   useEffect(() => {
     const getUser = async () => {
-      const response = await authService.getMe();
+      const response = await userService.getMe();
       setUser(response.data);
     };
     getUser();
@@ -26,7 +26,7 @@ const ManageAccountPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await authService.updateDetails({ name: user.name, email: user.email });
+      await userService.updateDetails({ name: user.name, email: user.email });
     } catch (error) {
       console.error(error);
       alert('Failed to update user. Please try again.');

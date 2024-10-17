@@ -38,7 +38,7 @@ const advancedResults = (model, populate) => async (req, res, next) => {
   const limit = parseInt(req.query.limit, 10) || 10;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
-  const total = await model.countDocuments();
+  let total = await model.countDocuments();
   query = query.skip(startIndex).limit(limit);
 
   // Populate child objects if any
@@ -48,6 +48,11 @@ const advancedResults = (model, populate) => async (req, res, next) => {
 
   // Executing query
   const results = await query;
+
+  // If query is passed then total should be the count of the query result
+  if (queryStr !== '{}') {
+    total = results.length;
+  }
 
   // Pagination result
   const pagination = {};

@@ -9,6 +9,14 @@ const bootcampService = {
     return res.json();
   },
 
+  getBootcampsByPublisher: async (publisherId) => {
+    const res = await fetch(`${API_BASE_URI}/bootcamps/publisher/${publisherId}`);
+    if (!res.ok) {
+      throw new Error('Failed to fetch bootcamps');
+    }
+    return res.json();
+  },
+
   getBootcamp: async (id) => {
     const res = await fetch(`${API_BASE_URI}/bootcamps/${id}`);
     if (!res.ok) {
@@ -63,8 +71,8 @@ const bootcampService = {
     return res.json();
   },
 
-  getBootcampCourses: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps/${id}/courses`);
+  getCoursesByBootcampId: async (bootcampId) => {
+    const res = await fetch(`${API_BASE_URI}/bootcamps/${bootcampId}/courses`);
     if (!res.ok) {
       throw new Error('Failed to fetch bootcamp courses');
     }

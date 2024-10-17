@@ -2,17 +2,25 @@ import { useState, useEffect } from 'react';
 import Bootcamp from '../../components/Bootcamp';
 import Pagination from '../../components/Pagination';
 import bootcampService from '../../services/bootcampService';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BootcampsPage = () => {
   const [bootcamps, setBootcamps] = useState([]);
-
-  const fetchBootcamps = async () => {
-    const res = await bootcampService.getBootcamps();
-    setBootcamps(res.data);
-  };
+  const [error, setError] = useState('');
 
   // Load bootcamps from API
   useEffect(() => {
+    const fetchBootcamps = async () => {
+      try {
+        const res = await bootcampService.getBootcamps();
+        setBootcamps(res.data);
+        toast.success('Bootcamps loaded successfully');
+      } catch (error) {
+        setError(error.message);
+        toast.error('Failed to load bootcamps. Please try again later.');
+      }
+    };
     fetchBootcamps();
   }, []);
 
@@ -80,15 +88,20 @@ const BootcampsPage = () => {
           </div>
 
           {/* <!-- Main col --> */}
-          <div className="col-md-8">
-            {bootcamps !== undefined && bootcamps.length > 0 ? (
-              bootcamps.map((bootcamp) => <Bootcamp key={bootcamp.id} bootcamp={bootcamp} />)
-            ) : (
-              <h4>No bootcamps found</h4>
-            )}
-            {/* <!-- Pagination --> */}
-            <Pagination />
-          </div>
+          {/* Display error if there is any error otherwise display bootcamps */}
+          {error ? (
+            <div className="alert alert-danger">{error}</div>
+          ) : (
+            <div className="col-md-8">
+              {bootcamps !== undefined && bootcamps.length > 0 ? (
+                bootcamps.map((bootcamp) => <Bootcamp key={bootcamp.id} bootcamp={bootcamp} />)
+              ) : (
+                <h4>No bootcamps found</h4>
+              )}
+              {/* <!-- Pagination --> */}
+              <Pagination />
+            </div>
+          )}
         </div>
       </div>
     </section>

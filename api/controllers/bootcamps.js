@@ -11,6 +11,19 @@ const getBootcamps = asyncHandler(async (req, res, next) => {
   return res.status(200).json(res.advancedResults);
 });
 
+// @desc    Get bootcamps by publisher
+// @route   GET /api/v1/bootcamps/publisher/:publisherId
+// @access  Public
+const getBootcampsByPublisher = asyncHandler(async (req, res, next) => {
+  const { publisherId } = req.params;
+  const bootcamps = await Bootcamp.find({ user: publisherId });
+
+  if (!bootcamps.length) {
+    return next(new ErrorResponse(`No bootcamps found for publisher with id of ${publisherId}`, 404));
+  }
+  return res.status(200).json(res.advancedResults);
+});
+
 // @desc    Get single bootcamp
 // @route   GET /api/v1/bootcamps/:id
 // @access  Public
@@ -33,13 +46,13 @@ const createBootcamp = asyncHandler(async (req, res, next) => {
   // Add user to the request body
   req.body.user = userId;
 
-  // Check for published bootcamp
-  const publishedBootcamp = await Bootcamp.findOne({ user: userId });
+  // // Check for published bootcamp
+  // const publishedBootcamp = await Bootcamp.findOne({ user: userId });
 
-  // If the user is not an admin, they can only add one bootcamp
-  if (publishedBootcamp && req.user.role !== 'admin') {
-    return next(new ErrorResponse(`The user with id ${userId} has already published a bootcamp`, 400));
-  }
+  // // If the user is not an admin, they can only add one bootcamp
+  // if (publishedBootcamp && req.user.role !== 'admin') {
+  //   return next(new ErrorResponse(`The user with id ${userId} has already published a bootcamp`, 400));
+  // }
 
   const bootcamp = await Bootcamp.create(req.body);
   return res.status(201).json({ success: true, data: bootcamp });
@@ -89,6 +102,9 @@ const deleteBootcamp = asyncHandler(async (req, res, next) => {
   if (bootcamp.user.toString() !== userId && req.user.role !== 'admin') {
     return next(new ErrorResponse(`User ${userId} is not authorized to delete this bootcamp`, 401));
   }
+
+  console.log(`bootcamp user id: ${bootcamp.user.toString()}`);
+  console.log(`user id: ${userId}`);
 
   await bootcamp.deleteOne();
   return res.status(200).json({ success: true, data: {} });
@@ -196,6 +212,7 @@ const uploadBootcampPhoto = asyncHandler(async (req, res, next) => {
 
 export {
   getBootcamps,
+  getBootcampsByPublisher,
   getBootcamp,
   createBootcamp,
   updateBootcamp,

@@ -10,9 +10,15 @@ import Review from '../models/Review.js';
 const getReviews = asyncHandler(async (req, res, next) => {
   let bootcampId = req.params.bootcampId;
 
+  // Check if the bootcamp exists
+  const bootcamp = await Bootcamp.findById(bootcampId);
+  if (!bootcamp) {
+    return next(new ErrorResponse(`Bootcamp not found with id of ${bootcampId}`, 404));
+  }
+
   if (bootcampId) {
     const reviews = await Review.find({ bootcamp: bootcampId });
-    return res.status(200).json({ success: true, count: reviews.length, data: reviews });
+    return res.status(200).json({ success: true, count: reviews.length, bootcamp: bootcamp.name, data: reviews });
   } else {
     return res.status(200).json(res.advancedResults);
   }
