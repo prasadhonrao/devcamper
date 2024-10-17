@@ -1,0 +1,17 @@
+.footer {
+    background-color: black;
+    color: white;
+}
+
+.footer .container {
+    max-width: 1400px
+}
+
+.social-icons a{
+    color: white;
+    margin: 10px;
+}
+
+.single_footer ul li a {
+    color: white;
+}

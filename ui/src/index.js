@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './bootstrap.css';
 import './index.css';
+import './footer.css'
 
 import App from './App';
 
