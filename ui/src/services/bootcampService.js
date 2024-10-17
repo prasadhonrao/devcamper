@@ -1,8 +1,9 @@
 const API_BASE_URI = process.env.REACT_APP_DEVCAMPER_BASE_API_URI;
 
 const bootcampService = {
-  getBootcamps: async () => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps`);
+  getBootcamps: async (fields) => {
+    const query = fields ? `?select=${fields.join(',')}` : '';
+    const res = await fetch(`${API_BASE_URI}/bootcamps${query}`);
     if (!res.ok) {
       throw new Error('Failed to fetch bootcamps');
     }

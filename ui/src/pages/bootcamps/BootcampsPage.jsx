@@ -13,7 +13,8 @@ const BootcampsPage = () => {
   useEffect(() => {
     const fetchBootcamps = async () => {
       try {
-        const res = await bootcampService.getBootcamps();
+        const fields = ['photo', 'name', 'averageRating', 'location', 'careers', 'id'];
+        const res = await bootcampService.getBootcamps(fields);
         setBootcamps(res.data);
       } catch (err) {
         setError(err.message);
