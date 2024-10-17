@@ -58,6 +58,7 @@ const RegisterPage = () => {
                     <Form.Control as="select" name="role" value={role} onChange={onChange} required>
                       <option value="user">User</option>
                       <option value="publisher">Publisher</option>
+                      <option value="admin">Admin</option>
                     </Form.Control>
                   </Form.Group>
                   <Button variant="primary" type="submit">
