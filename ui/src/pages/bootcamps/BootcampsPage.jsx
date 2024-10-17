@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+
 import Bootcamp from '../../components/Bootcamp';
 import Pagination from '../../components/Pagination';
 import bootcampService from '../../services/bootcampService';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const BootcampsPage = () => {
   const [bootcamps, setBootcamps] = useState([]);
