@@ -88,10 +88,20 @@ const BootcampsPage = () => {
 
           {/* <!-- Main col --> */}
           <div className="col-md-8">
-            {!error && bootcamps !== undefined && bootcamps.length > 0 ? (
-              bootcamps.map((bootcamp) => <Bootcamp key={bootcamp.id} bootcamp={bootcamp} />)
+            {bootcamps?.length > 0 ? (
+              bootcamps.map(({ id, photo, name, averageRating, location, careers }) => (
+                <Bootcamp
+                  key={id}
+                  id={id}
+                  photo={photo}
+                  name={name}
+                  averageRating={averageRating}
+                  location={location}
+                  careers={careers}
+                />
+              ))
             ) : (
-              <h4>No bootcamps found</h4>
+              <h4>{error ? error : 'No bootcamps found'}</h4>
             )}
             {/* <!-- Pagination --> */}
             <Pagination />

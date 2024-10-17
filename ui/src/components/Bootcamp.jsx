@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 
-const Bootcamp = (props) => {
-  const { photo, name, averageRating, location, careers, id } = props.bootcamp;
-
+const Bootcamp = ({ id, photo, name, averageRating, location, careers }) => {
   return (
     <div className="card mb-3">
       <div className="row no-gutters">
