@@ -1,4 +1,4 @@
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
@@ -8,24 +8,30 @@ const Footer = () => {
   return (
     <div className="footer py-5">
       <div className="container">
-        <div className="row">
-          <div className="contact-us d-flex">
-            <Col md={5} className='d-flex'>
-              <h2>Contact Us</h2>
-              <ul className="social-icons d-flex">
-                <a href="#"><FaTwitter size={20} /></a>
-                <a href="#"><FaYoutube size={20} /></a>
-                <a href="#"><FaFacebookSquare size={20} /></a>
-                <a href="#"><AiFillInstagram size={20} /></a>
-              </ul>
-            </Col>
-            <Col md={7} className="download-app d-flex">
-              <h2>Download Our Application</h2>
-              <a href="#" className='mx-2'><img src="/images/google-play.png" height={35} alt="Google Play" /></a>
-              <a href="#"><img src="/images/app-store.png" height={35} alt="App Store" /></a>
-            </Col>
-          </div>
-          <div className="contact-us d-flex">
+        <div className="row mt-2 footerCon-body">
+          <Container className="contact-us">
+            <Row>
+              <Col xs={12} md={5} lg={5}>
+                <div className='d-flex'>
+                  <h2>Contact Us</h2>
+                  <ul className="social-icons d-flex">
+                    <a href="#"><FaTwitter size={20} /></a>
+                    <a href="#"><FaYoutube size={20} /></a>
+                    <a href="#"><FaFacebookSquare size={20} /></a>
+                    <a href="#"><AiFillInstagram size={20} /></a>
+                  </ul>
+                </div>
+              </Col>
+              <Col xs={12} md={7} lg={7}>
+                <div className='d-flex'>
+                  <h2>Download Our Application</h2>
+                  <a href="#" className='mx-2'><img src="/images/google-play.png" height={35} alt="Google Play" /></a>
+                  <a href="#"><img src="/images/app-store.png" height={35} alt="App Store" /></a>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+          <div className="contact-us d-flex mt-4">
             <div className="col-lg-3 col-sm-3 col-xs-12">
               <div className="single_footer">
                 <h4>About DevCamper</h4>
