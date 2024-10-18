@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import { Header, Footer } from './components';
@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
       <main>
         <ToastContainer />
@@ -76,7 +76,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
 
