@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: devcamper-db-configmap
+  namespace: devcamper-namespace
+data:
+  mongodb_db_name: devcamper-db

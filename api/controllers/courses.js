@@ -10,9 +10,15 @@ import Bootcamp from '../models/Bootcamp.js';
 const getCourses = asyncHandler(async (req, res, next) => {
   let bootcampId = req.params.bootcampId;
 
+  // Check if the bootcamp exists
+  const bootcamp = await Bootcamp.findById(bootcampId);
+  if (!bootcamp) {
+    return next(new ErrorResponse(`Bootcamp not found with id of ${bootcampId}`, 404));
+  }
+
   if (bootcampId) {
     const courses = await Course.find({ bootcamp: bootcampId });
-    return res.status(200).json({ success: true, count: courses.length, data: courses });
+    return res.status(200).json({ success: true, count: courses.length, bootcamp: bootcamp, data: courses });
   } else {
     return res.status(200).json(res.advancedResults);
   }

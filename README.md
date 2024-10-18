@@ -35,30 +35,6 @@ With a focus on user-friendliness, the interface is clean and intuitive, ensurin
 - **Bootstrap**: CSS framework for responsive design
 - **React Bootstrap**: Bootstrap components for React
 
-## Folder Structure
-
-```plaintext
-mern-bootcamp/
-├── api/          # Backend code (Express.js)
-│   ├── config/       # Configuration files
-│   ├── controllers/  # API controllers
-│   ├── models/       # Mongoose models
-│   ├── routes/       # API routes
-│   ├── middleware/   # Custom middleware
-│   ├── utils/        # Utility functions
-│   ├── .env          # Environment variables
-│   └── server.js     # Entry point for the backend
-├── ui/               # Frontend code (React)
-│   ├── public/       # Public assets
-│   ├── src/          # React components and pages
-│   ├── .env          # Environment variables
-└── README.md         # Project documentation
-```
-
-## Setup Instructions
-
-For detailed setup instructions, please refer to the [SETUP](SETUP.md) file.
-
 ## Contributing
 
 Contributions are welcome! Please see the [CONTRIBUTING](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
@@ -66,3 +42,7 @@ Contributions are welcome! Please see the [CONTRIBUTING](CONTRIBUTING.md) file f
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+```
+
+```

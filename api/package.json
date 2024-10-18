@@ -1,5 +1,5 @@
 {
-  "name": "devcamper-api",
+  "name": "devcamper-webapi",
   "version": "1.0.0",
   "description": "API for devcamper web application",
   "main": "server.js",
