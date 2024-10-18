@@ -16,7 +16,7 @@ img {
 
 .showcase {
   position: relative;
-  background: url('./img/showcase.jpg') no-repeat center center/cover;
+  background: url('./../public/images/showcase.jpg') no-repeat center center/cover;
   min-height: 91.5vh;
   color: #fff;
 }
@@ -36,4 +36,15 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.card-head-color {
+  background-color: #e05433;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
 }

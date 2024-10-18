@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   getBootcamps,
+  getBootcampsByPublisher,
   getBootcamp,
   createBootcamp,
   updateBootcamp,
@@ -8,7 +9,7 @@ import {
   getBootcampsInRadius,
   testGeocode,
   uploadBootcampPhoto,
-} from '../controllers/bootcamps.jsx';
+} from '../controllers/bootcamps.js';
 
 import advancedResults from '../middleware/advancedResults.js';
 import Bootcamp from '../models/Bootcamp.js';
@@ -28,6 +29,16 @@ router.use('/:bootcampId/reviews', reviewRouter);
 router.route('/testgeocode').post(testGeocode);
 router.route('/radius/:zipcode/:distance').get(getBootcampsInRadius);
 router.route('/:id/photo').put(protect, authorize('publisher', 'admin'), uploadBootcampPhoto);
+router.route('/publisher/:publisherId').get(
+  protect,
+  authorize('publisher', 'admin'),
+  (req, res, next) => {
+    req.query.user = req.params.publisherId; // Set the user query parameter
+    next();
+  },
+  advancedResults(Bootcamp),
+  getBootcampsByPublisher
+);
 router
   .route('/')
   .get(
