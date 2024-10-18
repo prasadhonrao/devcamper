@@ -1,25 +1,16 @@
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
-
 import { Bootcamp, Pagination } from '../../components';
-
 import bootcampService from '../../services/bootcampService';
 
 const BootcampsPage = () => {
   const [bootcamps, setBootcamps] = useState([]);
-  const [error, setError] = useState('');
 
   // Load bootcamps from API
   useEffect(() => {
     const fetchBootcamps = async () => {
-      try {
-        const fields = ['photo', 'name', 'averageRating', 'location', 'careers', 'id'];
-        const res = await bootcampService.getBootcamps(fields);
-        setBootcamps(res.data);
-      } catch (err) {
-        setError(err.message);
-        toast.error(`Error occurred: ${err.message}`);
-      }
+      const fields = ['photo', 'name', 'averageRating', 'location', 'careers', 'id'];
+      const res = await bootcampService.getBootcamps(fields);
+      setBootcamps(res.data);
     };
     fetchBootcamps();
   }, []);
@@ -102,7 +93,7 @@ const BootcampsPage = () => {
                 />
               ))
             ) : (
-              <h4>{error ? error : 'No bootcamps found'}</h4>
+              <h4>No bootcamps found</h4>
             )}
             {/* <!-- Pagination --> */}
             <Pagination />
