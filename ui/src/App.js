@@ -7,6 +7,9 @@ import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 import LoginPage from './pages/user/LoginPage';
+import UpdatePasswordPage from './pages/user/UpdatePasswordPage';
+import ResetPasswordPage from './pages/user/ResetPasswordPage';
+
 import RegisterPage from './pages/user/RegisterPage';
 import ManageAccountPage from './pages/user/ManageAccountPage';
 
@@ -44,6 +47,8 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/updatepassword" element={<UpdatePasswordPage/>} />
+          <Route path="/resetpassword" element={<ResetPasswordPage/>} />
           <Route
             path="/account/manage"
             element={
