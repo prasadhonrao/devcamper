@@ -35,7 +35,13 @@ const BootcampsPage = () => {
         ) : fetchError ? (
           <p className="text-danger">{fetchError}</p>
         ) : (
-          bootcamps.map((bootcamp) => <Bootcamp key={bootcamp.id} {...bootcamp} />)
+          <div className="row">
+            {bootcamps.map((bootcamp) => (
+              <div key={bootcamp.id} className="col-md-6 mb-4">
+                <Bootcamp {...bootcamp} />
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </section>
