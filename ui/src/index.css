@@ -41,3 +41,8 @@ img {
 .card-head-color{
   background-color: #e05433;
 }
+
+.active {
+  font-weight: bold;
+  text-decoration: underline; 
+}
