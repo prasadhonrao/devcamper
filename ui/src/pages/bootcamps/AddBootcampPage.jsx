@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -21,6 +21,9 @@ const AddBootcampPage = () => {
   });
 
   const [error, setError] = useState(null);
+
+  // TODO: Fix eslint error during page implementation
+  // eslint-disable-next-line
   const { name, address, phone, email, website, description, careers, housing, jobAssistance, jobGuarantee, acceptGi } =
     formData;
 
@@ -43,6 +46,9 @@ const AddBootcampPage = () => {
       toast.error(`Error occurred: ${error.message}`);
     }
   };
+
+  // TODO: Add error handling
+  if (error) return <h1>Error: {error}</h1>;
 
   return (
     <section className="container mt-5">

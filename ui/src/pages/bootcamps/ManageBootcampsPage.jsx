@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import bootcampService from '../../services/bootcampService';
 
@@ -31,7 +31,7 @@ const ManageBootcampsPage = () => {
                 </thead>
                 <tbody>
                   {bootcamps.map((b) => (
-                    <tr>
+                    <tr key={b.id}>
                       <td>{b.name}</td>
                       <td>{b.rating}</td>
                     </tr>
