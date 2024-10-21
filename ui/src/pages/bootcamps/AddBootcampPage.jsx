@@ -21,6 +21,9 @@ const AddBootcampPage = () => {
   });
 
   const [error, setError] = useState(null);
+
+  // TODO: Fix eslint error during page implementation
+  // eslint-disable-next-line
   const { name, address, phone, email, website, description, careers, housing, jobAssistance, jobGuarantee, acceptGi } =
     formData;
 
