@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Nav, Navbar, Container, Dropdown } from 'react-bootstrap';
 import { FaSignInAlt, FaUserPlus, FaSearch, FaUser, FaSignOutAlt, FaCogs, FaStar } from 'react-icons/fa';
 
@@ -66,5 +67,10 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
     </header>
   );
 }
+
+Header.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  setIsAuthenticated: PropTypes.func.isRequired,
+};
 
 export default Header;

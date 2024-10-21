@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Image } from 'react-bootstrap';
 
 const Bootcamp = ({ id, photo, name, averageRating, location, careers }) => {
@@ -26,6 +27,15 @@ const Bootcamp = ({ id, photo, name, averageRating, location, careers }) => {
       </div>
     </div>
   );
+};
+
+Bootcamp.propTypes = {
+  id: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  averageRating: PropTypes.number.isRequired,
+  location: PropTypes.object.isRequired,
+  careers: PropTypes.array.isRequired,
 };
 
 export default Bootcamp;

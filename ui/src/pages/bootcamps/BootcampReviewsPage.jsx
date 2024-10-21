@@ -30,8 +30,8 @@ const BootcampReviewsPage = () => {
             </Link>
             <h1 className="mb-4">{bootcamp} Reviews</h1>
             {/* <!-- Reviews --> */}
-            {reviews.map((data, key) => (
-              <Card className="card mb-3">
+            {reviews.map((data) => (
+              <Card className="card mb-3" key={data.key}>
                 <h5 className="card-header bg-dark text-white">{data.title}</h5>
                 <div className="card-body">
                   <h5 className="card-title">

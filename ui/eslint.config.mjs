@@ -6,7 +6,14 @@ export default [
   { files: ['**/*.{js,mjs,cjs,jsx}'] },
   {
     languageOptions: {
-      globals: globals.browser,
+      globals: {
+        ...globals.builtin,
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2022,
+        ...globals.es2023,
+        ...globals.esnext,
+      },
     },
   },
   pluginJs.configs.recommended,

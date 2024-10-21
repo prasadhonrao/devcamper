@@ -44,6 +44,9 @@ const AddBootcampPage = () => {
     }
   };
 
+  // TODO: Add error handling
+  if (error) return <h1>Error: {error}</h1>;
+
   return (
     <section className="container mt-5">
       <div className="container">
