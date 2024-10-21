@@ -1,4 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Nav, Navbar, Container, Dropdown } from 'react-bootstrap';
 import { FaSignInAlt, FaUserPlus, FaSearch, FaUser, FaSignOutAlt, FaCogs, FaStar } from 'react-icons/fa';
 
@@ -46,10 +48,10 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
                 </Dropdown>
               ) : (
                 <>
-                  <Nav.Link as={Link} to="/login">
+                  <Nav.Link as={Link} to="/user/login">
                     <FaSignInAlt /> Login
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/register">
+                  <Nav.Link as={Link} to="/user/register">
                     <FaUserPlus /> Register
                   </Nav.Link>
                 </>
@@ -65,5 +67,10 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
     </header>
   );
 }
+
+Header.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  setIsAuthenticated: PropTypes.func,
+};
 
 export default Header;

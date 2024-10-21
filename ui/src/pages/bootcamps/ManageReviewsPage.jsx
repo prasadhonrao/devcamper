@@ -1,3 +1,4 @@
+import React from 'react';
 import BootcampReviewRating from '../../components/BootcampReviewRating';
 
 const bootcamps = [
@@ -15,14 +16,14 @@ const bootcamps = [
 
 const ManageReviewsPage = () => {
   return (
-    <section class="container mt-5">
+    <section className="container mt-5">
       <div className="container">
-        <div class="row">
-          <div class="col-md-8 m-auto">
-            <div class="card bg-white py-2 px-4">
-              <div class="card-body">
-                <h1 class="mb-4">Manage Reviews</h1>
-                <table class="table table-striped">
+        <div className="row">
+          <div className="col-md-8 m-auto">
+            <div className="card bg-white py-2 px-4">
+              <div className="card-body">
+                <h1 className="mb-4">Manage Reviews</h1>
+                <table className="table table-striped">
                   <thead>
                     <tr>
                       <th scope="col">Bootcamp</th>

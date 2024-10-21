@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { Form, Row, Col, Button } from 'react-bootstrap';
 import { TiUserAdd } from 'react-icons/ti';
 import userService from '../../services/userService';
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -61,9 +63,18 @@ const RegisterPage = () => {
                       <option value="admin">Admin</option>
                     </Form.Control>
                   </Form.Group>
-                  <Button variant="primary" type="submit">
-                    Register
-                  </Button>
+                  <Row>
+                    <Col md={6} className="d-grid">
+                      <Button variant="primary" type="submit" block>
+                        Register
+                      </Button>
+                    </Col>
+                    <Col md={6} className="d-grid">
+                      <Button variant="primary" type="button" block onClick={() => navigate(`/`)}>
+                        Cancel
+                      </Button>
+                    </Col>
+                  </Row>
                 </Form>
               </div>
             </div>

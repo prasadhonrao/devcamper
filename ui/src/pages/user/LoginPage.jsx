@@ -1,10 +1,11 @@
+import React from 'react';
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { LuLogIn } from 'react-icons/lu';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Form, Row, Col, Button, Card, Container } from 'react-bootstrap';
 import userService from '../../services/userService';
 
-const LoginPage = ({ setIsAuthenticated }) => {
+const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -26,21 +27,19 @@ const LoginPage = ({ setIsAuthenticated }) => {
     try {
       const res = await userService.login({ email, password });
       localStorage.setItem('token', res.token);
-      setIsAuthenticated(true);
       navigate(from);
     } catch (error) {
-      setIsAuthenticated(false);
       console.error('Error logging in:', error);
     }
   };
 
   return (
     <section className="form mt-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 m-auto">
-            <div className="card bg-white p-4 mb-4">
-              <div className="card-body">
+      <Container>
+        <Row>
+          <Col md={6} className="m-auto">
+            <Card className="bg-white p-4 mb-4">
+              <Card.Body>
                 <h1>
                   <LuLogIn /> Login
                 </h1>
@@ -60,15 +59,24 @@ const LoginPage = ({ setIsAuthenticated }) => {
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Button variant="primary" type="submit" className="mt-3">
-                    Login
-                  </Button>
+                  <Row>
+                    <Col md={6} className="mt-3 d-grid">
+                      <Button type="submit" variant="primary" block>
+                        Login
+                      </Button>
+                    </Col>
+                    <Col md={6} className="mt-3 d-grid">
+                      <Button type="button" variant="primary" block onClick={() => navigate(`/user/password/update`)}>
+                        Forgot Password
+                      </Button>
+                    </Col>
+                  </Row>
                 </Form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 };

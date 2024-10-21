@@ -1,4 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { GrEdit, GrClose } from 'react-icons/gr';
 
 const BootcampReviewRating = ({ bootcampId, bootCampName, bootCampRating }) => {
@@ -11,12 +13,18 @@ const BootcampReviewRating = ({ bootcampId, bootCampName, bootCampRating }) => {
           <GrEdit />
         </Link>
 
-        <button class="btn btn-danger mb-1">
+        <button className="btn btn-danger mb-1">
           <GrClose />
         </button>
       </td>
     </tr>
   );
+};
+
+BootcampReviewRating.propTypes = {
+  bootcampId: PropTypes.string.isRequired,
+  bootCampName: PropTypes.string.isRequired,
+  bootCampRating: PropTypes.number.isRequired,
 };
 
 export default BootcampReviewRating;

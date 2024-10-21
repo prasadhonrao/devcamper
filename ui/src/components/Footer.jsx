@@ -1,3 +1,4 @@
+import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
