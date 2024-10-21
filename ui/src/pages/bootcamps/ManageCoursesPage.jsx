@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 import { FaTimes, FaPencilAlt } from 'react-icons/fa';
@@ -21,7 +21,7 @@ const ManageCoursesPage = () => {
   }, [bootcampId]);
 
   //redirect to courses page (need to implement in future)
-  function navigateToAddCourse(e) {
+  function navigateToAddCourse() {
     navigate(`/bootcamps/${bootcampId}/courses/add`);
   }
 

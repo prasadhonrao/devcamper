@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { GrEdit, GrClose } from 'react-icons/gr';
 
@@ -11,7 +12,7 @@ const BootcampReviewRating = ({ bootcampId, bootCampName, bootCampRating }) => {
           <GrEdit />
         </Link>
 
-        <button class="btn btn-danger mb-1">
+        <button className="btn btn-danger mb-1">
           <GrClose />
         </button>
       </td>

@@ -1,10 +1,11 @@
+import React from 'react';
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { LuLogIn } from 'react-icons/lu';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import userService from '../../services/userService';
 
-const LoginPage = ({ setIsAuthenticated }) => {
+const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -26,10 +27,8 @@ const LoginPage = ({ setIsAuthenticated }) => {
     try {
       const res = await userService.login({ email, password });
       localStorage.setItem('token', res.token);
-      setIsAuthenticated(true);
       navigate(from);
     } catch (error) {
-      setIsAuthenticated(false);
       console.error('Error logging in:', error);
     }
   };

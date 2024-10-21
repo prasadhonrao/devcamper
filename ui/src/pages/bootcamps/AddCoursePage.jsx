@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { AiOutlineLeft } from 'react-icons/ai';
 import courseService from '../../services/courseService';
