@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './bootstrap.css';
 import './index.css';
+import './footer.css'
 
 import App from './App';
 
