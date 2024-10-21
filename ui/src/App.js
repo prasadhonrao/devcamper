@@ -1,32 +1,24 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Layout from './components/Layout';
-import Footer from './components//Footer';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import NotFoundPage from './pages/NotFoundPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
-import LoginPage from './pages/user/LoginPage';
-import RegisterPage from './pages/user/RegisterPage';
-import ManageAccountPage from './pages/user/ManageAccountPage';
-
-import BootcampsPage from './pages/bootcamps/BootcampsPage';
-import BootcampDetailsPage from './pages/bootcamps/BootcampDetailsPage';
-
-import ManageBootcampsPage from './pages/bootcamps/ManageBootcampsPage';
-import ManageBootcampPage from './pages/bootcamps/ManageBootcampPage';
-import AddBootcampPage from './pages/bootcamps/AddBootcampPage';
-
-import ManageCoursesPage from './pages/bootcamps/ManageCoursesPage';
-import AddCoursePage from './pages/bootcamps/AddCoursePage';
-
-import BootcampReviewsPage from './pages/bootcamps/BootcampReviewsPage';
-import ManageReviewsPage from './pages/bootcamps/ManageReviewsPage';
-import AddReviewPage from './pages/bootcamps/AddReviewPage';
+import { Header, Footer } from './components';
+import { HomePage, AboutPage, NotFoundPage } from './pages';
+import { LoginPage, RegisterPage, ManageAccountPage } from './pages/user';
+import {
+  AddBootcampPage,
+  AddCoursePage,
+  AddReviewPage,
+  BootcampDetailsPage,
+  BootcampReviewsPage,
+  BootcampsPage,
+  ManageBootcampPage,
+  ManageBootcampsPage,
+  ManageCoursesPage,
+  ManageReviewsPage,
+} from './pages/bootcamps';
 
 import ProtectedRoute from './routes/ProtectedRoute';
-
-import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,10 +31,10 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Layout isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
-      <ToastContainer />
-      <div>
+    <BrowserRouter>
+      <Header />
+      <main>
+        <ToastContainer />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -82,9 +74,9 @@ function App() {
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </div>
+      </main>
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
 

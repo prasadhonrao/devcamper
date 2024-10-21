@@ -38,6 +38,13 @@ img {
   height: 100%;
 }
 
-.card-head-color{
+.card-head-color {
   background-color: #e05433;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
 }
