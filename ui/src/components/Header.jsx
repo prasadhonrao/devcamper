@@ -69,8 +69,8 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
 }
 
 Header.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-  setIsAuthenticated: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+  setIsAuthenticated: PropTypes.func,
 };
 
 export default Header;
