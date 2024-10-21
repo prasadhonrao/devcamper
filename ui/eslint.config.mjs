@@ -15,6 +15,11 @@ export default [
         ...globals.esnext,
       },
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
   },
   pluginJs.configs.recommended,
   pluginReact.configs.flat.recommended,
