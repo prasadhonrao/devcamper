@@ -46,10 +46,10 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
                 </Dropdown>
               ) : (
                 <>
-                  <Nav.Link as={Link} to="/login">
+                  <Nav.Link as={Link} to="/user/login">
                     <FaSignInAlt /> Login
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/register">
+                  <Nav.Link as={Link} to="/user/register">
                     <FaUserPlus /> Register
                   </Nav.Link>
                 </>
