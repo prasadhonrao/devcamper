@@ -1,5 +1,6 @@
 import React from 'react';
-import BootcampReviewRating from '../../components/BootcampReviewRating';
+import { Link } from 'react-router-dom';
+import { GrEdit, GrClose } from 'react-icons/gr';
 
 const bootcamps = [
   {
@@ -33,12 +34,18 @@ const ManageReviewsPage = () => {
                   </thead>
                   <tbody>
                     {bootcamps.map((b) => (
-                      <BootcampReviewRating
-                        key={b.id}
-                        bootcampId={b.id}
-                        bootCampName={b.name}
-                        bootCampRating={b.rating}
-                      />
+                      <tr key={b.id}>
+                        <td>{b.bootCampName}</td>
+                        <td>{b.bootCampRating}</td>
+                        <td>
+                          <Link to={`/bootcamps/${b.id}/reviews/add`} className="btn btn-secondary me-2 mb-1">
+                            <GrEdit />
+                          </Link>
+                          <button className="btn btn-danger mb-1">
+                            <GrClose />
+                          </button>
+                        </td>
+                      </tr>
                     ))}
                   </tbody>
                 </table>
