@@ -65,12 +65,12 @@ const RegisterPage = () => {
                   </Form.Group>
                   <Row>
                     <Col md={6} className="d-grid">
-                      <Button variant="primary" type="submit" block>
+                      <Button variant="primary" type="submit">
                         Register
                       </Button>
                     </Col>
                     <Col md={6} className="d-grid">
-                      <Button variant="primary" type="button" block onClick={() => navigate(`/`)}>
+                      <Button variant="primary" type="button" onClick={() => navigate(`/`)}>
                         Cancel
                       </Button>
                     </Col>

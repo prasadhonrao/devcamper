@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 
-import { Header, Footer } from './components';
 import { HomePage, AboutPage, NotFoundPage } from './pages';
 import { LoginPage, RegisterPage, ManageAccountPage, ResetPasswordPage, UpdatePasswordPage } from './pages/user';
 import {
@@ -18,16 +16,15 @@ import {
   ManageReviewsPage,
 } from './pages/bootcamps';
 import { AuthProvider } from './contexts/AuthContext';
+import Layout from './components/Layout';
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Header />
-        <main>
-          <ToastContainer />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/user/login" element={<LoginPage />} />
             <Route path="/user/register" element={<RegisterPage />} />
@@ -45,9 +42,8 @@ function App() {
             <Route path="/bootcamps/:bootcampId/reviews/manage" element={<ManageReviewsPage />} />{' '}
             <Route path="/bootcamps/:bootcampId/reviews/add" element={<AddReviewPage />} />
             <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </main>
-        <Footer />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </AuthProvider>
   );
