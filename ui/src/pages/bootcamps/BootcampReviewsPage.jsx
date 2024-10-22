@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { FaPencil } from 'react-icons/fa6';
@@ -30,8 +30,8 @@ const BootcampReviewsPage = () => {
             </Link>
             <h1 className="mb-4">{bootcamp} Reviews</h1>
             {/* <!-- Reviews --> */}
-            {reviews.map((data, key) => (
-              <Card className="card mb-3">
+            {reviews.map((data) => (
+              <Card className="card mb-3" key={data.key}>
                 <h5 className="card-header bg-dark text-white">{data.title}</h5>
                 <div className="card-body">
                   <h5 className="card-title">

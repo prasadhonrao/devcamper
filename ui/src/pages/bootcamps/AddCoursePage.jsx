@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { AiOutlineLeft } from 'react-icons/ai';
 import courseService from '../../services/courseService';
 import { getToken } from '../../helpers/auth';
+import { toast } from 'react-toastify';
 
 const AddCoursePage = () => {
   const { bootcampId } = useParams();
@@ -30,7 +31,8 @@ const AddCoursePage = () => {
     e.preventDefault();
     const token = getToken();
     if (!token) {
-      setError('You must be logged in to add a course.');
+      setError(error.message);
+      toast.error('Failed to add course. Please try again later.');
       return;
     }
 

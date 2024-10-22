@@ -1,14 +1,14 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Image } from 'react-bootstrap';
 
-const Bootcamp = (props) => {
-  const { photo, name, averageRating, location, careers, id } = props.bootcamp;
-
+const Bootcamp = ({ id, photo, name, averageRating, location, careers }) => {
   return (
     <div className="card mb-3">
       <div className="row no-gutters">
         <div className="col-md-4">
-          <Image src={photo} className="card-img" alt={name} />
+          <Image src={`/images/${photo}`} className="card-img full-size-image" alt={name} />
         </div>
         <div className="col-md-8">
           <div className="card-body">
@@ -27,6 +27,15 @@ const Bootcamp = (props) => {
       </div>
     </div>
   );
+};
+
+Bootcamp.propTypes = {
+  id: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  averageRating: PropTypes.number,
+  location: PropTypes.object.isRequired,
+  careers: PropTypes.array.isRequired,
 };
 
 export default Bootcamp;
