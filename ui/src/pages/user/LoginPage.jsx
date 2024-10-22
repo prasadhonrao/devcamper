@@ -4,18 +4,19 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { LuLogIn } from 'react-icons/lu';
 import { Form, Row, Col, Button, Card, Container } from 'react-bootstrap';
 import userService from '../../services/userService';
+import { useAuth } from '../../contexts/AuthContext';
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { login } = useAuth();
 
+  const location = useLocation();
   const { from } = location.state || { from: { pathname: '/' } };
 
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-
   const { email, password } = formData;
 
   const onChange = (e) => {
@@ -26,7 +27,11 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const res = await userService.login({ email, password });
-      localStorage.setItem('token', res.token);
+      if (!res.token) {
+        console.error('No token received:', res);
+        return;
+      }
+      login(res.token);
       navigate(from);
     } catch (error) {
       console.error('Error logging in:', error);
@@ -61,12 +66,12 @@ const LoginPage = () => {
                   </Row>
                   <Row>
                     <Col md={6} className="mt-3 d-grid">
-                      <Button type="submit" variant="primary" block>
+                      <Button type="submit" variant="primary">
                         Login
                       </Button>
                     </Col>
                     <Col md={6} className="mt-3 d-grid">
-                      <Button type="button" variant="primary" block onClick={() => navigate(`/user/password/update`)}>
+                      <Button type="button" variant="primary" onClick={() => navigate(`/user/password/update`)}>
                         Forgot Password
                       </Button>
                     </Col>
