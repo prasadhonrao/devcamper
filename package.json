@@ -1,0 +1,15 @@
+{
+  "name": "devcamper",
+  "version": "1.0.0",
+  "description": "DevCamper is a web application created to help users discover, rate, and review coding bootcamps. The platform provides a comprehensive solution for users to search for bootcamps based on location, browse reviews from other users, and submit their own feedback. Its primary goal is to provide a resource for aspiring coders to find the right bootcamp for their needs.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
