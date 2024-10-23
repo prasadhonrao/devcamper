@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, Row, Col, Card, Container} from 'react-bootstrap';
 import userService from '../../services/userService';
 
 const ManageAccountPage = () => {
@@ -35,50 +35,64 @@ const ManageAccountPage = () => {
   };
 
   const redirectToUpdatePassword = () => {
-    navigate('/update-password');
+    navigate('/user/password/update');
   };
 
   return (
     <section className="container mt-5">
-      <div className="row">
-        <div className="col-md-8 m-auto">
-          <div className="card bg-white py-2 px-4">
-            <div className="card-body">
-              <h1 className="mb-2">Manage Account</h1>
-              <Form onSubmit={onSubmit}>
-                <Form.Group controlId="formName">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control type="text" name="name" placeholder="Name" value={user.name} onChange={onChange} />
-                </Form.Group>
-                <Form.Group controlId="formEmail" className="mb-4">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" name="email" placeholder="Email" value={user.email} onChange={onChange} />
-                </Form.Group>
-                <Form.Group>
-                  <Row>
-                    <Col md={6}>
-                      <Button type="submit" className="btn btn-primary btn-block" block>
-                        Save
-                      </Button>
-                    </Col>
-                    <Col md={6}>
-                      <Button
-                        type="button"
-                        className="btn btn-block btn-secondary"
-                        block
-                        onClick={redirectToUpdatePassword}
-                      >
-                        Update Password
-                      </Button>
-                    </Col>
-                  </Row>
-                </Form.Group>
-              </Form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Container>
+    <Row>
+      <Col md={8} className="m-auto">
+        <Card className="bg-white py-2 px-4">
+          <Card.Body>
+            <h1 className="mb-2">Manage Account</h1>
+            <Form onSubmit={onSubmit}>
+              <Form.Group controlId="formName" className="mb-3">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={user.name}
+                  onChange={onChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formEmail" className="mb-4">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={user.email}
+                  onChange={onChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Row>
+                  <Col md={6}>
+                    <Button type="submit" variant="primary" className="w-100">
+                      Save
+                    </Button>
+                  </Col>
+                  <Col md={6}>
+                    <Button
+                      type="button"
+                      variant="success"
+                      className="w-100"
+                      onClick={redirectToUpdatePassword}
+                    >
+                      Update Password
+                    </Button>
+                  </Col>
+                </Row>
+              </Form.Group>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Col>
+    </Row>
+    </Container>
+  </section>
   );
 };
 export default ManageAccountPage;
