@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: devcamper-webapp-configmap
+  namespace: devcamper-namespace
+data:
+  react_app_devcamper_base_api_uri: 'http://devcamper-webapi-nodeport-service.devcamper-namespace.svc.cluster.local:32002'
