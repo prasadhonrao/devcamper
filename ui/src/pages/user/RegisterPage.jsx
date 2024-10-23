@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { Form, Row, Col, Button } from 'react-bootstrap';
 import { TiUserAdd } from 'react-icons/ti';
 import userService from '../../services/userService';
+import { useAuth } from '../../contexts/AuthContext';
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     role: 'user', // Default role
   });
-
   const { name, email, password, role } = formData;
+
+  const { login } = useAuth();
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,11 +25,14 @@ const RegisterPage = () => {
     e.preventDefault();
     try {
       const res = await userService.register({ name, email, password, role });
-      console.log('User registered successfully:', res);
-      // Handle successful registration (e.g., redirect to login page)
+
+      // Automatically log in the user after registration
+      if (res.success) {
+        login(res.token);
+        navigate('/');
+      }
     } catch (error) {
       console.error('Error registering user:', error);
-      // Handle registration error (e.g., display error message)
     }
   };
 
@@ -61,9 +68,18 @@ const RegisterPage = () => {
                       <option value="admin">Admin</option>
                     </Form.Control>
                   </Form.Group>
-                  <Button variant="primary" type="submit">
-                    Register
-                  </Button>
+                  <Row>
+                    <Col md={6} className="d-grid">
+                      <Button variant="primary" type="submit">
+                        Register
+                      </Button>
+                    </Col>
+                    <Col md={6} className="d-grid">
+                      <Button variant="primary" type="button" onClick={() => navigate(`/`)}>
+                        Cancel
+                      </Button>
+                    </Col>
+                  </Row>
                 </Form>
               </div>
             </div>

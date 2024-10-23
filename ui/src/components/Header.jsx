@@ -1,11 +1,17 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Nav, Navbar, Container, Dropdown } from 'react-bootstrap';
 import { FaSignInAlt, FaUserPlus, FaSearch, FaUser, FaSignOutAlt, FaCogs, FaStar } from 'react-icons/fa';
+import { useAuth } from '../contexts/AuthContext';
 
-function Header({ isAuthenticated, setIsAuthenticated }) {
+function Header() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    setIsAuthenticated(false);
+    logout();
+    navigate('/');
   };
 
   return (
@@ -19,12 +25,12 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
               width="20"
               height="20"
               className="d-inline-block"
-            />{' '}
+            />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              {isAuthenticated ? (
+              {user ? (
                 <Dropdown>
                   <Dropdown.Toggle as={Nav.Link} id="dropdown-basic">
                     <FaUser /> Account
@@ -46,10 +52,10 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
                 </Dropdown>
               ) : (
                 <>
-                  <Nav.Link as={Link} to="/login">
+                  <Nav.Link as={Link} to="/user/login">
                     <FaSignInAlt /> Login
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/register">
+                  <Nav.Link as={Link} to="/user/register">
                     <FaUserPlus /> Register
                   </Nav.Link>
                 </>
@@ -65,5 +71,10 @@ function Header({ isAuthenticated, setIsAuthenticated }) {
     </header>
   );
 }
+
+Header.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  setIsAuthenticated: PropTypes.func,
+};
 
 export default Header;

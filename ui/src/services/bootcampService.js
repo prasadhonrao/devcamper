@@ -1,3 +1,5 @@
+import { getAuthHeaders } from '../helpers/auth';
+
 const API_BASE_URI = process.env.REACT_APP_DEVCAMPER_BASE_API_URI;
 
 const bootcampService = {
@@ -11,7 +13,9 @@ const bootcampService = {
   },
 
   getBootcampsByPublisher: async (publisherId) => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps/publisher/${publisherId}`);
+    const res = await fetch(`${API_BASE_URI}/bootcamps/publisher/${publisherId}`, {
+      headers: getAuthHeaders(),
+    });
     if (!res.ok) {
       throw new Error('Failed to fetch bootcamps');
     }

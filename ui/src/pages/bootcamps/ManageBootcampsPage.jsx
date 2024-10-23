@@ -1,18 +1,33 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import bootcampService from '../../services/bootcampService';
+import { useAuth } from '../../contexts/AuthContext';
 
 const ManageBootcampsPage = () => {
-  const { publisherId } = useParams();
+  const { user } = useAuth();
   const [bootcamps, setBootcamps] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchBootcamp = async () => {
-      const res = await bootcampService.getBootcampsByPublisher(publisherId);
-      setBootcamps(res.data);
+    const fetchBootcamps = async () => {
+      try {
+        const res = await bootcampService.getBootcampsByPublisher(user.id);
+        setBootcamps(res.data);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     };
-    fetchBootcamp();
-  }, [publisherId]);
+
+    if (user) {
+      fetchBootcamps();
+    }
+  }, [user]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <section className="container mt-5">
@@ -26,14 +41,13 @@ const ManageBootcampsPage = () => {
                   <tr>
                     <th scope="col">Bootcamp</th>
                     <th scope="col">Rating</th>
-                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {bootcamps.map((b) => (
-                    <tr>
+                    <tr key={b.id}>
                       <td>{b.name}</td>
-                      <td>{b.rating}</td>
+                      <td>{b.averageRating}</td>
                     </tr>
                   ))}
                 </tbody>
