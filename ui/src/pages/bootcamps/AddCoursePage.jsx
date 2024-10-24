@@ -4,20 +4,21 @@ import { AiOutlineLeft } from 'react-icons/ai';
 import courseService from '../../services/courseService';
 import { getToken } from '../../helpers/auth';
 import { toast } from 'react-toastify';
+import { Form, Button, Container, Row, Col, Card} from 'react-bootstrap';
 
 const AddCoursePage = () => {
   const { bootcampId } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: '',
-    description: '',
-    weeks: '',
+    duration: '',
     tuition: '',
-    minimumSkill: 'beginner',
+    minimumSkill: 'Beginner (Any)', // Initialize to default
+    description: '',
     scholarshipAvailable: false,
   });
   const [error, setError] = useState(null);
-  const { title, description, weeks, tuition, minimumSkill, scholarshipAvailable } = formData;
+  const { minimumSkill, scholarshipAvailable } = formData;
 
   const onChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -51,106 +52,105 @@ const AddCoursePage = () => {
 
   return (
     <section className="container mt-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8 m-auto">
-            <div className="card bg-white py-2 px-4">
-              <div className="card-body">
-                <Link to={`/bootcamps/${bootcampId}/courses/manage`} className="btn btn-link text-secondary my-3">
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col md={8}>
+            <Card className="bg-white p-4">
+              <Card.Body>
+                <Link to={`/bootcamps/${bootcampId}/courses/manage`} className="btn btn-link text-secondary mb-3">
                   <AiOutlineLeft className="mb-1" style={{ fontSize: '28px' }} /> Manage Courses
                 </Link>
                 <h1 className="mb-2">DevWorks Bootcamp</h1>
                 <h3 className="text-primary mb-4">Add Course</h3>
-                <form onSubmit={onSubmit}>
-                  <div className="form-group">
-                    <label htmlFor="title">Course Title</label>
-                    <input
+                <Form onSubmit={onSubmit}>
+                  <Form.Group controlId="title" className="mb-3">
+                    <Form.Label>Course Title</Form.Label>
+                    <Form.Control
                       type="text"
-                      className="form-control"
-                      id="title"
                       name="title"
-                      value={title}
+                      placeholder="Title"
                       onChange={onChange}
                       required
-                      minLength="5"
-                      maxLength="50"
                     />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="description">Course Description</label>
-                    <textarea
-                      className="form-control"
-                      id="description"
-                      name="description"
-                      rows="5"
-                      value={description}
-                      onChange={onChange}
-                      required
-                      minLength="10"
-                      maxLength="500"
-                    ></textarea>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="weeks">Duration (weeks)</label>
-                    <input
+                  </Form.Group>
+
+                  <Form.Group controlId="duration" className="mb-3">
+                    <Form.Label>Duration</Form.Label>
+                    <Form.Control
                       type="number"
-                      className="form-control"
-                      id="weeks"
-                      name="weeks"
-                      value={weeks}
+                      name="duration"
+                      placeholder="Duration"
                       onChange={onChange}
                       required
-                      min="1"
-                      max="52"
                     />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="tuition">Tuition Cost ($)</label>
-                    <input
+                    <Form.Text className="text-muted">
+                      Enter number of weeks course lasts
+                    </Form.Text>
+                  </Form.Group>
+
+                  <Form.Group controlId="tuition" className="mb-3">
+                    <Form.Label>Course Tuition</Form.Label>
+                    <Form.Control
                       type="number"
-                      className="form-control"
-                      id="tuition"
                       name="tuition"
-                      value={tuition}
+                      placeholder="Tuition"
                       onChange={onChange}
                       required
-                      min="0"
                     />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="minimumSkill">Minimum Skill Required</label>
-                    <select
-                      className="form-control"
-                      id="minimumSkill"
+                    <Form.Text className="text-muted">
+                      USD Currency
+                    </Form.Text>
+                  </Form.Group>
+
+                  <Form.Group controlId="minimumSkill" className="mb-3">
+                    <Form.Label>Minimum Skill Required</Form.Label>
+                    <Form.Select
                       name="minimumSkill"
                       value={minimumSkill}
                       onChange={onChange}
-                      required
                     >
-                      <option value="beginner">Beginner</option>
+                      <option value="beginner">Beginner (Any)</option>
                       <option value="intermediate">Intermediate</option>
                       <option value="advanced">Advanced</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="scholarshipAvailable">Scholarship Available</label>
-                    <input
+                    </Form.Select>
+                  </Form.Group>
+
+                  <Form.Group controlId="description" className="mb-3">
+                    <Form.Control
+                      as="textarea"
+                      name="description"
+                      placeholder="Course description summary"
+                      rows={5}
+                      onChange={onChange}
+                      maxLength="500"
+                    />
+                    <Form.Text className="text-muted">
+                      No more than 500 characters
+                    </Form.Text>
+                  </Form.Group>
+
+                  <Form.Group controlId="scholarshipAvailable" className="mb-3">
+                    <Form.Check
                       type="checkbox"
-                      id="scholarshipAvailable"
+                      label="Scholarship Available"
                       name="scholarshipAvailable"
                       checked={scholarshipAvailable}
                       onChange={onChange}
                     />
-                  </div>
-                  <input type="submit" className="btn btn-primary btn-block" value="Add Course" />
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                  </Form.Group>
+
+                  <Button type="submit" variant="primary" className="w-100">
+                    Add Course
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 };
 
 export default AddCoursePage;
+
