@@ -1,3 +1,5 @@
+import React from 'react';
+import { Container, Row, Col, Card, Table } from 'react-bootstrap';
 import BootcampReviewRating from '../../components/BootcampReviewRating';
 
 const bootcamps = [
@@ -15,38 +17,36 @@ const bootcamps = [
 
 const ManageReviewsPage = () => {
   return (
-    <section class="container mt-5">
-      <div className="container">
-        <div class="row">
-          <div class="col-md-8 m-auto">
-            <div class="card bg-white py-2 px-4">
-              <div class="card-body">
-                <h1 class="mb-4">Manage Reviews</h1>
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">Bootcamp</th>
-                      <th scope="col">Rating</th>
-                      <th scope="col"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {bootcamps.map((b) => (
-                      <BootcampReviewRating
-                        key={b.id}
-                        bootcampId={b.id}
-                        bootCampName={b.name}
-                        bootCampRating={b.rating}
-                      />
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Container className="mt-5">
+      <Row className="justify-content-center">
+        <Col md={8}>
+          <Card className="bg-white py-2 px-4">
+            <Card.Body>
+              <h1 className="mb-4">Manage Reviews</h1>
+              <Table striped>
+                <thead>
+                  <tr>
+                    <th>Bootcamp</th>
+                    <th>Rating</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {bootcamps.map((b) => (
+                    <BootcampReviewRating
+                      key={b.id}
+                      bootcampId={b.id}
+                      bootCampName={b.name}
+                      bootCampRating={b.rating}
+                    />
+                  ))}
+                </tbody>
+              </Table>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
