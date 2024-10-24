@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Oval } from 'react-loader-spinner';
 import { Bootcamp } from '../../components';
 import bootcampService from '../../services/bootcampService';
+import Pagination from '../../components/Pagination';
 
 const BootcampsPage = () => {
   const [bootcamps, setBootcamps] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [Data, setData] = useState();
+
 
   // Load bootcamps from API
   useEffect(() => {
@@ -15,6 +18,8 @@ const BootcampsPage = () => {
         const fields = ['photo', 'name', 'averageRating', 'location', 'careers', 'id'];
         const res = await bootcampService.getBootcamps(fields);
         setBootcamps(res.data);
+        console.log('res',res.total)
+        setData(res.total)
         setFetchError(null);
       } catch (error) {
         setFetchError(error.message);
@@ -24,6 +29,7 @@ const BootcampsPage = () => {
     };
     fetchBootcamps();
   }, []);
+
 
   return (
     <section className="browse my-5">
@@ -43,6 +49,7 @@ const BootcampsPage = () => {
             ))}
           </div>
         )}
+        <Pagination TotalCount={Data}  />
       </div>
     </section>
   );
