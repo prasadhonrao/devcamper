@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import { AiOutlineLeft } from 'react-icons/ai';
 import courseService from '../../services/courseService';
 import { getToken } from '../../helpers/auth';
-import { toast } from 'react-toastify';
-import { Form, Button, Container, Row, Col, Card} from 'react-bootstrap';
 
 const AddCoursePage = () => {
   const { bootcampId } = useParams();
@@ -65,50 +65,24 @@ const AddCoursePage = () => {
                 <Form onSubmit={onSubmit}>
                   <Form.Group controlId="title" className="mb-3">
                     <Form.Label>Course Title</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="title"
-                      placeholder="Title"
-                      onChange={onChange}
-                      required
-                    />
+                    <Form.Control type="text" name="title" placeholder="Title" onChange={onChange} required />
                   </Form.Group>
 
                   <Form.Group controlId="duration" className="mb-3">
                     <Form.Label>Duration</Form.Label>
-                    <Form.Control
-                      type="number"
-                      name="duration"
-                      placeholder="Duration"
-                      onChange={onChange}
-                      required
-                    />
-                    <Form.Text className="text-muted">
-                      Enter number of weeks course lasts
-                    </Form.Text>
+                    <Form.Control type="number" name="duration" placeholder="Duration" onChange={onChange} required />
+                    <Form.Text className="text-muted">Enter number of weeks course lasts</Form.Text>
                   </Form.Group>
 
                   <Form.Group controlId="tuition" className="mb-3">
                     <Form.Label>Course Tuition</Form.Label>
-                    <Form.Control
-                      type="number"
-                      name="tuition"
-                      placeholder="Tuition"
-                      onChange={onChange}
-                      required
-                    />
-                    <Form.Text className="text-muted">
-                      USD Currency
-                    </Form.Text>
+                    <Form.Control type="number" name="tuition" placeholder="Tuition" onChange={onChange} required />
+                    <Form.Text className="text-muted">USD Currency</Form.Text>
                   </Form.Group>
 
                   <Form.Group controlId="minimumSkill" className="mb-3">
                     <Form.Label>Minimum Skill Required</Form.Label>
-                    <Form.Select
-                      name="minimumSkill"
-                      value={minimumSkill}
-                      onChange={onChange}
-                    >
+                    <Form.Select name="minimumSkill" value={minimumSkill} onChange={onChange}>
                       <option value="beginner">Beginner (Any)</option>
                       <option value="intermediate">Intermediate</option>
                       <option value="advanced">Advanced</option>
@@ -124,9 +98,7 @@ const AddCoursePage = () => {
                       onChange={onChange}
                       maxLength="500"
                     />
-                    <Form.Text className="text-muted">
-                      No more than 500 characters
-                    </Form.Text>
+                    <Form.Text className="text-muted">No more than 500 characters</Form.Text>
                   </Form.Group>
 
                   <Form.Group controlId="scholarshipAvailable" className="mb-3">
@@ -153,4 +125,3 @@ const AddCoursePage = () => {
 };
 
 export default AddCoursePage;
-
