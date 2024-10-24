@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# Function to run install script in a directory
+# Function to run install scripts in specified directories
 run_install() {
   local dir=$1
-  cd "$dir" || { echo "Failed to change directory to $dir"; exit 1; }
+  echo -e "\033[1;34m==================== Installing $dir ====================\033[0m"
+  cd "$dir" || { echo -e "\033[1;31mFailed to change directory to $dir\033[0m"; exit 1; }
   bash ./install.sh
-  cd - > /dev/null || { echo "Failed to return to previous directory"; exit 1; }
+  cd - > /dev/null || { echo -e "\033[1;31mFailed to return to previous directory\033[0m"; exit 1; }
+  echo -e "\033[1;34m==================== Finished $dir ====================\033[0m"
 }
 
 # Set trap to ensure we return to the original directory on exit
@@ -16,3 +18,4 @@ run_install namespace
 run_install database
 run_install webapi
 run_install webapp
+run_install network

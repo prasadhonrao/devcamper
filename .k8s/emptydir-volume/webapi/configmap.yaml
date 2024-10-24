@@ -4,7 +4,7 @@ metadata:
   name: devcamper-webapi-configmap
   namespace: devcamper-namespace
 data:
-  mongodb_host: 'devcamper-db-clusterip-service'
+  mongodb_host: 'devcamper-db-service'
   mongodb_port: '27017'
   mongodb_db_name: 'devcamper-db'
   mongodb_db_params: 'authSource=admin'

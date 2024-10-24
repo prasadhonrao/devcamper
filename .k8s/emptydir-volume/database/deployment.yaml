@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: devcamper-db-container
-          image: mongo:4.4
+          image: mongo
           ports:
             - containerPort: 27017
           env:
@@ -44,8 +44,8 @@ spec:
               memory: '1Gi'
               cpu: '1'
           volumeMounts:
-            - name: mongo-volume
+            - name: mongodb-volume
               mountPath: /data/db
       volumes:
-        - name: mongo-volume
+        - name: mongodb-volume
           emptyDir: {}
