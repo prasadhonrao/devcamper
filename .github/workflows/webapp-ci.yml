@@ -8,6 +8,10 @@ on:
       - 'src/webapp/**'
   workflow_dispatch:
 
+env:
+  DOCKER_IMAGE: prasadhonrao/devcamper-webapp
+  AZURE_WEBAPP_NAME: devcamper-webapp
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -29,33 +33,164 @@ jobs:
           export PATH=$(pwd)/src/webapp/node_modules/.bin:$PATH
           npm run lint --prefix src/webapp
 
-  build:
+  dependency-check:
     runs-on: ubuntu-latest
     needs: lint
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js version
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: '20'
 
-      - name: npm install, build, and test
-        working-directory: ./src/webapp
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+      - name: Install dependencies
+        run: npm install --prefix src/webapp
 
-      - name: Zip artifact for deployment
-        working-directory: ./src/webapp
-        run: |
-          cd build
-          zip -r ../release.zip ./*
+      - name: Run dependency check
+        run: npm audit --audit-level=high --prefix src/webapp
 
-      - name: Upload artifact for deployment job
+  security:
+    runs-on: ubuntu-latest
+    needs: dependency-check
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --prefix src/webapp
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: javascript
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+  test:
+    runs-on: ubuntu-latest
+    needs: security
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --prefix src/webapp
+
+      - name: Run tests
+        run: npm test --prefix src/webapp
+
+  code-coverage:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --prefix src/webapp
+
+      - name: Run tests with coverage
+        run: npm run test --prefix src/webapp -- --coverage
+
+      - name: Upload coverage report
         uses: actions/upload-artifact@v4
         with:
-          name: node-app
-          path: ./src/webapp/release.zip
+          name: coverage-report
+          path: src/webapp/coverage
+
+  build:
+    runs-on: ubuntu-latest
+    needs: code-coverage
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t ${{ env.DOCKER_IMAGE }}:${{ github.sha }} -f src/webapp/Dockerfile src/webapp
+          docker tag ${{ env.DOCKER_IMAGE }}:${{ github.sha }} ${{ env.DOCKER_IMAGE }}:latest
+          docker push ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+          docker push ${{ env.DOCKER_IMAGE }}:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Log in to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_SERVICE_PRINCIPAL }}
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          images: '${{ env.DOCKER_IMAGE }}:latest'
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: always()
+
+    steps:
+      - name: Send email notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_PASSWORD }}
+          subject: '${{ job.status }}: DevCamper APP Deployment'
+          body: |
+            The deployment has ${{ job.status }}!
+            Repository: ${{ github.repository }}
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.sha }}
+            Author: ${{ github.actor }}
+            Workflow: ${{ github.workflow }}
+            Job: ${{ github.job }}
+            Run ID: ${{ github.run_id }}
+            Run Number: ${{ github.run_number }}
+            Logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          to: ${{ secrets.NOTIFY_EMAIL }}
+          from: ${{ secrets.GMAIL_USERNAME }}
