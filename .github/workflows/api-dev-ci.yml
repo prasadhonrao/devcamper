@@ -5,7 +5,7 @@ on:
     branches:
       - development
     paths:
-      - 'api/**'
+      - 'src/webapi/**'
   workflow_dispatch:
 
 jobs:
@@ -22,12 +22,12 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --prefix api
+        run: npm install --prefix webapi
 
       - name: Run linter
         run: |
-          export PATH=$(pwd)/api/node_modules/.bin:$PATH
-          npm run lint --prefix api
+          export PATH=$(pwd)/src/webapi/node_modules/.bin:$PATH
+          npm run lint --prefix webapi
 
   dependency-check:
     runs-on: ubuntu-latest
@@ -43,10 +43,10 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --prefix api
+        run: npm install --prefix webapi
 
       - name: Run dependency check
-        run: npm audit --audit-level=high --prefix api
+        run: npm audit --audit-level=high --prefix webapi
 
   security:
     runs-on: ubuntu-latest
@@ -66,7 +66,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --prefix api
+        run: npm install --prefix webapi
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
@@ -93,10 +93,10 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --prefix api
+        run: npm install --prefix webapi
 
       - name: Run tests
-        run: npm test --prefix api
+        run: npm test --prefix webapi
 
   code-coverage:
     runs-on: ubuntu-latest
@@ -112,13 +112,13 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --prefix api
+        run: npm install --prefix webapi
 
       - name: Run tests with coverage
-        run: npm run test --prefix api -- --coverage
+        run: npm run test --prefix webapi -- --coverage
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: api/coverage
+          path: webapi/coverage

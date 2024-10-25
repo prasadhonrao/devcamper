@@ -1,5 +1,5 @@
 {
-  "name": "devcamper-ui",
+  "name": "devcamper-webapp",
   "version": "1.0.0",
   "private": true,
   "dependencies": {

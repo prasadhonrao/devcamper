@@ -5,7 +5,7 @@ on:
     branches:
       - development
     paths:
-      - 'ui/**'
+      - 'src/webapp/**'
   workflow_dispatch:
 
 jobs:
@@ -21,14 +21,14 @@ jobs:
           node-version: '20.x'
 
       - name: npm install, build, and test
-        working-directory: ./ui
+        working-directory: ./src/webapp
         run: |
           npm install
           npm run build --if-present
           npm run test --if-present
 
       - name: Zip artifact for deployment
-        working-directory: ./ui
+        working-directory: ./webapp
         run: |
           cd build
           zip -r ../release.zip ./*
@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: ./ui/release.zip
+          path: ./webapp/release.zip
 
   deploy:
     runs-on: ubuntu-latest

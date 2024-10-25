@@ -5,7 +5,7 @@ on:
     branches:
       - development
     paths:
-      - 'api/**'
+      - 'src/webapi/**'
   workflow_dispatch:
 
 env:
