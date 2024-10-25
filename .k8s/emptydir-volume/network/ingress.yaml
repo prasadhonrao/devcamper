@@ -17,7 +17,7 @@ spec:
               service:
                 name: devcamper-webapp-service
                 port:
-                  number: 80
+                  number: 3000
     - host: devcamper.webapi
       http:
         paths:
@@ -27,4 +27,4 @@ spec:
               service:
                 name: devcamper-webapi-service
                 port:
-                  number: 80
+                  number: 5000
