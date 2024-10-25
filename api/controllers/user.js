@@ -174,7 +174,7 @@ const sendTokenResponse = (user, statusCode, res) => {
 
   // Cookie options
   const options = {
-    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000), // Convert to days
+    expires: new Date(Date.now() + process.env.jwt_cookie_expire * 24 * 60 * 60 * 1000), // Convert to days
     httpOnly: true,
   };
 
