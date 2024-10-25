@@ -31,7 +31,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ env.DOCKER_IMAGE }}:${{ github.sha }} -f src/webapi/Dockerfile webapi
+          docker build -t ${{ env.DOCKER_IMAGE }}:${{ github.sha }} -f src/webapi/Dockerfile src/webapi
           docker tag ${{ env.DOCKER_IMAGE }}:${{ github.sha }} ${{ env.DOCKER_IMAGE }}:latest
           docker push ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
           docker push ${{ env.DOCKER_IMAGE }}:latest
