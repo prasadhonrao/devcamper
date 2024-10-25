@@ -52,9 +52,9 @@ UserSchema.methods.getSignedJwtToken = function () {
     {
       id: this._id,
     },
-    process.env.JWT_SECRET,
+    process.env.jwt_secret,
     {
-      expiresIn: process.env.JWT_EXPIRE,
+      expiresIn: process.env.jwt_expire,
     }
   );
 };

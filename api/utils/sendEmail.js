@@ -4,18 +4,18 @@ import loadEnvironmentConfig from '../config/env.js';
 loadEnvironmentConfig();
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT,
+  host: process.env.smtp_host,
+  port: process.env.smtp_port,
   secure: false,
   auth: {
-    user: process.env.SMTP_EMAIL,
-    pass: process.env.SMTP_PASSWORD,
+    user: process.env.smtp_email,
+    pass: process.env.smtp_password,
   },
 });
 
 const sendEmail = async (options) => {
   const message = {
-    from: `${process.env.FROM_NAME}<${process.env.FROM_EMAIL}>`, // sender address
+    from: `${process.env.from_name}<${process.env.from_email}>`, // sender address
     to: options.email, // list of receivers
     subject: options.subject, // Subject line
     text: options.message, // plain text body
