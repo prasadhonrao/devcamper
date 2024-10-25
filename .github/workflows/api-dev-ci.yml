@@ -22,12 +22,12 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --prefix webapi
+        run: npm install --prefix src/webapi
 
       - name: Run linter
         run: |
           export PATH=$(pwd)/src/webapi/node_modules/.bin:$PATH
-          npm run lint --prefix webapi
+          npm run lint --prefix src/webapi
 
   dependency-check:
     runs-on: ubuntu-latest
@@ -43,10 +43,10 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --prefix webapi
+        run: npm install --prefix src/webapi
 
       - name: Run dependency check
-        run: npm audit --audit-level=high --prefix webapi
+        run: npm audit --audit-level=high --prefix src/webapi
 
   security:
     runs-on: ubuntu-latest
@@ -66,7 +66,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --prefix webapi
+        run: npm install --prefix src/webapi
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
@@ -93,10 +93,10 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --prefix webapi
+        run: npm install --prefix src/webapi
 
       - name: Run tests
-        run: npm test --prefix webapi
+        run: npm test --prefix src/webapi
 
   code-coverage:
     runs-on: ubuntu-latest
@@ -112,13 +112,13 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --prefix webapi
+        run: npm install --prefix src/webapi
 
       - name: Run tests with coverage
-        run: npm run test --prefix webapi -- --coverage
+        run: npm run test --prefix src/webapi -- --coverage
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: webapi/coverage
+          path: src/webapi/coverage
