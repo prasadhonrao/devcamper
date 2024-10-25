@@ -9992,13 +9992,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps/670faa12c80944ccdbb62a2d/courses",
+							"raw": "{{url}}/bootcamps/5d726e9b7b292f5f8ceff800/courses",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"bootcamps",
-								"670faa12c80944ccdbb62a2d",
+								"5d726e9b7b292f5f8ceff800",
 								"courses"
 							]
 						}
