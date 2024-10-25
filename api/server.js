@@ -37,7 +37,7 @@ app.use(helmet()); // Set security headers
 app.use(xss()); // Prevent cross site scripting attacks
 
 // Trust the proxies
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 const rateLimitMax = process.env.rate_limit_max || 100;
 const rateLimitWindowMs = process.env.rate_limit_window || 15 * 60 * 1000; // Default to 15 minutes
