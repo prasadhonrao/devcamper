@@ -147,7 +147,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ env.DOCKER_IMAGE }}:${{ github.sha }} -f src/webapp/Dockerfile src/webapp
+          docker build --build-arg REACT_APP_DEVCAMPER_BASE_API_URI=${{ secrets.REACT_APP_DEVCAMPER_BASE_API_URI }} -t ${{ env.DOCKER_IMAGE }}:${{ github.sha }} -f src/webapp/Dockerfile src/webapp
           docker tag ${{ env.DOCKER_IMAGE }}:${{ github.sha }} ${{ env.DOCKER_IMAGE }}:latest
           docker push ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
           docker push ${{ env.DOCKER_IMAGE }}:latest
