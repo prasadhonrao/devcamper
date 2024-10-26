@@ -1,9 +1,10 @@
 import { getToken } from '../helpers/auth';
-const API_BASE_URI = process.env.REACT_APP_DEVCAMPER_BASE_API_URI + '/user';
+import { fetchApiEndPoint } from '../utils/configService';
 
 const userService = {
   register: async (user) => {
-    const res = await fetch(`${API_BASE_URI}/register`, {
+    const uri = await fetchApiEndPoint(`/user/register`);
+    const res = await fetch(uri, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -17,7 +18,8 @@ const userService = {
   },
 
   login: async (user) => {
-    const res = await fetch(`${API_BASE_URI}/login`, {
+    const uri = await fetchApiEndPoint(`/user/login`);
+    const res = await fetch(uri, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,7 +33,8 @@ const userService = {
   },
 
   logout: async () => {
-    const res = await fetch(`${API_BASE_URI}/logout`, {
+    const uri = await fetchApiEndPoint(`/user/logout`);
+    const res = await fetch(uri, {
       method: 'GET',
     });
     if (!res.ok) {
@@ -41,8 +44,9 @@ const userService = {
   },
 
   getMe: async () => {
+    const uri = await fetchApiEndPoint(`/user/getMe`);
     const token = getToken();
-    const res = await fetch(`${API_BASE_URI}/me`, {
+    const res = await fetch(uri, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -55,7 +59,8 @@ const userService = {
   },
 
   forgotPassword: async (email) => {
-    const res = await fetch(`${API_BASE_URI}/forgotpassword`, {
+    const uri = await fetchApiEndPoint(`/user/forgotpassword`);
+    const res = await fetch(uri, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -69,7 +74,8 @@ const userService = {
   },
 
   resetPassword: async (password) => {
-    const res = await fetch(`${API_BASE_URI}/resetpassword`, {
+    const uri = await fetchApiEndPoint(`/user/resetpassword`);
+    const res = await fetch(uri, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -84,7 +90,8 @@ const userService = {
 
   updateDetails: async (user) => {
     const token = getToken();
-    const res = await fetch(`${API_BASE_URI}/updatedetails`, {
+    const uri = await fetchApiEndPoint(`/user/updatedetails`);
+    const res = await fetch(uri, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -99,7 +106,8 @@ const userService = {
   },
 
   updatePassword: async (password) => {
-    const res = await fetch(`${API_BASE_URI}/updatepassword`, {
+    const uri = await fetchApiEndPoint(`/user/updatepassword`);
+    const res = await fetch(uri, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

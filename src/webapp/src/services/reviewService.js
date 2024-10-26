@@ -1,8 +1,9 @@
-const API_BASE_URI = process.env.REACT_APP_DEVCAMPER_BASE_API_URI;
+import { fetchApiEndPoint } from '../utils/configService';
 
 const reviewService = {
   getReviewsByBootcamp: async (bootcampId) => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps/${bootcampId}/reviews`);
+    const uri = await fetchApiEndPoint(`/bootcamps/${bootcampId}/reviews`);
+    const res = await fetch(uri);
     if (!res.ok) {
       throw new Error('Failed to fetch reviews');
     }
@@ -10,7 +11,8 @@ const reviewService = {
   },
 
   getReviews: async () => {
-    const res = await fetch(`${API_BASE_URI}/reviews`);
+    const uri = await fetchApiEndPoint(`/reviews`);
+    const res = await fetch(uri);
     if (!res.ok) {
       throw new Error('Failed to fetch reviews');
     }
@@ -18,7 +20,8 @@ const reviewService = {
   },
 
   getReview: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/reviews/${id}`);
+    const uri = await fetchApiEndPoint(`/reviews/${id}`);
+    const res = await fetch(uri);
     if (!res.ok) {
       throw new Error('Failed to fetch review');
     }
@@ -26,7 +29,8 @@ const reviewService = {
   },
 
   createReview: async (review) => {
-    const res = await fetch(`${API_BASE_URI}/reviews`, {
+    const uri = await fetchApiEndPoint(`/reviews`);
+    const res = await fetch(uri, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +44,8 @@ const reviewService = {
   },
 
   updateReview: async (id, review) => {
-    const res = await fetch(`${API_BASE_URI}/reviews/${id}`, {
+    const uri = await fetchApiEndPoint(`/reviews/${id}`);
+    const res = await fetch(uri, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -54,7 +59,8 @@ const reviewService = {
   },
 
   deleteReview: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/reviews/${id}`, {
+    const uri = await fetchApiEndPoint(`/reviews/${id}`);
+    const res = await fetch(uri, {
       method: 'DELETE',
     });
     if (!res.ok) {

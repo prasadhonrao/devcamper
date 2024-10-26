@@ -1,8 +1,9 @@
-const API_BASE_URI = process.env.REACT_APP_DEVCAMPER_BASE_API_URI + '/admin';
+import { fetchApiEndPoint } from '../utils/configService';
 
 const adminService = {
   getUsers: async () => {
-    const res = await fetch(`${API_BASE_URI}/users`);
+    const uri = await fetchApiEndPoint(`/admin/users`);
+    const res = await fetch(uri);
     if (!res.ok) {
       throw new Error('Failed to fetch users');
     }
@@ -10,7 +11,8 @@ const adminService = {
   },
 
   getUser: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/users/${id}`);
+    const uri = await fetchApiEndPoint(`/admin/users/${id}`);
+    const res = await fetch(uri);
     if (!res.ok) {
       throw new Error('Failed to fetch user');
     }
@@ -18,7 +20,8 @@ const adminService = {
   },
 
   createUser: async (user) => {
-    const res = await fetch(`${API_BASE_URI}/users`, {
+    const uri = await fetchApiEndPoint(`/admin/users`);
+    const res = await fetch(uri, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +35,8 @@ const adminService = {
   },
 
   updateUser: async (id, user) => {
-    const res = await fetch(`${API_BASE_URI}/users/${id}`, {
+    const uri = await fetchApiEndPoint(`/admin/users/${id}`);
+    const res = await fetch(uri, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +50,8 @@ const adminService = {
   },
 
   deleteUser: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/users/${id}`, {
+    const uri = await fetchApiEndPoint(`/admin/users/${id}`);
+    const res = await fetch(uri, {
       method: 'DELETE',
     });
     if (!res.ok) {

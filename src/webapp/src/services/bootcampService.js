@@ -1,19 +1,21 @@
 import { getAuthHeaders } from '../helpers/auth';
-
-const API_BASE_URI = process.env.REACT_APP_DEVCAMPER_BASE_API_URI;
+import { fetchApiEndPoint } from '../utils/configService';
 
 const bootcampService = {
   getBootcamps: async (fields) => {
     const query = fields ? `?select=${fields.join(',')}` : '';
-    const res = await fetch(`${API_BASE_URI}/bootcamps${query}`);
+    const uri = await fetchApiEndPoint(`/bootcamps${query}`);
+    const res = await fetch(uri);
     if (!res.ok) {
+      console.log(`Failed to fetch bootcamps: ${res.status}`);
       throw new Error('Failed to fetch bootcamps');
     }
     return res.json();
   },
 
   getBootcampsByPublisher: async (publisherId) => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps/publisher/${publisherId}`, {
+    const uri = await fetchApiEndPoint(`/bootcamps/publisher/${publisherId}`);
+    const res = await fetch(uri, {
       headers: getAuthHeaders(),
     });
     if (!res.ok) {
@@ -23,7 +25,8 @@ const bootcampService = {
   },
 
   getBootcamp: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps/${id}`);
+    const uri = await fetchApiEndPoint(`/bootcamps/${id}`);
+    const res = await fetch(uri);
     if (!res.ok) {
       throw new Error('Failed to fetch bootcamp');
     }
@@ -31,7 +34,8 @@ const bootcampService = {
   },
 
   createBootcamp: async (bootcamp) => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps`, {
+    const uri = await fetchApiEndPoint(`/bootcamps`);
+    const res = await fetch(uri, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -45,7 +49,8 @@ const bootcampService = {
   },
 
   updateBootcamp: async (id, bootcamp) => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps/${id}`, {
+    const uri = await fetchApiEndPoint(`/bootcamps/${id}`);
+    const res = await fetch(uri, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -59,7 +64,8 @@ const bootcampService = {
   },
 
   deleteBootcamp: async (id) => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps/${id}`, {
+    const uri = await fetchApiEndPoint(`/bootcamps/${id}`);
+    const res = await fetch(uri, {
       method: 'DELETE',
     });
     if (!res.ok) {
@@ -69,7 +75,8 @@ const bootcampService = {
   },
 
   getBootcampsInRadius: async (zipcode, distance) => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps/radius/${zipcode}/${distance}`);
+    const uri = await fetchApiEndPoint(`/bootcamps/radius/${zipcode}/${distance}`);
+    const res = await fetch(uri);
     if (!res.ok) {
       throw new Error('Failed to fetch bootcamps in radius');
     }
@@ -77,7 +84,8 @@ const bootcampService = {
   },
 
   getCoursesByBootcampId: async (bootcampId) => {
-    const res = await fetch(`${API_BASE_URI}/bootcamps/${bootcampId}/courses`);
+    const uri = await fetchApiEndPoint(`/bootcamps/${bootcampId}/courses`);
+    const res = await fetch(uri);
     if (!res.ok) {
       throw new Error('Failed to fetch bootcamp courses');
     }
