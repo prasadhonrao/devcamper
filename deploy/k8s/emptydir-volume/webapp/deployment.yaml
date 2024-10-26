@@ -18,12 +18,10 @@ spec:
           image: prasadhonrao/devcamper-webapp:latest
           ports:
             - containerPort: 3000
-          env:
-            - name: REACT_APP_DEVCAMPER_BASE_API_URI
-              valueFrom:
-                configMapKeyRef:
-                  name: devcamper-webapp-configmap
-                  key: react_app_devcamper_base_api_uri
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/build/config/config.json
+              subPath: config.json
           resources:
             limits:
               memory: '2Gi'
@@ -31,3 +29,7 @@ spec:
             requests:
               memory: '1Gi'
               cpu: '1'
+      volumes:
+        - name: config-volume
+          configMap:
+            name: devcamper-webapp-configmap

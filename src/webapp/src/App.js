@@ -19,9 +19,6 @@ import { AuthProvider } from './contexts/AuthContext';
 import Layout from './components/Layout';
 
 function App() {
-  // Log environment variables
-  console.log('REACT_APP_DEVCAMPER_BASE_API_URI:', process.env.REACT_APP_DEVCAMPER_BASE_API_URI);
-
   return (
     <AuthProvider>
       <BrowserRouter>

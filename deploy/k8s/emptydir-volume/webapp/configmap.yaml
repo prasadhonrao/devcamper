@@ -4,4 +4,7 @@ metadata:
   name: devcamper-webapp-configmap
   namespace: devcamper-namespace
 data:
-  react_app_devcamper_base_api_uri: 'http://devcamper.webapi/api/v1'
+  config.json: |
+    {
+      "react_app_devcamper_base_api_uri": "http://devcamper.webapi/api/v1"
+    }
