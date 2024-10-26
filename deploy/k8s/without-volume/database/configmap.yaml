@@ -4,4 +4,4 @@ metadata:
   name: devcamper-db-configmap
   namespace: devcamper-namespace
 data:
-  mongodb_db_name: 'devcamper-db'
+  mongodb_db_name: devcamper-db

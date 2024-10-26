@@ -1,6 +1,6 @@
 # Setup Instructions
 
-Follow the below instructions to setup the application in Kubernetes cluster without using Persistent Volume. Note that the data will be stored in the container and will be lost when the container restarts or when the pod is deleted.
+Follow the below instructions to setup the application in Kubernetes cluster using EmptyDir Volume. Note that the data will be lost when the pod is deleted.
 
 ## Database Secrets
 
@@ -42,7 +42,7 @@ Follow the below instructions to setup the application in Kubernetes cluster wit
 5. Create JWT secret and encode it in base64 format and provide it in webapi/secret.yaml file:
 
    ```bash
-    echo -n 'JWT_SECRET' | base64
+      echo -n 'JWT_SECRET ' | base64
    ```
 
 ## Deploy the Application
@@ -67,13 +67,15 @@ Follow the below instructions to setup the application in Kubernetes cluster wit
    mongodb://admin:password@localhost:32017/
    ```
 
-3. Delete the database pod using the following command:
+3. Restart the container using Docker Desktop to see the data in the database.
+
+4. Delete the database pod using the following command:
 
    ```bash
    kubectl delete pod -l app=devcamper-db -n devcamper-namespace
    ```
 
-4. Note that deployment creates a new pod but the data is lost as the data is stored in the container and not in the Persistent Volume.
+5. Note that deployment creates a new pod but the data is lost as the data is stored in the container and not in the Persistent Volume.
 
 ## Uninstall the Application
 
