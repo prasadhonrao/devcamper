@@ -9,6 +9,7 @@ data:
   mongodb_db_name: 'devcamper-db'
   mongodb_db_params: 'authSource=admin'
   geocoder_provider: 'mapquest'
+  jwt_expire: '30d'
   jwt_cookie_expire: '30'
   file_upload_path: './public/uploads'
   max_file_upload: '1000000'

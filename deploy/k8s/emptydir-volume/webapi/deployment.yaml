@@ -54,6 +54,11 @@ spec:
                 configMapKeyRef:
                   name: devcamper-webapi-configmap
                   key: geocoder_provider
+            - name: jwt_expire
+              valueFrom:
+                configMapKeyRef:
+                  name: devcamper-webapi-configmap
+                  key: jwt_expire
             - name: jwt_cookie_expire
               valueFrom:
                 configMapKeyRef:
