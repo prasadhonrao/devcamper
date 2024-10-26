@@ -1,6 +1,7 @@
-import { AiOutlineLeft } from 'react-icons/ai';
-import { Link, useParams } from 'react-router-dom'; // Import useParams to get bootcampId from URL
 import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
+import { AiOutlineLeft } from 'react-icons/ai';
 
 const AddReviewPage = () => {
   const { bootcampId } = useParams(); // Get bootcampId from URL parameters
@@ -12,12 +13,11 @@ const AddReviewPage = () => {
 
   return (
     <section className="container mt-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8 m-auto">
-            <div className="card bg-white py-2 px-4">
-              <div className="card-body">
-                {/* Update Link to go back to the specific bootcamp details */}
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col md={8}>
+            <Card className="bg-white py-2 px-4">
+              <Card.Body>
                 <Link to={`/bootcamps/${bootcampId}`} className="btn btn-link text-secondary my-3">
                   <AiOutlineLeft className="mb-1" style={{ fontSize: '28px' }} /> Bootcamp Info
                 </Link>
@@ -26,40 +26,40 @@ const AddReviewPage = () => {
                 <h3 className="text-primary mb-4">Write a Review</h3>
                 <p>You must have attended and graduated this bootcamp to review.</p>
                 <br />
-                <form action="reviews.html">
-                  <div className="form-group">
-                    <label htmlFor="rating">
+                <Form>
+                  <Form.Group controlId="rating" className="form-group">
+                    <Form.Label>
                       Rating: <span className="text-primary">{rating}</span>
-                    </label>
-                    <input
+                    </Form.Label>
+                    <Form.Control
                       type="range"
-                      className="custom-range"
                       min="1"
                       max="10"
                       step="1"
                       value={rating}
                       id="rating"
                       onChange={handleRatingChange}
+                      className="custom-range border-0"
                     />
-                  </div>
+                  </Form.Group>
 
-                  <div className="form-group">
-                    <input type="text" name="title" className="form-control" placeholder="Review title" />
-                  </div>
+                  <Form.Group controlId="reviewTitle">
+                    <Form.Control type="text" name="title" placeholder="Review title" className="mb-3" />
+                  </Form.Group>
 
-                  <div className="form-group">
-                    <textarea name="review" rows="10" className="form-control" placeholder="Your review"></textarea>
-                  </div>
+                  <Form.Group controlId="reviewText">
+                    <Form.Control as="textarea" name="review" rows={10} placeholder="Your review" className="mb-3" />
+                  </Form.Group>
 
-                  <div className="form-group">
-                    <input type="submit" value="Submit Review" className="btn btn-primary btn-block" />
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                  <Button type="submit" variant="primary" className="w-100">
+                    Submit Review
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 };
