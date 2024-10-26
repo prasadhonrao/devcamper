@@ -29,6 +29,8 @@ spec:
           ports:
             - containerPort: 5000
           env:
+            - name: NODE_ENV
+              value: 'production'
             - name: mongodb_host
               valueFrom:
                 configMapKeyRef:

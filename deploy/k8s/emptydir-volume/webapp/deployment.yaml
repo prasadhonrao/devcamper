@@ -18,6 +18,9 @@ spec:
           image: prasadhonrao/devcamper-webapp:latest
           ports:
             - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: 'production'
           volumeMounts:
             - name: config-volume
               mountPath: /app/build/config/config.json
