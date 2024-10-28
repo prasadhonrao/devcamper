@@ -4,7 +4,7 @@ metadata:
   name: devcamper-webapp-configmap
   namespace: devcamper-namespace
 data:
-  config.json: |
+  devcamper-config-json: |
     {
       "development": {
         "react_app_devcamper_base_api_uri": "http://localhost:5000/api/v1"

@@ -45,9 +45,9 @@ spec:
               memory: '1Gi'
               cpu: '1'
           volumeMounts:
-            - name: mongo-volume
+            - name: mongodb-volume
               mountPath: /data/db
       volumes:
-        - name: mongo-volume
+        - name: mongodb-volume
           persistentVolumeClaim:
             claimName: devcamper-pvc
