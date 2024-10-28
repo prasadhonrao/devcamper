@@ -30,8 +30,7 @@ spec:
               cpu: '1'
           volumeMounts:
             - name: config-volume
-              mountPath: /app/build/config/config.json # /app/build is the path where the app is deployed. Check the Dockerfile of the webapp where node server is monitoring build folder and app is the working directory. Ensures that the mountPath is set to the full path where the config.json file should be placed.
-              subPath: devcamper-config-json # this is the key in the configmap data section
+              mountPath: /app/config
       volumes:
         - name: config-volume
           configMap:
