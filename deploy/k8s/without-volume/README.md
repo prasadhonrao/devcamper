@@ -1,8 +1,21 @@
-# Setup Instructions
+# Overview
 
-Follow the below instructions to setup the application in Kubernetes cluster using EmptyDir Volume. Note that the data will be lost when the pod is deleted.
+Follow the below instructions to understand data storage behavior in K8s cluster when no volume is defined and how to setup the application in Kubernetes cluster without using any Volume.
 
-## Database Secrets
+## Data Storage in Kubernetes without Volume
+
+- Data Storage: The data is stored in the container's writable layer.
+- Ephemeral Storage: The data is ephemeral and tied to the container's lifecycle.
+- Container Dependency:
+  - Restart: If the container is restarted (e.g., stopped and started again), the data in the writable layer persists.
+  - Removal: If the container is deleted and a new container is created, the data in the writable layer is lost.
+- Isolation: Each container has its own writable layer, so data is isolated to that specific contai
+
+## Setup Instructions
+
+Follow the below instructions to setup the application in Kubernetes cluster using EmptyDir Volume.
+
+### Database Secrets
 
 1. Create Mongo database username and password in base64 format:
 
@@ -13,7 +26,7 @@ Follow the below instructions to setup the application in Kubernetes cluster usi
 
 2. Provide the created username and password in the secrets file secrets.yaml
 
-## Web API Secrets
+### Web API Secrets
 
 1. Provide database username and password created earlier in webapi/secret.yaml file
 
@@ -45,7 +58,7 @@ Follow the below instructions to setup the application in Kubernetes cluster usi
       echo -n 'JWT_SECRET ' | base64
    ```
 
-## Deploy the Application
+### Deploy the Application
 
 1. Deploy the application by running the following command:
 
@@ -53,7 +66,7 @@ Follow the below instructions to setup the application in Kubernetes cluster usi
    install.sh
    ```
 
-## Test the Application
+### Test the Application
 
 1. Navigate to the api folder and import data by running the following command. This will create devcamper database and insert data into it:
 
@@ -77,7 +90,7 @@ Follow the below instructions to setup the application in Kubernetes cluster usi
 
 5. Note that deployment creates a new pod but the data is lost as the data is stored in the container and not in the Persistent Volume.
 
-## Uninstall the Application
+### Uninstall the Application
 
 1. Uninstall the application by running the following command:
 
