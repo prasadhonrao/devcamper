@@ -1,16 +1,16 @@
+let config = null;
 export const fetchConfig = async () => {
-  const configDir = '/config';
-  const env = process.env.NODE_ENV || 'development';
-  const configFileName =
-    env === 'production' ? 'react_app_devcamper_base_api_prod_uri' : 'react_app_devcamper_base_api_dev_uri';
-  const apiUri = await fetch(`${configDir}/${configFileName}`).then((res) => res.text());
-
-  const config = {
-    react_app_devcamper_base_api_uri: apiUri.trim(),
-  };
-
-  console.log(`Using configuration for environment: ${env}`);
-  console.log(`Configuration: ${JSON.stringify(config, null, 2)}`);
+  if (!config) {
+    const response = await fetch('/config/config.json');
+    if (!response.ok) {
+      throw new Error('Failed to fetch configuration');
+    }
+    const json = await response.json();
+    const env = process.env.NODE_ENV || 'development';
+    console.log(`Using configuration for environment: ${env}`);
+    console.log(`Configuration: ${JSON.stringify(json[env], null, 2)}`);
+    config = json[env];
+  }
   return config;
 };
 
