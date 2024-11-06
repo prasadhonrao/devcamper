@@ -2,9 +2,11 @@ import { getAuthHeaders } from '../helpers/auth';
 import { fetchApiEndPoint } from '../utils/configService';
 
 const bootcampService = {
-  getBootcamps: async (fields) => {
+  getBootcamps: async (fields, page, limit) => {
     const query = fields ? `?select=${fields.join(',')}` : '';
-    const uri = await fetchApiEndPoint(`/bootcamps${query}`);
+    const Page = page ? `page=${page.join(',')}` : '';
+    const Limit = limit ? `limit=${limit.join(',')}` : '';
+    const uri = await fetchApiEndPoint(`/bootcamps${query}&${Page}&${Limit}`);
     const res = await fetch(uri);
     if (!res.ok) {
       console.log(`Failed to fetch bootcamps: ${res.status}`);

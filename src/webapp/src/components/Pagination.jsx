@@ -2,19 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 
-const Pagination = (total) => {
+function Pagination({ totalRec, itemsPerPage, currentPage, paginationData, onPageChange }) {
 
-  const [pageNo, setPageNo] = useState(1);
-  const [totalRec, setTotalrec] = useState(total.TotalCount);
-
-  const pagginationHandler = (page) => {
-    const currentPage = page.selected + 1;
-    setPageNo(currentPage);
-  };
+  const [pageCount, setPageCount] = useState(Math.ceil(totalRec / itemsPerPage));
 
   useEffect(() => {
-    setTotalrec(total.TotalCount);
-  }, [total.TotalCount])
+    setPageCount(Math.ceil(totalRec / itemsPerPage)); // Recalculate on totalRec change
+  }, [totalRec, itemsPerPage]);
+
 
   return (
     <div className=''>
@@ -22,11 +17,12 @@ const Pagination = (total) => {
         <Col md={4}>
           <ReactPaginate
             // nextLabel={<FontAwesomeIcon icon="chevron-right" size="sm" className="m-auto" />}
-            onPageChange={pagginationHandler}
+            pageCount={pageCount}
+            onPageChange={onPageChange}
+            activeClassName="active"
             pageRangeDisplayed={1}
             marginPagesDisplayed={1}
-            pageCount={totalRec}
-            forcePage={1}
+            forcePage={currentPage - 1}
             // previousLabel={<FontAwesomeIcon icon="chevron-left" size="sm" className="m-auto" />}
             pageClassName="page-item"
             pageLinkClassName="page-link"
@@ -38,7 +34,7 @@ const Pagination = (total) => {
             breakClassName="page-item"
             breakLinkClassName="page-link"
             containerClassName="pagination justify-content-between d-flex "
-            activeClassName="active"
+            // activeClassName="active"
             renderOnZeroPageCount={null}
           />
         </Col>

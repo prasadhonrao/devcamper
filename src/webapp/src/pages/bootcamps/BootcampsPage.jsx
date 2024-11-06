@@ -8,7 +8,11 @@ const BootcampsPage = () => {
   const [bootcamps, setBootcamps] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [Data, setData] = useState();
+  const [totalRec, setTotalRec] = useState();
+  const [itemsPerPage, setItemsPerPage] = useState([5]);  // Default items per page
+  const [currentPage, setCurrentPage] = useState([1]);
+  const [pagination, setPagination] = useState([]);
+
 
 
   // Load bootcamps from API
@@ -16,10 +20,16 @@ const BootcampsPage = () => {
     const fetchBootcamps = async () => {
       try {
         const fields = ['photo', 'name', 'averageRating', 'location', 'careers', 'id'];
-        const res = await bootcampService.getBootcamps(fields);
+        var page = currentPage;
+        var limit = itemsPerPage;
+        console.log('page',page);
+        console.log('limit',limit);
+        const res = await bootcampService.getBootcamps(fields, page, limit);
+        console.log('res',res);
         setBootcamps(res.data);
-        console.log('res',res.total)
-        setData(res.total)
+        setPagination(res.pagination);
+        setTotalRec(res.total)
+        setItemsPerPage(res.count)
         setFetchError(null);
       } catch (error) {
         setFetchError(error.message);
@@ -28,8 +38,18 @@ const BootcampsPage = () => {
       }
     };
     fetchBootcamps();
-  }, []);
+  }, [currentPage]);
 
+  const handlePaginationChange = (selectedPage) => {
+    console.log('selectedPage',selectedPage);
+    const newPage = selectedPage.selected + 1; // Convert index to actual page number
+    console.log('newPage',newPage);
+    setCurrentPage([newPage])
+    setItemsPerPage([5])
+  };
+
+
+  console.log('totalRec bootcamp',totalRec);
 
   return (
     <section className="browse my-5">
@@ -49,7 +69,7 @@ const BootcampsPage = () => {
             ))}
           </div>
         )}
-        <Pagination TotalCount={Data}  />
+        <Pagination totalRec={totalRec} itemsPerPage={itemsPerPage} currentPage={currentPage} paginationData={pagination} onPageChange={handlePaginationChange} />
       </div>
     </section>
   );
