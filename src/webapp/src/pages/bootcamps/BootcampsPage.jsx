@@ -13,8 +13,6 @@ const BootcampsPage = () => {
   const [currentPage, setCurrentPage] = useState([1]);
   const [pagination, setPagination] = useState([]);
 
-
-
   // Load bootcamps from API
   useEffect(() => {
     const fetchBootcamps = async () => {
@@ -22,14 +20,11 @@ const BootcampsPage = () => {
         const fields = ['photo', 'name', 'averageRating', 'location', 'careers', 'id'];
         var page = currentPage;
         var limit = itemsPerPage;
-        console.log('page',page);
-        console.log('limit',limit);
         const res = await bootcampService.getBootcamps(fields, page, limit);
         console.log('res',res);
         setBootcamps(res.data);
         setPagination(res.pagination);
         setTotalRec(res.total)
-        setItemsPerPage(res.count)
         setFetchError(null);
       } catch (error) {
         setFetchError(error.message);
@@ -41,15 +36,10 @@ const BootcampsPage = () => {
   }, [currentPage]);
 
   const handlePaginationChange = (selectedPage) => {
-    console.log('selectedPage',selectedPage);
-    const newPage = selectedPage.selected + 1; // Convert index to actual page number
-    console.log('newPage',newPage);
+    const newPage = selectedPage.selected + 1;
     setCurrentPage([newPage])
     setItemsPerPage([5])
   };
-
-
-  console.log('totalRec bootcamp',totalRec);
 
   return (
     <section className="browse my-5">

@@ -7,23 +7,20 @@ function Pagination({ totalRec, itemsPerPage, currentPage, paginationData, onPag
   const [pageCount, setPageCount] = useState(Math.ceil(totalRec / itemsPerPage));
 
   useEffect(() => {
-    setPageCount(Math.ceil(totalRec / itemsPerPage)); // Recalculate on totalRec change
+    setPageCount(Math.ceil(totalRec / itemsPerPage));
   }, [totalRec, itemsPerPage]);
-
 
   return (
     <div className=''>
       <Row>
         <Col md={4}>
           <ReactPaginate
-            // nextLabel={<FontAwesomeIcon icon="chevron-right" size="sm" className="m-auto" />}
             pageCount={pageCount}
             onPageChange={onPageChange}
             activeClassName="active"
             pageRangeDisplayed={1}
             marginPagesDisplayed={1}
             forcePage={currentPage - 1}
-            // previousLabel={<FontAwesomeIcon icon="chevron-left" size="sm" className="m-auto" />}
             pageClassName="page-item"
             pageLinkClassName="page-link"
             previousClassName="page-item"
@@ -34,7 +31,6 @@ function Pagination({ totalRec, itemsPerPage, currentPage, paginationData, onPag
             breakClassName="page-item"
             breakLinkClassName="page-link"
             containerClassName="pagination justify-content-between d-flex "
-            // activeClassName="active"
             renderOnZeroPageCount={null}
           />
         </Col>
