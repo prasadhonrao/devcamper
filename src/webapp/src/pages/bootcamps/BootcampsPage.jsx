@@ -33,6 +33,12 @@ const BootcampsPage = () => {
       }
     };
     fetchBootcamps();
+
+    // Update the URL
+    const url = new URL(window.location.href);
+    url.searchParams.set('page', currentPage);
+    url.searchParams.set('limit', itemsPerPage);
+    window.history.pushState({}, '', url.toString());
   }, [currentPage]);
 
   const handlePaginationChange = (selectedPage) => {
