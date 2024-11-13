@@ -1,4 +1,5 @@
 name: WebAPI CI
+run-name: WebAPI CI on ${{ github.ref }}
 
 on:
   push:
