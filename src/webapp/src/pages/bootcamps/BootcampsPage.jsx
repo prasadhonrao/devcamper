@@ -36,7 +36,8 @@ const BootcampsPage = () => {
   }, [currentPage]);
 
   const handlePaginationChange = (selectedPage) => {
-    const newPage = selectedPage.selected + 1;
+    console.log('selectedPage',selectedPage)
+    const newPage = selectedPage;
     setCurrentPage([newPage])
     setItemsPerPage([5])
   };
