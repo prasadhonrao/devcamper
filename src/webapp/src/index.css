@@ -58,3 +58,14 @@ img {
   height: 100%;
   object-fit: cover;
 }
+
+.nav-link.active {
+  font-weight: bold;
+  border-bottom: 3px solid #cc5200;
+}
+
+/* Remove highlight on hover or active*/ 
+.dropdown-item {
+  background-color: transparent !important;
+  color: inherit !important; /* Keep the color unchanged*/ 
+}
