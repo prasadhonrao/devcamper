@@ -60,7 +60,7 @@ const BootcampsPage = () => {
             ))}
           </div>
         )}
-        <Pagination totalRec={totalRec} itemsPerPage={itemsPerPage} currentPage={currentPage} paginationData={pagination} onPageChange={handlePaginationChange} />
+        <Pagination totalRec={totalRec} itemsPerPage={itemsPerPage} currentPage={currentPage} paginationData={pagination} onPageChange={handlePaginationChange} isAdmin={true} />
       </div>
     </section>
   );
