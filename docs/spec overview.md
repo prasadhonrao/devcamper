@@ -1,0 +1,27 @@
+- dashboard (admin and publisher and user) => need to design and develop
+- need to keep track for time spend and new added courses and new registration can be shown to admin
+- bootcamp search by filter (location, time period)
+- sidebar design and implement
+- need to add bookmark feature for bootcamp or courses (V2)
+- register user can review the courses
+- for admin to remove spam or inappropriate reviews
+- get bootcamp with top ratings
+- search bar to search bootcamp or course by name
+- update profile information
+- Admin Approve the bootcamps (V2)
+- API response time and perfomance
+- error handling
+- load banlancing
+- using Redux toolkit, mongodb, node.js, tailwind css
+- Endpoints overviews are mentioned in 4.3.2 Endpoints Overview (bootcamp, course ad user)
+- Collection are also mentioned in 4.4.1 Bootcamp Collection (user, bootcamp, course and review)
+- API hashing
+- cors error handing
+- in spec mentioned colors to use, Typography
+- navigation are mentioned for admin, user
+- flows for registration, adding course, user enrolling
+- Third party integration for email, geo location, authentication
+- Unit testing should be done properly
+- load testing
+- issues fixing
+- 
