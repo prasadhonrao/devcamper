@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<script src="https://kit.fontawesome.com/3da1a747b2.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js"></script>
+		<link
+			href="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css"
+			rel="stylesheet"
+		/>
+		<title>DevCamper | Find a coding bootcamp</title>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+			<div class="container">
+				<a class="navbar-brand" href="index.html"
+					><i class="fas fa-laptop-code"></i> DevCamper</a
+				>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item dropdown">
+							<a
+								class="nav-link dropdown-toggle"
+								href="#"
+								id="navbarDropdown"
+								role="button"
+								data-toggle="dropdown"
+							>
+								<i class="fas fa-user"></i> Account
+							</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="manage-bootcamp.html"
+									>Manage Bootcamp</a
+								>
+								<a class="dropdown-item" href="manage-reviews.html"
+									>Manage Reviews</a
+								>
+								<a class="dropdown-item" href="manage-account.html"
+									>Manage Account</a
+								>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="login.html"
+									><i class="fas fa-sign-out-alt"></i> Logout</a
+								>
+							</div>
+						</li>
+						<li class="nav-item d-none d-sm-block">
+							<a class="nav-link" href="#">|</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="bootcamps.html">Browse Bootcamps</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<section class="container mt-5">
+			<div class="row">
+				<div class="col-md-8 m-auto">
+					<div class="card bg-white py-2 px-4">
+						<div class="card-body">
+							<h1 class="mb-2">Manage Courses</h1>
+							<p class="lead">
+								You have not yet added any courses
+							</p>
+							<a href="add-course.html" class="btn btn-primary btn-block"
+								>Add Your first course</a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script
+			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
