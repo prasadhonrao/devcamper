@@ -651,21 +651,17 @@ The DevCamper platform should have a well-defined navigation structure to ensure
 - **Top Navigation Bar** (Fixed, visible across all pages)
   - Home
   - Browse Bootcamps
-  - Courses
-  - About
-  - Contact
   - Login/Sign Up
 - **Sidebar (For Dashboard Users – Admins & Instructors)**
   - My Bootcamps
   - My Courses
   - User Registrations
-  - Payments & Reports
 
 #### 6.2.2 User Flow Examples
 
 1. **New User Registration Flow**
    - User lands on homepage → Clicks Sign Up → Fills registration form → Receives email verification → Logs in → Browses bootcamps → Enrolls in a course.
-2. **Instructor Adding a Course**
+2. **Publisher Adding a Course**
 
    - Instructor logs in → Navigates to Dashboard → Clicks Create Course → Fills course details → Uploads content → Publishes course → Course appears under the bootcamp listing.
 
