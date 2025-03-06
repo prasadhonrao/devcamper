@@ -83,7 +83,7 @@ Date: 21-02-2025
 
 DevCamper is a web-based platform designed to help users, professionals, and career changers find, compare, and review coding bootcamps worldwide.
 
-This platform serves three key user groups:
+This platform serves Three key user groups:
 
 - **General Users** searching for the best coding bootcamps for their career goals.
 - **Bootcamp Publishers** showcasing their programs and attracting students.
@@ -92,8 +92,8 @@ This platform serves three key user groups:
 DevCamper simplifies bootcamp discovery by offering:
 
 - **Comprehensive Directory** – A wide range of bootcamps across various technologies and locations.
-- **Search & Filtering Features** – Location, cost, tech stack, and career services.
-- **Detailed Bootcamp Listings** – Tuition, duration, technologies, and job placement details.
+- **Search & Filtering Features** –Location, cost, tech stack, and career services.
+- **Detailed Bootcamp Listings** – Tuition, duration, technologies, and job  placement details.
 - **User Reviews & Ratings** – Verified feedback to ensure credibility.
 - **User Dashboard** – Personalized experience with saved bootcamps and reviews.
 - **Publisher Dashboard** – Manage listings, reviews, and engagement.
@@ -107,7 +107,7 @@ The ultimate goal of DevCamper is to be a trusted and transparent platform for d
 
 - **Bootcamp Search & Filters** – Search by name, location, technology, cost, and job assistance.
 - **Bootcamp Listings** – Detailed course breakdowns, pricing, and provider information.
-- **User Reviews & Ratings** – Users can rate and review their experiences.
+- **User Reviews & Ratings** – Registered Users can rate and review their experiences.
 - **Publisher Dashboard** – Manage listings, respond to reviews, and track engagement.
 - **Admin Dashboard** – Approve new bootcamps, moderate reviews, and manage users.
 
@@ -116,6 +116,7 @@ The ultimate goal of DevCamper is to be a trusted and transparent platform for d
 - **Job Listings** – The platform will not act as a job board but may display bootcamp placement rates.
 - **One-on-One Mentorship** – No direct coaching or mentorship services will be offered.
 - **Online coaching** - The platform will not provide online coaching for bootcamp related courses.
+- ****
 
 ---
 
@@ -208,8 +209,7 @@ DevCamper provides a comprehensive set of features designed to help users discov
 - **Advanced Search & Filtering** – Users can search bootcamps based on location, technology focus (e.g., JavaScript, Python, .NET), price, duration, and learning format (online/in-person).
 - **Location-Based Bootcamp Finder** – Interactive map integration allows users to discover bootcamps near them.
 - **Bootcamp Comparison Tool** – Side-by-side comparison of multiple bootcamps on parameters like tuition fees, job placement rates, and user reviews.
-  **Note**: The comparison tool will be available in the next release.
-
+ 
 #### 3.1.2 Bootcamp Listings & Profiles
 
 - **Comprehensive Bootcamp Profiles** – Each bootcamp has a dedicated page with details such as syllabus, fees, duration, success stories, and hiring partners.
@@ -228,11 +228,18 @@ DevCamper provides a comprehensive set of features designed to help users discov
 - **Discussion Forums** – Bootcamp-specific discussions where users, alumni, and instructors can interact.
 - **Q&A Section** – Users can ask questions and receive answers from bootcamp representatives and alumni.
 - **Networking Opportunities** – Users can connect with alumni, mentors, and potential employers.
+- **Admin Dashboard & Bootcamp Management** – The Admin Dashboard will be designed with the same access level as the Bootcamp Publisher. Additionally, in Phase 2, the Maker-Checker Process will be introduced,where admin have the ability to review, approve, or remove bootcamps before publisher published any bootcamp.
+
+- **Bootcamp Search & Filtering** – Users will be able to search and filter bootcamps based on Technology Stack and Location in the initial phase. Additional filters, such as Cost,campare bootcamps and Career Services, will be introduced in Phase 2.
+
+- **Personalized Experience** – Phase 2 will introduce a Saved Bootcamps feature, enabling users to bookmark their preferred bootcamps for a more personalized experience.
+
+- **Revenue & Performance Analytics** This feature will be introduced in next phase. This will allow for the analysis and monetization of platform performance through various graphical insights.
 
 #### 3.1.5 Admin & Bootcamp Management
 
 - **Publisher Dashboard** – Bootcamp administrators can manage their profiles, respond to reviews, and update course details.
-- **Moderation Tools** – Admins can flag inappropriate content, remove spam, and enforce guidelines.
+- **Moderation Tools** – Admins can flag inappropriate content, remove spam, and enforce guidelines. 
 
 ### 3.2 User Stories
 
@@ -272,6 +279,7 @@ Wireframes and UI mockups provide a **visual representation of key screens** to 
 
 - Bootcamp description, curriculum, tuition details.
 - Ratings & reviews with interactive graphs.
+ **Note** - interactive graph feature will be available in next phase.
 
 #### 3.3.3 User Dashboard
 
@@ -287,7 +295,7 @@ Wireframes and UI mockups provide a **visual representation of key screens** to 
 
 #### 3.3.5 Admin Dashboard
 
-- Tools for managing bootcamp listings, responding to reviews, and monitoring user activity.
+- Tools for managing bootcamp listings, responding to reviews but admin not able to write review, and monitoring user activity.
 - Analytics on platform usage and engagement.
 
 ### 3.4 Use Cases
@@ -300,10 +308,11 @@ Wireframes and UI mockups provide a **visual representation of key screens** to 
 **Steps**:
 
 1. The user enters the website and sees a search bar.
-2. They enter a query (e.g., "JavaScript bootcamp in New York").
+2. They enter a query (e.g., "JavaScript bootcamp in New York")
 3. The system retrieves and displays relevant bootcamps.
-4. The user applies filters (e.g., price range, job placement rate).
+4. The user applies filters(e.g., price range, job placement rate).
 5. The user clicks on a bootcamp to view details.
+
 
 #### 3.4.2 Manage User Profile
 
@@ -313,6 +322,7 @@ Wireframes and UI mockups provide a **visual representation of key screens** to 
 1. The user logs into the user dashboard.
 2. They update their profile information.
 3. They can view their saved bootcamps and reviews.
+
 
 #### 3.4.3 Enrolling in a Bootcamp
 
@@ -339,7 +349,7 @@ Wireframes and UI mockups provide a **visual representation of key screens** to 
 **Actors**: Bootcamp publisher, Admin
 **Steps**:
 
-1. The bootcamp publisher logs into the publisher dashboard.
+1. The bootcamp publisher,Admin logs into the publisher dashboard.
 2. They create a new bootcamp profile by entering details like name, location, curriculum, and pricing.
 
 #### 3.4.6 Managing a Bootcamp, Admin
@@ -371,7 +381,7 @@ Wireframes and UI mockups provide a **visual representation of key screens** to 
 
 #### 3.4.9 Manage Bootcamp
 
-**Actors**: Administrator.
+**Actors**: Administrator .
 **Steps**:
 
 1. The admin logs into the admin panel.
