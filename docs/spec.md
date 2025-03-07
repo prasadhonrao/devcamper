@@ -428,25 +428,24 @@ DevCamper follows a **microservices-based architecture** with a RESTful API back
 
 #### Frontend (Web App)
 
-# Can We mention versions for this technologies
-- **Framework**: React.js (with Next.js for SSR, if needed)
-- **State Management**: Redux Toolkit
-- **Styling**: Tailwind CSS
-- **UI Components**: ShadCN/UI, Material UI
-- **Routing**: React Router
+- **Framework**: React.js -> version 18.3.1 (with Next.js -> version 15.1.6 for SSR, if needed)
+- **State Management**: Redux Toolkit -> version 9.2.0
+- **Styling**: Tailwind CSS -> version 3.0.23
+- **UI Components**: ShadCN/UI, Material UI -> version 5.12.0
+- **Routing**: React Router -> version 6.14.1
 
 #### Backend (Web API)
 
-- **Framework**: Node.js with Express.js
+- **Framework**: Node.js with Express.js -> version 4.19.2
 - **Authentication**: JSON Web Tokens (JWT)
-- **ORM/ODM**: Mongoose (for MongoDB)
+- **ORM/ODM**: Mongoose (for MongoDB) -> version 8.5.2
 - **Validation**: Joi / Express Validator
 - **Caching**: Redis (for API response caching)
 - **Background Jobs**: BullMQ (for processing async tasks)
 
 #### Database
 
-- **Database**: MongoDB Atlas
+- **Database**: MongoDB Atlas -> version 8.0.4 
 - **Schema Modeling**: Mongoose ODM
 - **Indexing & Search**: MongoDB Indexes & Geospatial Queries
 
@@ -462,7 +461,7 @@ The DevCamper API is RESTful, supporting CRUD operations on bootcamps, courses, 
 #### 4.3.1 Authentication & Authorization
 
 - **Signup/Login** – Users authenticate via username and password.
-- **Roles & Permissions** – Role-based access control (RBAC) with `admin`, `publisher`, and `user` roles. (We can also identify user and register user)
+- **Roles & Permissions** – Role-based access control (RBAC) with `admin`, `publisher`, and `user` roles.
 - **Protected Routes** – Certain endpoints require authentication.
 
 #### 4.3.2 Endpoints Overview
@@ -496,7 +495,13 @@ The DevCamper API is RESTful, supporting CRUD operations on bootcamps, courses, 
 | GET    | `/api/v1/auth/me`       | Get logged-in user details | Authenticated User |
 | PUT    | `/api/v1/auth/update`   | Update user profile        | Authenticated User |
 
--> need to add enroll api or can modify that in one of the API
+#### **Course enroll API**
+
+| Method | Endpoint                     | Description                | Authentication     |
+| ------ | ---------------------------- | -------------------------- | ------------------ |
+| POST   | `/api/v1/enroll/courses/:id` | Enroll for course          | Authenticated User |
+| GET    | `/api/v1/enroll/courses`     | Get enroll courses list    | Authenticated User |
+| DELETE | `/api/v1/enroll/courses/:id` | remove enrollment          | Authenticated User |
 
 ### 4.4 Database Schema
 
@@ -517,18 +522,16 @@ The DevCamper database uses MongoDB, with structured collections for Bootcamps, 
   "website": "String",
   "careers": ["String"],
   "user": "ObjectId",
-  "createdAt": "Date"
+  "bootccamp_img": "String",
+  "createdAt": "Date",
+  "actv": "Number
 }
 ```
 
 #### 4.4.2 Course Collection
--> we can add cost/price field
--> while saving data in minimumSkill might need proper string or array when can be easy for display because if someone add java javascript without ',' then it may difficult to retrieve data
 -> need to add Scholarship Available field
 -> need to add duration week or month field eg in duration we are saving only number need to define months or weeks
--> we can add updatedAt field to get to know when the data gets updates
--> might require actv field to deactive course
--> need to create table enroll details that can store the data of course and there enroll user
+-> need to create table enroll details that can store the data of bootcamp and there enroll user
 
 ```json
 {
@@ -537,17 +540,20 @@ The DevCamper database uses MongoDB, with structured collections for Bootcamps, 
   "description": "String",
   "tuition": "Number",
   "duration": "Number",
-  "minimumSkill": "String",
+  "minimumSkill": "Array",
   "bootcamp": "ObjectId",
   "user": "ObjectId",
-  "createdAt": "Date"
+  "cost": "Number", (to find the average for bootcamp)
+  "scholarship_avail": "Number",
+  "days":"String",(need to add duration week or month field eg in duration we are saving only number need to define months or weeks solution -> can give dropdown of weeks and months and then save it in db)
+  "createdAt": "Date",
+  "updatedAt": "Date",
+  "actv": "Number"
 }
 ```
 
 #### 4.4.3 User Collection
--> might require actv field to deactive user
--> we can also add mobile number field
--> we can create role master
+
 ```json
 {
   "_id": "ObjectId",
@@ -555,12 +561,13 @@ The DevCamper database uses MongoDB, with structured collections for Bootcamps, 
   "email": "String",
   "role": "String",
   "password": "String (Hashed)",
-  "createdAt": "Date"
+  "mobile": "Number",
+  "createdAt": "Date",
+  "actv":"Number",
 }
 ```
 
 #### 4.4.4 Review Collection
--> for update review need to add updatedAt field
 ```json
 {
   "_id": "ObjectId",
@@ -569,7 +576,22 @@ The DevCamper database uses MongoDB, with structured collections for Bootcamps, 
   "rating": "Number",
   "user": "ObjectId",
   "bootcamp": "ObjectId",
-  "createdAt": "Date"
+  "createdAt": "Date",
+  "updatedAt": "Date",
+  "actv": "Number"
+}
+```
+
+#### 4.4.4 Enroll Collection
+```json
+{
+  "_id": "ObjectId",
+  "user": "ObjectId",
+  "bootcamp": "ObjectId",
+  "payment_tag":"Number",
+  "createdAt": "Date",
+  "updatedAt": "Date",
+  "actv": "Number"
 }
 ```
 
@@ -674,20 +696,18 @@ The DevCamper platform should have a well-defined navigation structure to ensure
   - My Courses
   - User Registrations
   - Payments & Reports 
--> can add review list also
--> can remove payments because might we are not adding that functionality
+  - reviews
 
 #### 6.2.2 User Flow Examples
 
 1. **New User Registration Flow**
-   - User lands on homepage → Clicks Sign Up → Fills registration form → Receives email verification → Logs in → Browses bootcamps → Enrolls in a course.
+   - User lands on homepage → Clicks Sign Up → Fills registration form → Receives email verification → Logs in → Browses bootcamps → Enrolls in a bootcamp.
 2. **Instructor Adding a Course**
 
    - Instructor logs in → Navigates to Dashboard → Clicks Create Course → Fills course details → Uploads content → Publishes course → Course appears under the bootcamp listing.
 
 3. **User Enrolling in a Course**
-   - User browses available bootcamps → Clicks on a bootcamp → Views available courses → Selects a course → Clicks "Enroll" → Completes payment (if applicable) → Gains course access.
--> need to add enroll button under each course
+   - User browses available bootcamps → Clicks on a bootcamp → Views available courses → Clicks "Enroll" for bootcamp → Completes payment (if applicable) → Gains course access.
 
 ### 6.3 Accessibility Considerations
 
