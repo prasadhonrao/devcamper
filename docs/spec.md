@@ -428,24 +428,24 @@ DevCamper follows a **microservices-based architecture** with a RESTful API back
 
 #### Frontend (Web App)
 
-- **Framework**: React.js (with Next.js for SSR, if needed)
-- **State Management**: Redux Toolkit
-- **Styling**: Tailwind CSS
-- **UI Components**: ShadCN/UI, Material UI
-- **Routing**: React Router
+- **Framework**: React.js -> version 18.3.1 (with Next.js -> version 15.1.6 for SSR, if needed)
+- **State Management**: Redux Toolkit -> version 9.2.0
+- **Styling**: Tailwind CSS -> version 3.0.23
+- **UI Components**: ShadCN/UI, Material UI -> version 5.12.0
+- **Routing**: React Router -> version 6.14.1
 
 #### Backend (Web API)
 
-- **Framework**: Node.js with Express.js
+- **Framework**: Node.js with Express.js -> version 4.19.2
 - **Authentication**: JSON Web Tokens (JWT)
-- **ORM/ODM**: Mongoose (for MongoDB)
+- **ORM/ODM**: Mongoose (for MongoDB) -> version 8.5.2
 - **Validation**: Joi / Express Validator
 - **Caching**: Redis (for API response caching)
 - **Background Jobs**: BullMQ (for processing async tasks)
 
 #### Database
 
-- **Database**: MongoDB Atlas
+- **Database**: MongoDB Atlas -> version 8.0.4 
 - **Schema Modeling**: Mongoose ODM
 - **Indexing & Search**: MongoDB Indexes & Geospatial Queries
 
@@ -495,12 +495,20 @@ The DevCamper API is RESTful, supporting CRUD operations on bootcamps, courses, 
 | GET    | `/api/v1/auth/me`       | Get logged-in user details | Authenticated User |
 | PUT    | `/api/v1/auth/update`   | Update user profile        | Authenticated User |
 
+#### **Course enroll API**
+
+| Method | Endpoint                     | Description                | Authentication     |
+| ------ | ---------------------------- | -------------------------- | ------------------ |
+| POST   | `/api/v1/enroll/courses/:id` | Enroll for course          | Authenticated User |
+| GET    | `/api/v1/enroll/courses`     | Get enroll courses list    | Authenticated User |
+| DELETE | `/api/v1/enroll/courses/:id` | remove enrollment          | Authenticated User |
+
 ### 4.4 Database Schema
 
 The DevCamper database uses MongoDB, with structured collections for Bootcamps, Courses, Users, and Reviews.
 
 #### 4.4.1 Bootcamp Collection
-
+-> can add image field to get dynamic image
 ```json
 {
   "_id": "ObjectId",
@@ -514,11 +522,16 @@ The DevCamper database uses MongoDB, with structured collections for Bootcamps, 
   "website": "String",
   "careers": ["String"],
   "user": "ObjectId",
-  "createdAt": "Date"
+  "bootccamp_img": "String",
+  "createdAt": "Date",
+  "actv": "Number
 }
 ```
 
 #### 4.4.2 Course Collection
+-> need to add Scholarship Available field
+-> need to add duration week or month field eg in duration we are saving only number need to define months or weeks
+-> need to create table enroll details that can store the data of bootcamp and there enroll user
 
 ```json
 {
@@ -527,10 +540,15 @@ The DevCamper database uses MongoDB, with structured collections for Bootcamps, 
   "description": "String",
   "tuition": "Number",
   "duration": "Number",
-  "minimumSkill": "String",
+  "minimumSkill": "Array",
   "bootcamp": "ObjectId",
   "user": "ObjectId",
-  "createdAt": "Date"
+  "cost": "Number", (to find the average for bootcamp)
+  "scholarship_avail": "Number",
+  "days":"String",(need to add duration week or month field eg in duration we are saving only number need to define months or weeks solution -> can give dropdown of weeks and months and then save it in db)
+  "createdAt": "Date",
+  "updatedAt": "Date",
+  "actv": "Number"
 }
 ```
 
@@ -543,12 +561,13 @@ The DevCamper database uses MongoDB, with structured collections for Bootcamps, 
   "email": "String",
   "role": "String",
   "password": "String (Hashed)",
-  "createdAt": "Date"
+  "mobile": "Number",
+  "createdAt": "Date",
+  "actv":"Number",
 }
 ```
 
 #### 4.4.4 Review Collection
-
 ```json
 {
   "_id": "ObjectId",
@@ -557,7 +576,22 @@ The DevCamper database uses MongoDB, with structured collections for Bootcamps, 
   "rating": "Number",
   "user": "ObjectId",
   "bootcamp": "ObjectId",
-  "createdAt": "Date"
+  "createdAt": "Date",
+  "updatedAt": "Date",
+  "actv": "Number"
+}
+```
+
+#### 4.4.4 Enroll Collection
+```json
+{
+  "_id": "ObjectId",
+  "user": "ObjectId",
+  "bootcamp": "ObjectId",
+  "payment_tag":"Number",
+  "createdAt": "Date",
+  "updatedAt": "Date",
+  "actv": "Number"
 }
 ```
 
@@ -586,7 +620,9 @@ Security is a core component of DevCamper. The platform follows best security pr
 - **Data Validation** – Inputs are validated using **express-validator** to prevent injection attacks.
 
 #### 4.5.4 File Upload & Storage
-
+-> need to create table (if we are allowing multiple image) or field (for multiple image can store data in array)
+-> need a separate folder to store image in api project 
+-> need image get API to get the store image
 - **Multer Middleware** ensures only valid file types are accepted.
 - **File Size Limitations** prevent excessive storage usage.
 
@@ -645,7 +681,7 @@ The design of DevCamper should be modern, minimalistic, and user-friendly. Below
 ### 6.2 Navigation Flow
 
 The DevCamper platform should have a well-defined navigation structure to ensure users can easily access courses, bootcamps, and account-related functionalities.
-
+-> Can create layout folder for header and sidebar that layout can be constant throughtout the project and can add {children} as react provides that functionality
 #### 6.2.1 Navigation Elements
 
 - **Top Navigation Bar** (Fixed, visible across all pages)
@@ -659,18 +695,19 @@ The DevCamper platform should have a well-defined navigation structure to ensure
   - My Bootcamps
   - My Courses
   - User Registrations
-  - Payments & Reports
+  - Payments & Reports 
+  - reviews
 
 #### 6.2.2 User Flow Examples
 
 1. **New User Registration Flow**
-   - User lands on homepage → Clicks Sign Up → Fills registration form → Receives email verification → Logs in → Browses bootcamps → Enrolls in a course.
+   - User lands on homepage → Clicks Sign Up → Fills registration form → Receives email verification → Logs in → Browses bootcamps → Enrolls in a bootcamp.
 2. **Instructor Adding a Course**
 
    - Instructor logs in → Navigates to Dashboard → Clicks Create Course → Fills course details → Uploads content → Publishes course → Course appears under the bootcamp listing.
 
 3. **User Enrolling in a Course**
-   - User browses available bootcamps → Clicks on a bootcamp → Views available courses → Selects a course → Clicks "Enroll" → Completes payment (if applicable) → Gains course access.
+   - User browses available bootcamps → Clicks on a bootcamp → Views available courses → Clicks "Enroll" for bootcamp → Completes payment (if applicable) → Gains course access.
 
 ### 6.3 Accessibility Considerations
 
@@ -691,7 +728,7 @@ DevCamper should be accessible to all users, including those with disabilities.
 
 ## 7. Third-Party Integrations
 
-DevCamper leverages various third-party services to enhance functionality, improve security, and provide a seamless experience for users. These integrations include payment gateways, geolocation services, AI-based features, and authentication mechanisms.
+DevCamper leverages various third-party services to enhance functionality, improve security, and provide a seamless experience for users. These integrations include payment gateways, geolocation services, AI-based features, email sending, and authentication mechanisms.
 
 ### 7.1 External Services
 
