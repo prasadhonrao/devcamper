@@ -81,7 +81,7 @@ Date: 21-02-2025
 
 ### 1.5 Purpose
 
-DevCamper is a web-based platform designed to help users, professionals, and career changers find, and review coding bootcamps worldwide.
+DevCamper is a web-based platform designed to help users, professionals, and career changers find, compare, and review coding bootcamps worldwide.
 
 This platform serves three key user groups:
 
@@ -136,7 +136,7 @@ The tech industry is rapidly evolving, and coding bootcamps have emerged as a po
 
 #### **Solution**
 
-DevCamper solves these issues by providing a centralized, transparent, and community-driven platform that enables users to search, and review coding bootcamps with trustworthy data and insights.
+DevCamper solves these issues by providing a centralized, transparent, and community-driven platform that enables users to search,  compare, and review coding bootcamps with trustworthy data and insights.
 
 ### 2.2 Target Audience
 
@@ -202,7 +202,7 @@ DevCamper provides a comprehensive set of features designed to help users discov
 - **Advanced Search & Filtering** – Users can search bootcamps based on location, technology focus (e.g., JavaScript, Python, .NET), price, duration, and learning format (online/in-person).
 - **Location-Based Bootcamp Finder** – Interactive map integration allows users to discover bootcamps near them.
 - **Bootcamp Comparison Tool** – Side-by-side comparison of multiple bootcamps on parameters like tuition fees, job placement rates, and user reviews.
-  **Note**: The comparison tool will be available in the next release
+  **Note**: The comparison tool will be available in the next release.
 
 #### 3.1.2 Bootcamp Listings & Profiles
 
