@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devcamper-db-deployment
+  namespace: devcamper-namespace
+  labels:
+    app: devcamper-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devcamper-db
+  template:
+    metadata:
+      labels:
+        app: devcamper-db
+    spec:
+      containers:
+        - name: devcamper-db-container
+          image: mongo
+          ports:
+            - containerPort: 27017
+          env:
+            - name: MONGO_INITDB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: devcamper-db-configmap
+                  key: mongodb_db_name
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: devcamper-db-secret
+                  key: mongodb_username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: devcamper-db-secret
+                  key: mongodb_password
+          resources:
+            limits:
+              memory: '2Gi'
+              cpu: '2'
+            requests:
+              memory: '1Gi'
+              cpu: '1'

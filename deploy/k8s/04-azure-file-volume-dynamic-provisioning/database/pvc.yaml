@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: devcamper-pvc
+  namespace: devcamper-namespace
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: devcamper-azurefile-storage-class
+  resources:
+    requests:
+      storage: 100Gi # 100Gi is the minimum size for premium storage

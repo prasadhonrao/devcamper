@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: devcamper-webapp-configmap
+  namespace: devcamper-namespace
+data:
+  config.json: |
+    {
+      "development": {
+        "react_app_devcamper_base_api_uri": "http://localhost:5000/api/v1"
+      },
+      "production": {
+        "react_app_devcamper_base_api_uri": "http://devcamper.webapi/api/v1"
+      }
+    }

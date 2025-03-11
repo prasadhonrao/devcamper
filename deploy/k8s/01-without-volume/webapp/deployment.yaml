@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devcamper-webapp-deployment
+  namespace: devcamper-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devcamper-webapp
+  template:
+    metadata:
+      labels:
+        app: devcamper-webapp
+    spec:
+      containers:
+        - name: devcamper-webapp-container
+          image: prasadhonrao/devcamper-webapp:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: 'production'
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/build/config/config.json
+              subPath: config.json
+          resources:
+            limits:
+              memory: '2Gi'
+              cpu: '2'
+            requests:
+              memory: '1Gi'
+              cpu: '1'
+      volumes:
+        - name: config-volume
+          configMap:
+            name: devcamper-webapp-configmap

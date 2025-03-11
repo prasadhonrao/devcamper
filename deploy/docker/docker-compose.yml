@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  webapp:
+    image: prasadhonrao/devcamper-webapp:latest
+    ports:
+      - '${WEBAPP_PORT}:3000'
+    environment:
+      - REACT_APP_DEVCAMPER_BASE_API_URI={REACT_APP_DEVCAMPER_BASE_API_URI} + ':' + ${WEBAPP_PORT}
+    depends_on:
+      - webapi
+  webapi:
+    image: prasadhonrao/devcamper-webapi:latest
+    ports:
+      - '${port}:${port}'
+    environment:
+      - port=${port}
+      - node_env=${node_env}
+      - mongodb_host=${mongodb_host}
+      - mongodb_port=${mongodb_port}
+      - mongodb_username=${mongodb_username}
+      - mongodb_password=${mongodb_password}
+      - mongodb_db_name=${mongodb_db_name}
+      - mongodb_db_params=${mongodb_db_params}
+      - geocoder_provider=${geocoder_provider}
+      - geocoder_api_key=${geocoder_api_key}
+      - file_upload_path=${file_upload_path}
+      - max_file_upload=${max_file_upload}
+      - jwt_secret=${jwt_secret}
+      - jwt_expire=${jwt_expire}
+      - jwt_cookie_expire=${jwt_cookie_expire}
+      - smtp_host=${smtp_host}
+      - smtp_port=${smtp_port}
+      - smtp_email=${smtp_email}
+      - smtp_password=${smtp_password}
+      - from_email=${from_email}
+      - from_name=${from_name}
+      - rate_limit_max=${rate_limit_max}
+      - rate_limit_window_ms=${rate_limit_window_ms}
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

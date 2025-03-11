@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: devcamper-pv
+spec:
+  capacity:
+    storage: 50Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: '' # Ensure no StorageClass is used
+  mountOptions:
+    - dir_mode=0777
+    - file_mode=0777
+    - uid=999
+    - gid=999
+    - mfsymlinks
+    - cache=strict
+    - actimeo=30
+    - noperm
+    - nosharesock
+  csi:
+    driver: file.csi.azure.com
+    volumeHandle: devcamper-rg/devcamperstorageaccount/devcamper-azure-file-share-static
+    volumeAttributes:
+      resourceGroup: devcamper-rg
+      shareName: devcamper-azure-file-share-static
+    nodeStageSecretRef:
+      name: devcamper-db-secret
+      namespace: devcamper-namespace
