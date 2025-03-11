@@ -81,21 +81,21 @@ Date: 21-02-2025
 
 ### 1.5 Purpose
 
-DevCamper is a web-based platform designed to help users, professionals, and career changers find, compare, and review coding bootcamps worldwide.
+DevCamper is a web-based platform designed to help users, professionals, and career changers find, and review coding bootcamps worldwide.
 
 This platform serves three key user groups:
 
-- **General Users** searching for the best coding bootcamps for their career goals.
+- **General Users** searching for the best coding bootcamps for their career goals but can only read reviews; they cannot write them.
 - **Bootcamp Publishers** showcasing their programs and attracting students.
 - **Administrators** ensuring the quality and integrity of listings and reviews.
+Admin can have all the access same as Bootcamp Publishers but Admin can't write the review. Admin able to accept or reject the bootcamps (perform maker checker action).
 
 DevCamper simplifies bootcamp discovery by offering:
 
 - **Comprehensive Directory** – A wide range of bootcamps across various technologies and locations.
-- **Search & Filtering Features** – Location, cost, tech stack, and career services.
-- **Detailed Bootcamp Listings** – Tuition, duration, technologies, and job placement details.
+- **Search & Filtering Features** –  Location, cost, tech stack.
+- **Detailed Bootcamp Listings** – Tuition, duration, technologies.
 - **User Reviews & Ratings** – Verified feedback to ensure credibility.
-- **User Dashboard** – Personalized experience with saved bootcamps and reviews.
 - **Publisher Dashboard** – Manage listings, reviews, and engagement.
 - **Admin Dashboard** – Moderation, analytics, and user management.
 
@@ -105,11 +105,10 @@ The ultimate goal of DevCamper is to be a trusted and transparent platform for d
 
 #### 1.6.1 Features Included
 
-- **Bootcamp Search & Filters** – Search by name, location, technology, cost, and job assistance.
+- **Bootcamp Search & Filters** – location.
 - **Bootcamp Listings** – Detailed course breakdowns, pricing, and provider information.
-- **User Reviews & Ratings** – Users can rate and review their experiences.
+- **User Reviews & Ratings** – Registered users can rate and review their experiences.
 - **Publisher Dashboard** – Manage listings, respond to reviews, and track engagement.
-- **Admin Dashboard** – Approve new bootcamps, moderate reviews, and manage users.
 
 #### 1.6.2 Features Excluded
 
@@ -137,7 +136,7 @@ The tech industry is rapidly evolving, and coding bootcamps have emerged as a po
 
 #### **Solution**
 
-DevCamper solves these issues by providing a centralized, transparent, and community-driven platform that enables users to search, compare, and review coding bootcamps with trustworthy data and insights.
+DevCamper solves these issues by providing a centralized, transparent, and community-driven platform that enables users to search, and review coding bootcamps with trustworthy data and insights.
 
 ### 2.2 Target Audience
 
@@ -190,11 +189,6 @@ The success of DevCamper will be measured using key performance indicators (KPIs
 - **Number of verified reviews** – Growth in user-submitted ratings.
 - **Engagement rate** – Likes, comments, and shares per review.
 
-#### 2.4.4 Revenue & Monetization
-
-- **Subscription & ad revenue** – Income from premium listings.
-- **Referral commissions** – Earnings from partner programs.
-
 ---
 
 ## 3. Product Features
@@ -208,12 +202,12 @@ DevCamper provides a comprehensive set of features designed to help users discov
 - **Advanced Search & Filtering** – Users can search bootcamps based on location, technology focus (e.g., JavaScript, Python, .NET), price, duration, and learning format (online/in-person).
 - **Location-Based Bootcamp Finder** – Interactive map integration allows users to discover bootcamps near them.
 - **Bootcamp Comparison Tool** – Side-by-side comparison of multiple bootcamps on parameters like tuition fees, job placement rates, and user reviews.
-  **Note**: The comparison tool will be available in the next release.
+  **Note**: The comparison tool will be available in the next release
 
 #### 3.1.2 Bootcamp Listings & Profiles
 
 - **Comprehensive Bootcamp Profiles** – Each bootcamp has a dedicated page with details such as syllabus, fees, duration, success stories, and hiring partners.
-- **Verified Reviews & Ratings** – Users can leave detailed reviews with ratings based on curriculum, Publishers, job placement, and overall experience.
+- **Verified Reviews & Ratings** – Users can leave detailed reviews with ratings based on curriculum, publishers, job placement, and overall experience.
 - **Alumni Insights** – Insights from past graduates about their job search and career progression.
   **Note**: The alumni insights feature will be available in the next release.
 
@@ -225,9 +219,11 @@ DevCamper provides a comprehensive set of features designed to help users discov
 
 #### 3.1.4 Community & Engagement (Future Release)
 
-- **Discussion Forums** – Bootcamp-specific discussions where users, alumni, and Publishers can interact.
+- **Discussion Forums** – Bootcamp-specific discussions where users, alumni, and publishers can interact.
 - **Q&A Section** – Users can ask questions and receive answers from bootcamp representatives and alumni.
 - **Networking Opportunities** – Users can connect with alumni, mentors, and potential employers.
+- **Admin Dashboard & Bootcamp Management** – The Admin Dashboard will be designed with the same access level as the Bootcamp Publisher. 
+- **Bootcamp Search & Filtering** – Users will be able to search and filter bootcamps based on Technology Stack, cost and Location. 
 
 #### 3.1.5 Admin & Bootcamp Management
 
@@ -272,6 +268,7 @@ Wireframes and UI mockups provide a **visual representation of key screens** to 
 
 - Bootcamp description, curriculum, tuition details.
 - Ratings & reviews with interactive graphs.
+**Note** - interactive graph feature will be available in next phase.
 
 #### 3.3.3 User Dashboard
 
@@ -285,9 +282,9 @@ Wireframes and UI mockups provide a **visual representation of key screens** to 
 - Analytics on user engagement and reviews.
 - Tools for responding to reviews and questions.
 
-#### 3.3.5 Admin Dashboard
+#### 3.3.5 Admin Dashboard  
 
-- Tools for managing bootcamp listings, responding to reviews, and monitoring user activity.
+- Tools for managing bootcamp listings, responding to reviews but admin not able to write review, and monitoring user activity.
 - Analytics on platform usage and engagement.
 
 ### 3.4 Use Cases
@@ -300,10 +297,9 @@ Wireframes and UI mockups provide a **visual representation of key screens** to 
 **Steps**:
 
 1. The user enters the website and sees a search bar.
-2. They enter a query (e.g., "JavaScript bootcamp in New York").
+2. They enter a query (e.g., "JavaScript bootcamp in New York")
 3. The system retrieves and displays relevant bootcamps.
-4. The user applies filters (e.g., price range, job placement rate).
-5. The user clicks on a bootcamp to view details.
+4. The user clicks on a bootcamp to view details.
 
 #### 3.4.2 Manage User Profile
 
@@ -313,6 +309,7 @@ Wireframes and UI mockups provide a **visual representation of key screens** to 
 1. The user logs into the user dashboard.
 2. They update their profile information.
 3. They can view their saved bootcamps and reviews.
+**Note** : saved bootcamps comes in next release.
 
 #### 3.4.3 Enrolling in a Bootcamp
 
@@ -339,7 +336,7 @@ Wireframes and UI mockups provide a **visual representation of key screens** to 
 **Actors**: Bootcamp publisher, Admin
 **Steps**:
 
-1. The bootcamp publisher logs into the publisher dashboard.
+1. The bootcamp publisher,admin logs into the publisher dashboard.
 2. They create a new bootcamp profile by entering details like name, location, curriculum, and pricing.
 
 #### 3.4.6 Managing a Bootcamp, Admin
@@ -728,7 +725,7 @@ For API-based authentication and session management:
 - **Token Expiry & Refresh**: Tokens expire in 30 days, requiring reauthentication or refresh mechanisms.
 - **Implementation Details**:
   - JWT secret keys are stored in environment variables.
-  - Role-based access control (RBAC) is enforced using JWT claims (e.g., user, Publisher, admin).
+  - Role-based access control (RBAC) is enforced using JWT claims (e.g., user, publisher, admin).
 
 ---
 
@@ -759,7 +756,7 @@ DevCamper will undergo different levels of testing to verify functionality, inte
   - Supertest for API testing in Node.js.
   - Cypress for end-to-end UI testing.
 - **Example**:
-  - Verify that a payment transaction updates both the user’s enrollment status and the Publisher’s earnings.
+  - Verify that a payment transaction updates both the user’s enrollment status and the publisher’s earnings.
 
 #### 8.1.3 UI/UX Testing
 
@@ -847,7 +844,7 @@ Every product faces potential risks, and DevCamper is no exception. Identifying 
 
 - **Data Breaches**: Unauthorized access to personal and payment data could lead to legal and reputational damage.
 - **Account Hijacking**: Weak authentication mechanisms might allow attackers to take over user accounts.
-- **Malicious Content**: Users or Publishers could upload harmful or plagiarized content.
+- **Malicious Content**: Users or publishers could upload harmful or plagiarized content.
 
 #### 9.1.4 Market Risks
 
@@ -873,7 +870,7 @@ Every product faces potential risks, and DevCamper is no exception. Identifying 
 #### 9.2.3 Security Mitigation
 
 - **Data Encryption**: Ensure all sensitive user data is encrypted in transit and at rest.
-- **Multi-Factor Authentication (MFA)**: Require MFA for Publishers and administrators to prevent unauthorized access.
+- **Multi-Factor Authentication (MFA)**: Require MFA for publishers and administrators to prevent unauthorized access.
 - **Content Moderation**: Use automated tools and manual review processes to detect and remove harmful content.
 
 #### 9.2.4 Market Mitigation
