@@ -58,3 +58,17 @@ img {
   height: 100%;
   object-fit: cover;
 }
+
+.active-link {
+  font-weight: bold;
+  border-bottom: 3px solid #cc5200;
+}
+.active-dropdown-link {
+  font-weight: bold;
+  text-decoration: underline 2px solid #cc5200;
+  text-underline-offset: 5px;
+  color: #cc5200 !important;
+}
+
+
+

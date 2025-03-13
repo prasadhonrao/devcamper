@@ -4,15 +4,19 @@ import PropTypes from 'prop-types';
 import { Nav, Navbar, Container, Dropdown } from 'react-bootstrap';
 import { FaSignInAlt, FaUserPlus, FaSearch, FaUser, FaSignOutAlt, FaCogs, FaStar } from 'react-icons/fa';
 import { useAuth } from '../contexts/AuthContext';
+import { useLocation } from 'react-router-dom';
 
 function Header() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     logout();
     navigate('/');
   };
+  const isActive = (path) => location.pathname === path ? 'active-link' : '';
+  const isDropdownActive = (path) => location.pathname === path ? 'active-dropdown-link' : '';
 
   return (
     <header>
@@ -36,13 +40,13 @@ function Header() {
                     <FaUser /> Account
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item as={Link} to="/bootcamps/manage">
+                    <Dropdown.Item as={Link} to="/bootcamps/:bootcampId/manage" className={isDropdownActive('/bootcamps/:bootcampId/manage')}>
                       <FaCogs /> Manage Bootcamps
                     </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/manage-reviews">
+                    <Dropdown.Item as={Link} to="/bootcamps/:bootcampId/reviews/manage" className={isDropdownActive('/bootcamps/:bootcampId/reviews/manage')}>
                       <FaStar /> Manage Reviews
                     </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/account/manage">
+                    <Dropdown.Item as={Link} to="/user/manage" className={isDropdownActive('/user/manage')}>
                       <FaUser /> Manage Account
                     </Dropdown.Item>
                     <Dropdown.Item onClick={handleLogout}>
@@ -52,16 +56,16 @@ function Header() {
                 </Dropdown>
               ) : (
                 <>
-                  <Nav.Link as={Link} to="/user/login">
+                  <Nav.Link as={Link} to="/user/login" className={isActive('/user/login')}>
                     <FaSignInAlt /> Login
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/user/register">
+                  <Nav.Link as={Link} to="/user/register" className={isActive('/user/register')}>
                     <FaUserPlus /> Register
                   </Nav.Link>
                 </>
               )}
               <div className="nav-separator"></div>
-              <Nav.Link as={Link} to="/bootcamps">
+              <Nav.Link as={Link} to="/bootcamps" className={isActive('/bootcamps')}>
                 <FaSearch /> Browse Bootcamps
               </Nav.Link>
             </Nav>
