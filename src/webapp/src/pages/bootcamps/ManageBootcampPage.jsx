@@ -63,6 +63,11 @@ const ManageBootcampPage = () => {
                 <Link to="/bootcamps/:bootcampId/managebootcamp/add" className="btn btn-secondary btn-block">
                   Remove Bootcamp
                 </Link>
+                <div className="mt-4 text-secondary">
+                <p className="mb-2">* You can only add one bootcamp per account.</p>
+                <p>* You must be affiliated with the bootcamp in some way in order
+								to add it to DevCamper.</p>
+                </div>
               </div>
             </div>
           </div>

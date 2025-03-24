@@ -17,6 +17,7 @@ import {
 } from './pages/bootcamps';
 import { AuthProvider } from './contexts/AuthContext';
 import Layout from './components/Layout';
+import ManageCoursesNone from './pages/bootcamps/ManageCoursesNone';
 
 function App() {
   return (
@@ -36,8 +37,10 @@ function App() {
             <Route path="/bootcamps/add" element={<AddBootcampPage />} />
             <Route path="/bootcamps/manage" element={<ManageBootcampsPage />} />
             <Route path="/bootcamps/:bootcampId/manage" element={<ManageBootcampPage />} />
+            <Route path="/bootcamps/:bootcampId/manage" element={<ManageBootcampPage />} />
             <Route path="/bootcamps/:bootcampId/courses/add" element={<AddCoursePage />} />
             <Route path="/bootcamps/:bootcampId/courses/manage" element={<ManageCoursesPage />} />
+            <Route path="/bootcamps/:bootcampId/courses/managenone" element={<ManageCoursesNone />} />
             <Route path="/bootcamps/:bootcampId/reviews" element={<BootcampReviewsPage />} />
             <Route path="/bootcamps/:bootcampId/reviews/manage" element={<ManageReviewsPage />} />{' '}
             <Route path="/bootcamps/:bootcampId/reviews/add" element={<AddReviewPage />} />
