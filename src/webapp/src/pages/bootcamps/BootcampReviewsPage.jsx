@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
+import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
 import { FaPencil } from 'react-icons/fa6';
 import { AiOutlineLeft } from 'react-icons/ai';
 import reviewService from '../../services/reviewService';
@@ -21,42 +21,38 @@ const BootcampReviewsPage = () => {
 
   return (
     <section className="bootcamp mt-5">
-      <div className="container">
-        <div className="row">
-          {/* <!-- Main col --> */}
-          <div className="col-md-8">
+      <Container>
+        <Row>
+          <Col md={8}>
             <Link to={`/bootcamps/${bootcampId}`} className="btn btn-secondary my-3">
               <AiOutlineLeft className="mb-1" /> Bootcamp Info
             </Link>
             <h1 className="mb-4">{bootcamp} Reviews</h1>
-            {/* <!-- Reviews --> */}
             {reviews.map((data) => (
-              <Card className="card mb-3" key={data.key}>
-                <h5 className="card-header bg-dark text-white">{data.title}</h5>
-                <div className="card-body">
-                  <h5 className="card-title">
+              <Card className="mb-3" key={data.key}>
+                <Card.Header className="bg-dark text-white">{data.title}</Card.Header>
+                <Card.Body>
+                  <Card.Title>
                     Rating: <span className="text-success">{data.rating}</span>
-                  </h5>
-                  <p className="card-text">{data.text}</p>
-                  <p className="text-muted my-3">Written By {data.user}</p>
-                </div>
+                  </Card.Title>
+                  <Card.Text>{data.text}</Card.Text>
+                  <small className="text-muted">Written By {data.user}</small>
+                </Card.Body>
               </Card>
             ))}
-          </div>
-          {/* <!-- Sidebar --> */}
-          <div className="col-md-4">
-            {/* <!-- Rating --> */}
-            <h1 className="text-center my-4">
-              <span className="badge badge-secondary badge-success rounded-circle py-3 mx-2">8.8</span>
-              Rating
+          </Col>
+          <Col md={4} className="text-center">
+            <h1 className="my-4">
+              <Badge bg="success" className="rounded-circle py-3 px-3">8.8</Badge> Rating
             </h1>
-            {/* <!-- Buttons --> */}
-            <a href="/bootcamps/:bootcampId/reviews/add" className="btn btn-primary btn-block my-3">
-              <FaPencil /> Review This Bootcamp
-            </a>
-          </div>
-        </div>
-      </div>
+            <Link to={`/bootcamps/${bootcampId}/reviews/add`}>
+              <Button variant="primary" className="w-100 my-3">
+                <FaPencil /> Review This Bootcamp
+              </Button>
+            </Link>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 };
