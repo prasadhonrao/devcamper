@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "024b412f-725c-4c97-b466-da930f165606",
-		"name": "DevCamper",
+		"_postman_id": "9a07491a-b4f8-46e8-9228-3e096a08b0b2",
+		"name": "MERN Bootcamp API",
 		"description": "This template contains a boilerplate for documentation that you can quickly customize and reuse.\n\n### How to use this template:\n\n- Replace the content given brackets (()) with your API's details.\n    \n- Tips are formatted in `codespan` - feel free to read and remove them.\n    \n\n---\n\n`Start with a brief overview of what your API offers.`\n\nThe ((product name)) provides many API products, tools, and resources that enable you to ((add product value here)).\n\n`You can also list the APIs you offer, link to the relevant pages, or do both in this section.`\n\n## **Getting started guide**\n\n`List the steps or points required to start using your APIs. Make sure to cover everything required to reach success with your API as quickly as possible.`\n\nTo start using the ((add APIs here)), you need to -\n\n`The points given below are from The Postman API's documentation. You can reference it to write your own getting started guide.`\n\n- You must use a valid API Key to send requests to the API endpoints. You can get your API key from Postman's [integrations dashboard](https://go.postman.co/settings/me/api-keys).\n    \n- The API has [rate and usage limits](https://learning.postman.com/docs/developer/postman-api/postman-api-rate-limits/).\n    \n- The API only responds to HTTPS-secured communications. Any requests sent via HTTP return an HTTP 301 redirect to the corresponding HTTPS resources.\n    \n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key.\n    \n\n## Authentication\n\n`Add details on the authorization keys/tokens required, steps that cover how to get them, and the relevant error codes.`\n\nThe ((product name)) API uses ((add your API's authorization type)) for authentication.\n\n`The details given below are from the Postman API's documentation. You can reference it to write your own authentication section.`\n\nPostman uses API keys for authentication. You can generate a Postman API key in the [API keys](https://postman.postman.co/settings/me/api-keys) section of your Postman account settings.\n\nYou must include an API key in each request to the Postman API with the X-Api-Key request header.\n\n### Authentication error response\n\nIf an API key is missing, malformed, or invalid, you will receive an HTTP 401 Unauthorized response code.\n\n## Rate and usage limits\n\n`Use this section to cover your APIs' terms of use. Include API limits, constraints, and relevant error codes, so consumers understand the permitted API usage and practices.`\n\n`The example given below is from The Postman API's documentation. Use it as a reference to write your APIs' terms of use.`\n\nAPI access rate limits apply at a per-API key basis in unit time. The limit is 300 requests per minute. Also, depending on your plan, you may have usage limits. If you exceed either limit, your request will return an HTTP 429 Too Many Requests status code.\n\nEach API response returns the following set of headers to help you identify your use status:\n\n| Header | Description |\n| --- | --- |\n| `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per minute. |\n| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |\n| `X-RateLimit-Reset` | The time at which the current rate limit window resets in UTC epoch seconds. |\n\n### 503 response\n\nAn HTTP `503` response from our servers indicates there is an unexpected spike in API access traffic. The server is usually operational within the next five minutes. If the outage persists or you receive any other form of an HTTP `5XX` error, [contact support](https://support.postman.com/hc/en-us/requests/new/).\n\n### **Need some help?**\n\n`Add links that customers can refer to whenever they need help.`\n\nIn case you have questions, go through our tutorials ((link to your video or help documentation here)). Or visit our FAQ page ((link to the relevant page)).\n\nOr you can check out our community forum, there’s a good chance our community has an answer for you. Visit our developer forum ((link to developer forum)) to review topics, ask questions, and learn from others.\n\n`You can also document or add links to libraries, code examples, and other resources needed to make a request.`",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "1811327"
+		"_exporter_id": "38461829"
 	},
 	"item": [
 		{
@@ -16,12 +16,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/",
+							"raw": "{{url}}/api/v1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								""
+								"api",
+								"v1"
 							]
 						}
 					},
@@ -33,11 +34,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/status",
+							"raw": "{{url}}/api/v1/status",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"status"
 							]
 						}
@@ -63,332 +66,30 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
-							]
-						},
-						"description": "### Get All Bootcamps\n\nThis endpoint makes an HTTP GET request to retrieve a list of bootcamps.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response\n\n- Status: 429\n    \n- Content-Type: text/html\n    \n\n##### Example Response\n\n``` json\n{\n    \"collections\": [\n        {\n            \"id\": \"\",\n            \"name\": \"\",\n            \"owner\": \"\",\n            \"createdAt\": \"\",\n            \"updatedAt\": \"\",\n            \"uid\": \"\",\n            \"isPublic\": true\n        }\n    ]\n}\n\n ```"
-					},
-					"response": [
-						{
-							"name": "Successful Response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://api.getpostman.com/collections",
-									"protocol": "https",
-									"host": [
-										"api",
-										"getpostman",
-										"com"
-									],
-									"path": [
-										"collections"
-									],
-									"query": [
-										{
-											"key": "workspace",
-											"value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
-											"description": "Optional. A workspace ID.",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": {
-										"content": "",
-										"type": "text/plain"
-									}
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"collections\": [\n        {\n            \"id\": \"dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"name\": \"Cloud API\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2022-04-12T10:29:46.000Z\",\n            \"updatedAt\": \"2022-04-12T10:29:56.000Z\",\n            \"uid\": \"12345678-dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"isPublic\": true\n        },\n        {\n            \"id\": \"12ece9e1-2abf-4edc-8e34-de66e74114d2\",\n            \"name\": \"Test Collection\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2022-01-13T10:21:46.000Z\",\n            \"updatedAt\": \"2022-02-12T11:29:56.000Z\",\n            \"uid\": \"12345678-12ece9e1-2abf-4edc-8e34-de66e74114d2\",\n            \"isPublic\": false,\n            \"fork\": {\n                \"label\": \"Test Fork\",\n                \"createdAt\": \"2022-06-16T19:51:44.069Z\",\n                \"from\": \"12345678-12ece9e1-2abf-4edc-8e34-de66e74114d2\"\n            }\n        },\n        {\n            \"id\": \"f695cab7-6878-eb55-7943-ad88e1ccfd65\",\n            \"name\": \"Postman Echo\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2021-04-11T09:18:26.000Z\",\n            \"updatedAt\": \"2022-05-01T15:29:32.000Z\",\n            \"uid\": \"12345678-f695cab7-6878-eb55-7943-ad88e1ccfd65\",\n            \"isPublic\": true\n        }\n    ]\n}"
-						},
-						{
-							"name": "Filter by Workspace",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://api.getpostman.com/collections?workspace=1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
-									"protocol": "https",
-									"host": [
-										"api",
-										"getpostman",
-										"com"
-									],
-									"path": [
-										"collections"
-									],
-									"query": [
-										{
-											"key": "workspace",
-											"value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
-											"description": "Optional. A workspace ID."
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": {
-										"content": "",
-										"type": "text/plain"
-									}
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"collections\": [\n        {\n            \"id\": \"dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"name\": \"Cloud API\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2022-04-12T10:29:46.000Z\",\n            \"updatedAt\": \"2022-04-12T10:29:56.000Z\",\n            \"uid\": \"12345678-dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"isPublic\": true\n        }\n    ]\n}"
-						},
-						{
-							"name": "Rate Limit Exceeded",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://api.getpostman.com/collections",
-									"protocol": "https",
-									"host": [
-										"api",
-										"getpostman",
-										"com"
-									],
-									"path": [
-										"collections"
-									],
-									"query": [
-										{
-											"key": "workspace",
-											"value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
-											"description": "Optional. A workspace ID.",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"status": "Too Many Requests",
-							"code": 429,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": {
-										"content": "",
-										"type": "text/plain"
-									}
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"error\": \"rateLimited\",\n    \"message\": \"Rate limit exceeded. Please retry after 1669048687\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get All Bootcamps Published By Publisher",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/bootcamps/publisher/5c8a1d5b0190b214360dc032",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bootcamps",
-								"publisher",
-								"5c8a1d5b0190b214360dc032"
-							]
-						},
-						"description": "### Get All Bootcamps\n\nThis endpoint makes an HTTP GET request to retrieve a list of bootcamps.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response\n\n- Status: 429\n    \n- Content-Type: text/html\n    \n\n##### Example Response\n\n``` json\n{\n    \"collections\": [\n        {\n            \"id\": \"\",\n            \"name\": \"\",\n            \"owner\": \"\",\n            \"createdAt\": \"\",\n            \"updatedAt\": \"\",\n            \"uid\": \"\",\n            \"isPublic\": true\n        }\n    ]\n}\n\n ```"
-					},
-					"response": [
-						{
-							"name": "Successful Response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://api.getpostman.com/collections",
-									"protocol": "https",
-									"host": [
-										"api",
-										"getpostman",
-										"com"
-									],
-									"path": [
-										"collections"
-									],
-									"query": [
-										{
-											"key": "workspace",
-											"value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
-											"description": "Optional. A workspace ID.",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": {
-										"content": "",
-										"type": "text/plain"
-									}
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"collections\": [\n        {\n            \"id\": \"dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"name\": \"Cloud API\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2022-04-12T10:29:46.000Z\",\n            \"updatedAt\": \"2022-04-12T10:29:56.000Z\",\n            \"uid\": \"12345678-dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"isPublic\": true\n        },\n        {\n            \"id\": \"12ece9e1-2abf-4edc-8e34-de66e74114d2\",\n            \"name\": \"Test Collection\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2022-01-13T10:21:46.000Z\",\n            \"updatedAt\": \"2022-02-12T11:29:56.000Z\",\n            \"uid\": \"12345678-12ece9e1-2abf-4edc-8e34-de66e74114d2\",\n            \"isPublic\": false,\n            \"fork\": {\n                \"label\": \"Test Fork\",\n                \"createdAt\": \"2022-06-16T19:51:44.069Z\",\n                \"from\": \"12345678-12ece9e1-2abf-4edc-8e34-de66e74114d2\"\n            }\n        },\n        {\n            \"id\": \"f695cab7-6878-eb55-7943-ad88e1ccfd65\",\n            \"name\": \"Postman Echo\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2021-04-11T09:18:26.000Z\",\n            \"updatedAt\": \"2022-05-01T15:29:32.000Z\",\n            \"uid\": \"12345678-f695cab7-6878-eb55-7943-ad88e1ccfd65\",\n            \"isPublic\": true\n        }\n    ]\n}"
-						},
-						{
-							"name": "Filter by Workspace",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://api.getpostman.com/collections?workspace=1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
-									"protocol": "https",
-									"host": [
-										"api",
-										"getpostman",
-										"com"
-									],
-									"path": [
-										"collections"
-									],
-									"query": [
-										{
-											"key": "workspace",
-											"value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
-											"description": "Optional. A workspace ID."
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": {
-										"content": "",
-										"type": "text/plain"
-									}
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"collections\": [\n        {\n            \"id\": \"dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"name\": \"Cloud API\",\n            \"owner\": \"12345678\",\n            \"createdAt\": \"2022-04-12T10:29:46.000Z\",\n            \"updatedAt\": \"2022-04-12T10:29:56.000Z\",\n            \"uid\": \"12345678-dac5eac9-148d-a32e-b76b-3edee9da28f7\",\n            \"isPublic\": true\n        }\n    ]\n}"
-						},
-						{
-							"name": "Rate Limit Exceeded",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "https://api.getpostman.com/collections",
-									"protocol": "https",
-									"host": [
-										"api",
-										"getpostman",
-										"com"
-									],
-									"path": [
-										"collections"
-									],
-									"query": [
-										{
-											"key": "workspace",
-											"value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
-											"description": "Optional. A workspace ID.",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"status": "Too Many Requests",
-							"code": 429,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": {
-										"content": "",
-										"type": "text/plain"
-									}
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"error\": \"rateLimited\",\n    \"message\": \"Rate limit exceeded. Please retry after 1669048687\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get All Bootcamps Based on Search Text",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/bootcamps/publisher/5c8a1d5b0190b214360dc032",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bootcamps",
-								"publisher",
-								"5c8a1d5b0190b214360dc032"
 							]
 						},
 						"description": "### Get All Bootcamps\n\nThis endpoint makes an HTTP GET request to retrieve a list of bootcamps.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response\n\n- Status: 429\n    \n- Content-Type: text/html\n    \n\n##### Example Response\n\n``` json\n{\n    \"collections\": [\n        {\n            \"id\": \"\",\n            \"name\": \"\",\n            \"owner\": \"\",\n            \"createdAt\": \"\",\n            \"updatedAt\": \"\",\n            \"uid\": \"\",\n            \"isPublic\": true\n        }\n    ]\n}\n\n ```"
@@ -539,11 +240,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps/5d725a037b292f5f8ceff787",
+							"raw": "{{url}}/api/v1/bootcamps/5d725a037b292f5f8ceff787",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"5d725a037b292f5f8ceff787"
 							]
@@ -699,11 +402,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps/66abc78ccdbd47b705e949f1",
+							"raw": "{{url}}/api/v1/bootcamps/66abc78ccdbd47b705e949f1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"66abc78ccdbd47b705e949f1"
 							]
@@ -860,11 +565,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps/66abc78ccdbd47b705e94xxx",
+							"raw": "{{url}}/api/v1/bootcamps/66abc78ccdbd47b705e94xxx",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"66abc78ccdbd47b705e94xxx"
 							]
@@ -1033,20 +740,22 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Test Bootcamp 12\",\n    \"description\": \"Learn DevOps practices.\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
+							"raw": "{\n    \"name\": \"Test Bootcamp 1\",\n    \"description\": \"Learn DevOps practices.\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "localhost:5000/api/v1/bootcamps",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "5000",
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -1306,8 +1015,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -1315,11 +1023,13 @@
 							"raw": "{\n    \"name\": \"Bootcamp <script>alert('XSS')</script>;\",\n    \"description\": \"Learn DevOps practices.\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -1569,8 +1279,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -1578,11 +1287,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -1832,8 +1543,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -1841,11 +1551,13 @@
 							"raw": "{\n    \"description\": \"Learn DevOps practices.\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -2095,8 +1807,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -2104,11 +1815,13 @@
 							"raw": "{\n  \"name\": \"Dev\",\n    \"description\": \"Learn DevOps practices.\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -2358,8 +2071,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -2367,11 +2079,13 @@
 							"raw": "{\n  \"name\": \"DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps DevOps\",\n    \"description\": \"Learn DevOps practices.\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -2621,8 +2335,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -2630,11 +2343,13 @@
 							"raw": "{\n    \"name\": \"DevOps Bootcamp\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -2884,8 +2599,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -2893,11 +2607,13 @@
 							"raw": "{\n    \"name\": \"DevOps Bootcamp\",\n    \"description\": \"DevOps\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -3147,8 +2863,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -3156,11 +2871,13 @@
 							"raw": "{\n    \"name\": \"DevOps Bootcamp\",\n    \"description\": \"A DevOps boot camp is an intensive training program designed to equip participants with the skills and knowledge necessary to implement and manage DevOps practices in their organizations. It covers core concepts such as the DevOps culture, collaboration, and the benefits of integrating development and operations teams. Participants learn technical skills in version control with Git, continuous integration (CI) using tools like Jenkins or CircleCI, and continuous deployment (CD) practices to automate the deployment of code changes. The boot camp aims to foster a deep understanding of automation, monitoring, and cloud services, preparing individuals to streamline software delivery processes and enhance organizational efficiency.\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -3410,8 +3127,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -3419,11 +3135,13 @@
 							"raw": "{\n    \"name\": \"Modern DevOps Bootcamp 4\",\n    \"description\": \"Learn DevOps practices.\",\n    \"website\": \"dummy\",\n    \"phone\": \"123-456-7896\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -3673,8 +3391,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -3682,11 +3399,13 @@
 							"raw": "{\n  \"name\": \"DevOps Bootcamp\",\n    \"description\": \"Learn DevOps practices.\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456\",\n    \"email\": \"info7@example.com\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -3936,8 +3655,7 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -3945,11 +3663,13 @@
 							"raw": "{\n    \"name\": \"DevOps Bootcamp\",\n    \"description\": \"Learn DevOps practices.\",\n    \"website\": \"https://example7.com\",\n    \"phone\": \"123-456-7890\",\n    \"email\": \"this is not an email\",\n    \"address\": \"129 Main St, Anytown, USA\",\n    \"careers\": [\"DevOps\"],\n    \"housing\": true,\n    \"jobAssistance\": false,\n    \"jobGuarantee\": true,\n    \"acceptGi\": false\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps",
+							"raw": "{{url}}/api/v1/bootcamps",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							]
 						},
@@ -4216,13 +3936,15 @@
 							"raw": "{\n    \"name\": \"Full Stack Developer Bootcamp\",\n    \"description\": \"An intensive program to become a full stack developer.\",\n    \"website\": \"https://example.com\",\n    \"phone\": \"123-456-7890\",\n    \"email\": \"info@example.com\",\n    \"address\": \"123 Main St, Anytown, USA\",\n    \"careers\": [\n        \"Web Development\",\n        \"Full Stack Development\",\n        \"MERN\"\n    ],\n    \"photo\": \"no-photo.png\",\n    \"housing\": false,\n    \"jobAssistance\": true,\n    \"jobGuarantee\": false,\n    \"acceptGi\": true\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/670fbb0f37abecfcd6f199e6",
+							"raw": "{{url}}/api/v1/bootcamps/5d713a66ec8f2b88b8f830b8",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
-								"670fbb0f37abecfcd6f199e6"
+								"5d713a66ec8f2b88b8f830b8"
 							]
 						},
 						"description": "Updates a collection using the [Postman Collection v2 schema format](https://schema.postman.com/json/collection/v2.1.0/docs/index.html). Include a `collection` object in the request body that contains the following required properties:\n\n- `info` — An **object** that contains the following properties:\n    - `name` — A **string** value that contains the collection's name.\n    - `schema` — A **string** that contains a URL to the collection's schema. For example, the `https://schema.getpostman.com/collection/v1` URL.\n- `item` — An **object** that contains the HTTP request and response information.\n    - `request` — An **object** that contains the collection's request information. For a complete list of values, refer to the `definitions.request` entry in the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json). If you pass an empty object for this value, the system defaults to an untitled GET request.\n\n**Note:**\n\n- For a complete list of available property values for this endpoint, use the following references available in the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json):\n    - `info` object — Use the `definitions.info` entry.\n    - `item` object — Use the `definitions.items` entry.\n- For all other possible values, refer to the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json).\n    \n\n### Important\n\nUse caution when using this endpoint. The system will replace the existing collection with the values passed in the request body."
@@ -4565,11 +4287,13 @@
 							"raw": "{\n    \"name\": \"Devworks Bootcamp ***\",\n    \"description\": \"Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer\",\n    \"website\": \"https://devworks.com\",\n    \"phone\": \"(111) 111-1111\",\n    \"email\": \"enroll@devworks.com\",\n    \"address\": \"233 Bay State Rd Boston MA 02215\",\n    \"careers\": [\"Web Development\", \"UI/UX\", \"Business\"],\n    \"housing\": true,\n    \"jobAssistance\": true,\n    \"jobGuarantee\": false,\n    \"acceptGi\": true\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/5d713995b721c3bb38c1f5d0",
+							"raw": "{{url}}/api/v1/bootcamps/5d713995b721c3bb38c1f5d0",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"5d713995b721c3bb38c1f5d0"
 							]
@@ -4914,13 +4638,15 @@
 							"raw": "{\n    \"housing\": true\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/670fbb0f37abecfcd6f199e6",
+							"raw": "{{url}}/api/v1/bootcamps/66bb3845afc78e23b8633605",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
-								"670fbb0f37abecfcd6f199e6"
+								"66bb3845afc78e23b8633605"
 							]
 						},
 						"description": "Updates a collection using the [Postman Collection v2 schema format](https://schema.postman.com/json/collection/v2.1.0/docs/index.html). Include a `collection` object in the request body that contains the following required properties:\n\n- `info` — An **object** that contains the following properties:\n    - `name` — A **string** value that contains the collection's name.\n    - `schema` — A **string** that contains a URL to the collection's schema. For example, the `https://schema.getpostman.com/collection/v1` URL.\n- `item` — An **object** that contains the HTTP request and response information.\n    - `request` — An **object** that contains the collection's request information. For a complete list of values, refer to the `definitions.request` entry in the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json). If you pass an empty object for this value, the system defaults to an untitled GET request.\n\n**Note:**\n\n- For a complete list of available property values for this endpoint, use the following references available in the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json):\n    - `info` object — Use the `definitions.info` entry.\n    - `item` object — Use the `definitions.items` entry.\n- For all other possible values, refer to the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json).\n    \n\n### Important\n\nUse caution when using this endpoint. The system will replace the existing collection with the values passed in the request body."
@@ -5253,11 +4979,13 @@
 							"raw": "{\n    \"name\": \"Full Stack Developer Bootcamp\",\n            \"description\": \"An intensive program to become a full stack developer.\",\n            \"website\": \"https://example.com\",\n            \"phone\": \"123-456-7890\",\n            \"email\": \"info@example.com\",\n            \"address\": \"123 Main St, Anytown, USA\",\n            \"careers\": [\n                \"Web Development\",\n                \"Full Stack Development\"\n            ],\n            \"photo\": \"no-photo.png\",\n            \"housing\": false,\n            \"jobAssistance\": true,\n            \"jobGuarantee\": false,\n            \"acceptGi\": true\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/66abc78ccdbd47b705e949f1",
+							"raw": "{{url}}/api/v1/bootcamps/66abc78ccdbd47b705e949f1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"66abc78ccdbd47b705e949f1"
 							]
@@ -5592,11 +5320,13 @@
 							"raw": "{\n    \"name\": \"Full Stack Developer Bootcamp\",\n            \"description\": \"An intensive program to become a full stack developer.\",\n            \"website\": \"https://example.com\",\n            \"phone\": \"123-456-7890\",\n            \"email\": \"info@example.com\",\n            \"address\": \"123 Main St, Anytown, USA\",\n            \"careers\": [\n                \"Web Development\",\n                \"Full Stack Development\"\n            ],\n            \"photo\": \"no-photo.png\",\n            \"housing\": false,\n            \"jobAssistance\": true,\n            \"jobGuarantee\": false,\n            \"acceptGi\": true\n}"
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/66abc78ccdbd47b705e9xxx",
+							"raw": "{{url}}/api/v1/bootcamps/66abc78ccdbd47b705e9xxx",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"66abc78ccdbd47b705e9xxx"
 							]
@@ -5922,11 +5652,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps/66ac8953cce31980156cf211",
+							"raw": "{{url}}/api/v1/bootcamps/66ac8953cce31980156cf211",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"66ac8953cce31980156cf211"
 							]
@@ -6060,13 +5792,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps/5d713995b721c3bb38c1f5d0",
+							"raw": "{{url}}/api/v1/bootcamps/66bb3845afc78e23b8633605",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
-								"5d713995b721c3bb38c1f5d0"
+								"66bb3845afc78e23b8633605"
 							]
 						},
 						"description": "Deletes a collection."
@@ -6198,13 +5932,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps/670fbae137abecfcd6f199d3",
+							"raw": "{{url}}/api/v1/bootcamps/66bb3845afc78e23b8633605",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
-								"670fbae137abecfcd6f199d3"
+								"66bb3845afc78e23b8633605"
 							]
 						},
 						"description": "Deletes a collection."
@@ -6336,11 +6072,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps/66ac8953cce31980156cfxxx",
+							"raw": "{{url}}/api/v1/bootcamps/66ac8953cce31980156cfxxx",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"66ac8953cce31980156cfxxx"
 							]
@@ -6484,13 +6222,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps/5d713995b721c3bb38c1f5d0",
+							"raw": "{{url}}/api/v1/bootcamps/66b350d939f91ac0654a96dc",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
-								"5d713995b721c3bb38c1f5d0"
+								"66b350d939f91ac0654a96dc"
 							]
 						},
 						"description": "Deletes a collection."
@@ -6631,11 +6371,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/testgeocode",
+							"raw": "{{url}}/api/v1/bootcamps/testgeocode",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"testgeocode"
 							]
@@ -6788,11 +6530,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps/radius/02215/10",
+							"raw": "{{url}}/api/v1/bootcamps/radius/02215/10",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"radius",
 								"02215",
@@ -6947,11 +6691,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps?location.city=Boston",
+							"raw": "{{url}}/api/v1/bootcamps?location.city=Boston",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							],
 							"query": [
@@ -7109,11 +6855,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps?careers[in]=Business",
+							"raw": "{{url}}/api/v1/bootcamps?careers[in]=Business",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							],
 							"query": [
@@ -7271,11 +7019,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps?housing=true",
+							"raw": "{{url}}/api/v1/bootcamps?housing=true",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							],
 							"query": [
@@ -7433,11 +7183,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps?averageCost[gt]=10000",
+							"raw": "{{url}}/api/v1/bootcamps?averageCost[gt]=10000",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							],
 							"query": [
@@ -7595,11 +7347,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps?averageCost[lte]=5000",
+							"raw": "{{url}}/api/v1/bootcamps?averageCost[lte]=5000",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							],
 							"query": [
@@ -7757,11 +7511,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps?select=name,description,housing",
+							"raw": "{{url}}/api/v1/bootcamps?select=name,description,housing",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							],
 							"query": [
@@ -7919,11 +7675,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps?select=name,createdAt&sort=name",
+							"raw": "{{url}}/api/v1/bootcamps?select=name,createdAt&sort=name",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							],
 							"query": [
@@ -8085,11 +7843,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps?select=name,createdAt&sort=-name",
+							"raw": "{{url}}/api/v1/bootcamps?select=name,createdAt&sort=-name",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							],
 							"query": [
@@ -8251,11 +8011,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps?limit=2&select=name",
+							"raw": "{{url}}/api/v1/bootcamps?limit=2&select=name",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							],
 							"query": [
@@ -8417,11 +8179,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps?page=1&limit=2&select=name",
+							"raw": "{{url}}/api/v1/bootcamps?page=1&limit=2&select=name",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps"
 							],
 							"query": [
@@ -8602,11 +8366,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/5d725a1b7b292f5f8ceff788/photo",
+							"raw": "{{url}}/api/v1/bootcamps/5d725a1b7b292f5f8ceff788/photo",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"5d725a1b7b292f5f8ceff788",
 								"photo"
@@ -8948,11 +8714,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/5d725a1b7b292f5f8ceff788/photo",
+							"raw": "{{url}}/api/v1/bootcamps/5d725a1b7b292f5f8ceff788/photo",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"5d725a1b7b292f5f8ceff788",
 								"photo"
@@ -9294,11 +9062,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/5d725a1b7b292f5f8ceff788/photo",
+							"raw": "{{url}}/api/v1/bootcamps/5d725a1b7b292f5f8ceff788/photo",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"5d725a1b7b292f5f8ceff788",
 								"photo"
@@ -9650,11 +9420,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/5d725a1b7b292f5f8ceff788/photo",
+							"raw": "{{url}}/api/v1/bootcamps/5d725a1b7b292f5f8ceff788/photo",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"5d725a1b7b292f5f8ceff788",
 								"photo"
@@ -9962,6 +9734,53 @@
 							"body": "{\n    \"error\": \"rateLimited\",\n    \"message\": \"Rate limit exceeded. Please retry after 1669048687\"\n}"
 						}
 					]
+				},
+				{
+					"name": "http://localhost:5000/api/v1/bootcamps/",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0NyIsImlhdCI6MTc0NDcyODMyMSwiZXhwIjoxNzQ3MzIwMzIxfQ.3QSBBPdMcTR-LJ2sbpwkibBMxyj2bM4uS5wFjBFFYOU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0NyIsImlhdCI6MTc0NDcyODMyMSwiZXhwIjoxNzQ3MzIwMzIxfQ.3QSBBPdMcTR-LJ2sbpwkibBMxyj2bM4uS5wFjBFFYOU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"wfefsdf\",\r\n    \"address\": \"fsfssf\",\r\n    \"phone\": \"sfsfsffsdfs\",\r\n    \"email\": \"778\",\r\n    \"website\": \"sdfsdf\",\r\n    \"description\": \"fsfsdf\",\r\n    \"careers\": [],\r\n    \"housing\": false,\r\n    \"jobAssistance\": false,\r\n    \"jobGuarantee\": false,\r\n    \"acceptGi\": false,\r\n    \"id\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkN2E1MTRiNWQyYzEyYzc0NDliZTA0NyIsImlhdCI6MTc0NDcyODMyMSwiZXhwIjoxNzQ3MzIwMzIxfQ.3QSBBPdMcTR-LJ2sbpwkibBMxyj2bM4uS5wFjBFFYOU\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/bootcamps/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"bootcamps",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "The `/collections` endpoints let you manage your [collections](https://learning.postman.com/docs/sending-requests/intro-to-collections/)."
@@ -9975,11 +9794,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/courses",
+							"raw": "{{url}}/api/v1/courses",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"courses"
 							]
 						}
@@ -9992,13 +9813,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bootcamps/5d726e9b7b292f5f8ceff800/courses",
+							"raw": "{{url}}/api/v1/bootcamps/66bb404f3080377c2b174548/courses",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
-								"5d726e9b7b292f5f8ceff800",
+								"66bb404f3080377c2b174548",
 								"courses"
 							]
 						}
@@ -10011,13 +9834,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/courses/5d725a4a7b292f5f8ceff789",
+							"raw": "{{url}}/api/v1/courses/5d725cfec4ded7bcb480eaa7",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"courses",
-								"5d725a4a7b292f5f8ceff789"
+								"5d725cfec4ded7bcb480eaa7"
 							]
 						}
 					},
@@ -10029,11 +9854,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/courses/5d713995b721c3bb38c1f5d1",
+							"raw": "{{url}}/api/v1/courses/5d713995b721c3bb38c1f5d1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"courses",
 								"5d713995b721c3bb38c1f5d1"
 							]
@@ -10058,7 +9885,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"title\":\"Test Course\",\"description\":\"dfsadsdfsdfsf\",\"weeks\":\"11\",\"tuition\":\"11111\",\"minimumSkill\":\"beginner\",\"scholarshipAvailable\":true}\r\n",
+							"raw": "{\r\n    \"title\": \"IOS Development 2\",\r\n    \"description\": \"Get started building mobile applications for IOS using Swift and other tools\",\r\n    \"weeks\": \"4\",\r\n    \"tuition\": 5000,\r\n    \"minimumSkill\": \"beginner\",\r\n    \"scholarshipAvailable\": false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10066,13 +9893,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/670faa12c80944ccdbb62a2d/courses",
+							"raw": "{{url}}/api/v1/bootcamps/66bb404f3080377c2b174548/courses",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
-								"670faa12c80944ccdbb62a2d",
+								"66bb404f3080377c2b174548",
 								"courses"
 							]
 						}
@@ -10104,15 +9933,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/670faa12c80944ccdbb62a2d/courses/670fbcea285b3c23dd7857a3",
+							"raw": "{{url}}/api/v1/bootcamps/5d725a037b292f5f8ceff787/courses/66b0c70ce8b0eacfcd9518d6",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
-								"670faa12c80944ccdbb62a2d",
+								"5d725a037b292f5f8ceff787",
 								"courses",
-								"670fbcea285b3c23dd7857a3"
+								"66b0c70ce8b0eacfcd9518d6"
 							]
 						}
 					},
@@ -10143,15 +9974,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bootcamps/5d725a037b292f5f8ceff787/courses/670fbcea285b3c23dd7857a3",
+							"raw": "{{url}}/api/v1/bootcamps/5d725a037b292f5f8ceff787/courses/66b0f61fa43449317323ec6e",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"bootcamps",
 								"5d725a037b292f5f8ceff787",
 								"courses",
-								"670fbcea285b3c23dd7857a3"
+								"66b0f61fa43449317323ec6e"
 							]
 						}
 					},
@@ -10163,11 +9996,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/courses/?select=title",
+							"raw": "{{url}}/api/v1/courses/?select=title",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"courses",
 								""
 							],
@@ -10187,11 +10022,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/courses?page=2&limit=1",
+							"raw": "{{url}}/api/v1/courses?page=2&limit=1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"courses"
 							],
 							"query": [
@@ -10211,177 +10048,7 @@
 			]
 		},
 		{
-			"name": "Reviews",
-			"item": [
-				{
-					"name": "Get All Reviews",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/reviews",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"reviews"
-							]
-						},
-						"description": "### Get Reviews\n\nThis endpoint makes an HTTP GET request to retrieve a list of reviews.\n\n**Request Body**  \nThis request does not require a request body.\n\n**Response**\n\n- `success` (boolean): Indicates if the request was successful.\n    \n- `count` (integer): The total number of reviews returned.\n    \n- `pagination` (object): Pagination information for the list of reviews.\n    \n- `data` (array): An array of review objects.\n    \n\nExample Response:\n\n``` json\n{\n    \"success\": true,\n    \"count\": 0,\n    \"pagination\": {},\n    \"data\": []\n}\n\n ```"
-					},
-					"response": []
-				},
-				{
-					"name": "Get All Reviews For A Bootcamp",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/bootcamps/5d713a66ec8f2b88b8f830b8/reviews",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bootcamps",
-								"5d713a66ec8f2b88b8f830b8",
-								"reviews"
-							]
-						},
-						"description": "# Get Bootcamp Reviews\n\nThis endpoint makes an HTTP GET request to retrieve the reviews for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n\n### Response\n\n- success (boolean) - Indicates if the request was successful.\n    \n- count (integer) - The number of reviews returned.\n    \n- data (array) - An array containing the reviews for the specified bootcamp.\n    \n\nExample Response:\n\n``` json\n{\n  \"success\": true,\n  \"count\": 0,\n  \"data\": []\n}\n\n ```"
-					},
-					"response": []
-				},
-				{
-					"name": "Get A Review",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/reviews/5d7a514b5d2c12c7449be024",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"reviews",
-								"5d7a514b5d2c12c7449be024"
-							]
-						},
-						"description": "# Get Single Bootcamp Review\n\nThis endpoint retrieves a single review for a specific bootcamp by making an HTTP GET request to the endpoint `/reviews/5d7a514b5d2c12c7449be024`.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n\n### Response\n\n- success (boolean) - Indicates if the request was successful.\n    \n- data (object) - An object containing the details of the review for the specified bootcamp, including:\n    \n    - _id (string) - The unique identifier of the review.\n        \n    - title (string) - The title of the review.\n        \n    - text (string) - The content of the review.\n        \n    - rating (number) - The rating given to the bootcamp.\n        \n    - bootcamp (object) - An object containing the details of the bootcamp for which the review is given, including:\n        \n        - _id (string) - The unique identifier of the bootcamp.\n            \n        - name (string) - The name of the bootcamp.\n            \n        - description (string) - The description of the bootcamp.\n            \n        - id (string) - The ID of the bootcamp.\n            \n    - user (string) - The user who submitted the review.\n        \n    - createdAt (string) - The date and time when the review was created.\n        \n    - updatedAt (string) - The date and time when the review was last updated.\n        \n    - __v (number) - Version key.\n        \n\nExample Response:\n\n``` json\n{\n  \"success\": true,\n  \"data\": {\n    \"_id\": \"\",\n    \"title\": \"\",\n    \"text\": \"\",\n    \"rating\": 0,\n    \"bootcamp\": {\n      \"_id\": \"\",\n      \"name\": \"\",\n      \"description\": \"\",\n      \"id\": \"\"\n    },\n    \"user\": \"\",\n    \"createdAt\": \"\",\n    \"updatedAt\": \"\",\n    \"__v\": 0\n  }\n}\n\n ```\n\nThis endpoint makes an HTTP GET request to retrieve the reviews for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n\n### Request Body\n\nThis request does not require a request body.\n\n### Response\n\nThe response returns a JSON object with the following properties:\n\n- success (boolean) - Indicates if the request was successful.\n    \n- data (object) - An object containing the review details for the specified bootcamp. The properties include:\n    \n    - _id (string) - The unique identifier of the review.\n        \n    - title (string) - The title of the review.\n        \n    - text (string) - The text content of the review.\n        \n    - rating (number) - The rating given in the review.\n        \n    - bootcamp (object) - An object containing the details of the bootcamp for which the review is given. The properties include:\n        \n        - _id (string) - The unique identifier of the bootcamp.\n            \n        - name (string) - The name of the bootcamp.\n            \n        - description (string) - The description of the bootcamp.\n            \n        - id (string) - The ID of the bootcamp.\n            \n    - user (string) - The user associated with the review.\n        \n    - createdAt (string) - The date and time when the review was created.\n        \n    - updatedAt (string) - The date and time when the review was last updated.\n        \n    - __v (number) - Version key for optimistic concurrency control.\n        \n\nExample Response:\n\n``` json\n{\n  \"success\": true,\n  \"data\": {\n    \"_id\": \"\",\n    \"title\": \"\",\n    \"text\": \"\",\n    \"rating\": 0,\n    \"bootcamp\": {\n      \"_id\": \"\",\n      \"name\": \"\",\n      \"description\": \"\",\n      \"id\": \"\"\n    },\n    \"user\": \"\",\n    \"createdAt\": \"\",\n    \"updatedAt\": \"\",\n    \"__v\": 0\n  }\n}\n\n ```"
-					},
-					"response": []
-				},
-				{
-					"name": "Get A Review Which Does Not Exist",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/reviews/5d7a514b5d2c12c7449be111",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"reviews",
-								"5d7a514b5d2c12c7449be111"
-							]
-						},
-						"description": "# Get Bootcamp Reviews\n\nThis endpoint makes an HTTP GET request to retrieve the reviews for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n\n### Response\n\n- success (boolean) - Indicates if the request was successful.\n    \n- count (integer) - The number of reviews returned.\n    \n- data (array) - An array containing the reviews for the specified bootcamp.\n    \n\nExample Response:\n\n``` json\n{\n  \"success\": true,\n  \"count\": 0,\n  \"data\": []\n}\n\n ```"
-					},
-					"response": []
-				},
-				{
-					"name": "Add Review",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"My only review!\",\r\n\t\"text\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra feugiat mauris id viverra. Duis luctus ex sed facilisis ultrices. Curabitur scelerisque bibendum ligula, quis condimentum libero fermentum in. Aenean erat erat, aliquam in purus a, rhoncus hendrerit tellus. Donec accumsan justo in felis consequat sollicitudin. Fusce luctus mattis nunc vitae maximus. Curabitur semper felis eu magna laoreet scelerisque\",\r\n\t\"rating\": \"10\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/bootcamps/5d713a66ec8f2b88b8f830b8/reviews",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bootcamps",
-								"5d713a66ec8f2b88b8f830b8",
-								"reviews"
-							]
-						},
-						"description": "### Add Bootcamp Review\n\nThis endpoint makes an HTTP POST request to add a review for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n- Body (raw, JSON):\n    \n    - title (string, required) - The title of the review.\n        \n    - text (string, required) - The text content of the review.\n        \n    - rating (string, required) - The rating of the review.\n        \n\n### Response\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\",\n  \"stack\": \"string\"\n}\n\n ```\n\nThe response of this request is documented as a JSON schema."
-					},
-					"response": []
-				},
-				{
-					"name": "Update A Review",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"rating\": \"10\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/bootcamps/5d713a66ec8f2b88b8f830b8/reviews/66c3119794bb5dcce5537119",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bootcamps",
-								"5d713a66ec8f2b88b8f830b8",
-								"reviews",
-								"66c3119794bb5dcce5537119"
-							]
-						},
-						"description": "### Add Bootcamp Review\n\nThis endpoint makes an HTTP POST request to add a review for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n- Body (raw, JSON):\n    \n    - title (string, required) - The title of the review.\n        \n    - text (string, required) - The text content of the review.\n        \n    - rating (string, required) - The rating of the review.\n        \n\n### Response\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\",\n  \"stack\": \"string\"\n}\n\n ```\n\nThe response of this request is documented as a JSON schema."
-					},
-					"response": []
-				},
-				{
-					"name": "Delete A Review",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"rating\": \"2\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/bootcamps/5d713a66ec8f2b88b8f830b8/reviews/66c30fb28c8ea786fede63e4",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bootcamps",
-								"5d713a66ec8f2b88b8f830b8",
-								"reviews",
-								"66c30fb28c8ea786fede63e4"
-							]
-						},
-						"description": "### Add Bootcamp Review\n\nThis endpoint makes an HTTP POST request to add a review for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n- Body (raw, JSON):\n    \n    - title (string, required) - The title of the review.\n        \n    - text (string, required) - The text content of the review.\n        \n    - rating (string, required) - The rating of the review.\n        \n\n### Response\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\",\n  \"stack\": \"string\"\n}\n\n ```\n\nThe response of this request is documented as a JSON schema."
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "User",
+			"name": "Auth",
 			"item": [
 				{
 					"name": "Register User",
@@ -10412,7 +10079,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Prasad Honrao\",\r\n    \"email\": \"honrao.prasad@gmail.com\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Prasad Honrao\",\r\n    \"email\": \"prasad@gmail.com\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10420,12 +10087,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/register/",
+							"raw": "{{url}}/api/v1/auth/register/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"register",
 								""
 							]
@@ -10448,12 +10117,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/register/",
+							"raw": "{{url}}/api/v1/auth/register/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"register",
 								""
 							]
@@ -10476,12 +10147,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/register/",
+							"raw": "{{url}}/api/v1/auth/register/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"register",
 								""
 							]
@@ -10504,12 +10177,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/register/",
+							"raw": "{{url}}/api/v1/auth/register/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"register",
 								""
 							]
@@ -10524,7 +10199,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Scott Hanselman\",\r\n\t\"email\": \"scott@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"name\": \"John Doe\",\r\n\t\"email\": \"john@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10532,12 +10207,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/register/",
+							"raw": "{{url}}/api/v1/auth/register/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"register",
 								""
 							]
@@ -10552,7 +10229,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Publisher Account\",\r\n    \"email\": \"publisher12@gmail.com\",\r\n    \"role\": \"publisher\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Publisher Account\",\r\n    \"email\": \"publisher@gmail.com\",\r\n    \"role\": \"publisher\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10560,12 +10237,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/register",
+							"raw": "{{url}}/api/v1/auth/register",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"register"
 							]
 						}
@@ -10579,7 +10258,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"New User\",\r\n    \"email\": \"newuser@gmail.com\",\r\n    \"role\": \"super admin\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Publisher Account\",\r\n    \"email\": \"publisher@gmail.com\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10587,12 +10266,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/register",
+							"raw": "{{url}}/api/v1/auth/register",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"register"
 							]
 						}
@@ -10628,7 +10309,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"user@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"email\": \"jerry@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10636,11 +10317,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/login/",
+							"raw": "{{url}}/api/v1/user/login/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"user",
 								"login",
 								""
@@ -10678,7 +10361,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"sasha@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"email\": \"publisher@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10686,12 +10369,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/login/",
+							"raw": "{{url}}/api/v1/auth/login/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"login",
 								""
 							]
@@ -10736,12 +10421,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/login/",
+							"raw": "{{url}}/api/v1/auth/login/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"login",
 								""
 							]
@@ -10764,12 +10451,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/login/",
+							"raw": "{{url}}/api/v1/auth/login/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"login",
 								""
 							]
@@ -10792,12 +10481,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/login/",
+							"raw": "{{url}}/api/v1/auth/login/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"login",
 								""
 							]
@@ -10833,11 +10524,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/me",
+							"raw": "{{url}}/api/v1/user/me",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"user",
 								"me"
 							]
@@ -10871,7 +10564,14 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOGExZDViMDE5MGIyMTQzNjBkYzAzNiIsImlhdCI6MTc0OTM4MTA4OSwiZXhwIjoxNzUxOTczMDg5fQ.gypx9_7UeEroxqyfvn0_rwDsIEg7LF8VU_A1rmGQp3k",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [],
@@ -10885,11 +10585,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/logout",
+							"raw": "{{url}}/api/v1/user/logout",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"user",
 								"logout"
 							]
@@ -10908,13 +10610,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"honrao.prasad@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"email\": \"john@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10922,12 +10623,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/forgotpassword",
+							"raw": "{{url}}/api/v1/auth/forgotpassword",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"forgotpassword"
 							]
 						}
@@ -10945,14 +10648,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							},
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -10965,11 +10666,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/auth/resetpassword/b74159831f19b7f44727d76d6272e86f965286ff",
+							"raw": "{{url}}/api/v1/auth/resetpassword/b74159831f19b7f44727d76d6272e86f965286ff",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"auth",
 								"resetpassword",
 								"b74159831f19b7f44727d76d6272e86f965286ff"
@@ -10996,19 +10699,17 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							},
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Prasad Honrao\",\r\n    \"email\": \"honrao.prasad@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"name\": \"John Papa\",\r\n    \"email\": \"john@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -11016,12 +10717,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/updatedetails",
+							"raw": "{{url}}/api/v1/auth/updatedetails",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"updatedetails"
 							]
 						}
@@ -11046,64 +10749,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							},
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"currentPassword\": \"123456\",\r\n    \"newPassword\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/user/updatepassword",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"user",
-								"updatepassword"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update User Password With Wrong Current Password",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Content Type",
-								"type": "text"
+								"description": "JSON Content Type"
 							}
 						],
 						"body": {
@@ -11116,12 +10767,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/user/updatepassword",
+							"raw": "{{url}}/api/v1/auth/updatepassword",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"api",
+								"v1",
+								"auth",
 								"updatepassword"
 							]
 						}
@@ -11131,7 +10784,7 @@
 			]
 		},
 		{
-			"name": "Admin",
+			"name": "Users",
 			"item": [
 				{
 					"name": "Get All Users",
@@ -11183,12 +10836,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/admin/users/",
+							"raw": "{{url}}/api/v1/users/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"admin",
+								"api",
+								"v1",
 								"users",
 								""
 							]
@@ -11246,14 +10900,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/admin/users/5d7a514b5d2c12c7449be044",
+							"raw": "{{url}}/api/v1/users/me",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"admin",
+								"api",
+								"v1",
 								"users",
-								"5d7a514b5d2c12c7449be044"
+								"me"
 							]
 						}
 					},
@@ -11296,12 +10951,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/admin/users",
+							"raw": "{{url}}/api/v1/users",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"admin",
+								"api",
+								"v1",
 								"users"
 							]
 						}
@@ -11355,14 +11011,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/admin/users/670fa412b59cda04e428d669",
+							"raw": "{{url}}/api/v1/users/66c2f317f388213add6a9c2e",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"admin",
+								"api",
+								"v1",
 								"users",
-								"670fa412b59cda04e428d669"
+								"66c2f317f388213add6a9c2e"
 							]
 						}
 					},
@@ -11407,6 +11064,244 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"bill.gates@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/users/66c2f47af388213add6a9c41",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"66c2f47af388213add6a9c41"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Get All Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/reviews",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews"
+							]
+						},
+						"description": "### Get Reviews\n\nThis endpoint makes an HTTP GET request to retrieve a list of reviews.\n\n**Request Body**  \nThis request does not require a request body.\n\n**Response**\n\n- `success` (boolean): Indicates if the request was successful.\n    \n- `count` (integer): The total number of reviews returned.\n    \n- `pagination` (object): Pagination information for the list of reviews.\n    \n- `data` (array): An array of review objects.\n    \n\nExample Response:\n\n``` json\n{\n    \"success\": true,\n    \"count\": 0,\n    \"pagination\": {},\n    \"data\": []\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Reviews For A Bootcamp",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/bootcamps/5d713a66ec8f2b88b8f830b8/reviews",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bootcamps",
+								"5d713a66ec8f2b88b8f830b8",
+								"reviews"
+							]
+						},
+						"description": "# Get Bootcamp Reviews\n\nThis endpoint makes an HTTP GET request to retrieve the reviews for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n\n### Response\n\n- success (boolean) - Indicates if the request was successful.\n    \n- count (integer) - The number of reviews returned.\n    \n- data (array) - An array containing the reviews for the specified bootcamp.\n    \n\nExample Response:\n\n``` json\n{\n  \"success\": true,\n  \"count\": 0,\n  \"data\": []\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get A Review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/reviews/5d7a514b5d2c12c7449be024",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"5d7a514b5d2c12c7449be024"
+							]
+						},
+						"description": "# Get Single Bootcamp Review\n\nThis endpoint retrieves a single review for a specific bootcamp by making an HTTP GET request to the endpoint `/api/v1/reviews/5d7a514b5d2c12c7449be024`.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n\n### Response\n\n- success (boolean) - Indicates if the request was successful.\n    \n- data (object) - An object containing the details of the review for the specified bootcamp, including:\n    \n    - _id (string) - The unique identifier of the review.\n        \n    - title (string) - The title of the review.\n        \n    - text (string) - The content of the review.\n        \n    - rating (number) - The rating given to the bootcamp.\n        \n    - bootcamp (object) - An object containing the details of the bootcamp for which the review is given, including:\n        \n        - _id (string) - The unique identifier of the bootcamp.\n            \n        - name (string) - The name of the bootcamp.\n            \n        - description (string) - The description of the bootcamp.\n            \n        - id (string) - The ID of the bootcamp.\n            \n    - user (string) - The user who submitted the review.\n        \n    - createdAt (string) - The date and time when the review was created.\n        \n    - updatedAt (string) - The date and time when the review was last updated.\n        \n    - __v (number) - Version key.\n        \n\nExample Response:\n\n``` json\n{\n  \"success\": true,\n  \"data\": {\n    \"_id\": \"\",\n    \"title\": \"\",\n    \"text\": \"\",\n    \"rating\": 0,\n    \"bootcamp\": {\n      \"_id\": \"\",\n      \"name\": \"\",\n      \"description\": \"\",\n      \"id\": \"\"\n    },\n    \"user\": \"\",\n    \"createdAt\": \"\",\n    \"updatedAt\": \"\",\n    \"__v\": 0\n  }\n}\n\n ```\n\nThis endpoint makes an HTTP GET request to retrieve the reviews for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n\n### Request Body\n\nThis request does not require a request body.\n\n### Response\n\nThe response returns a JSON object with the following properties:\n\n- success (boolean) - Indicates if the request was successful.\n    \n- data (object) - An object containing the review details for the specified bootcamp. The properties include:\n    \n    - _id (string) - The unique identifier of the review.\n        \n    - title (string) - The title of the review.\n        \n    - text (string) - The text content of the review.\n        \n    - rating (number) - The rating given in the review.\n        \n    - bootcamp (object) - An object containing the details of the bootcamp for which the review is given. The properties include:\n        \n        - _id (string) - The unique identifier of the bootcamp.\n            \n        - name (string) - The name of the bootcamp.\n            \n        - description (string) - The description of the bootcamp.\n            \n        - id (string) - The ID of the bootcamp.\n            \n    - user (string) - The user associated with the review.\n        \n    - createdAt (string) - The date and time when the review was created.\n        \n    - updatedAt (string) - The date and time when the review was last updated.\n        \n    - __v (number) - Version key for optimistic concurrency control.\n        \n\nExample Response:\n\n``` json\n{\n  \"success\": true,\n  \"data\": {\n    \"_id\": \"\",\n    \"title\": \"\",\n    \"text\": \"\",\n    \"rating\": 0,\n    \"bootcamp\": {\n      \"_id\": \"\",\n      \"name\": \"\",\n      \"description\": \"\",\n      \"id\": \"\"\n    },\n    \"user\": \"\",\n    \"createdAt\": \"\",\n    \"updatedAt\": \"\",\n    \"__v\": 0\n  }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get A Review Which Does Not Exist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/reviews/5d7a514b5d2c12c7449be111",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"5d7a514b5d2c12c7449be111"
+							]
+						},
+						"description": "# Get Bootcamp Reviews\n\nThis endpoint makes an HTTP GET request to retrieve the reviews for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n\n### Response\n\n- success (boolean) - Indicates if the request was successful.\n    \n- count (integer) - The number of reviews returned.\n    \n- data (array) - An array containing the reviews for the specified bootcamp.\n    \n\nExample Response:\n\n``` json\n{\n  \"success\": true,\n  \"count\": 0,\n  \"data\": []\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Once of the best learning bootcamp\",\r\n\t\"text\": \"I have learned lots of thing from this bootcamp. I will also recommend you all to enroll in this bootcamp. All topic are cover very clearly\",\r\n\t\"rating\": \"8.5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/bootcamps/5d725a037b292f5f8ceff787/reviews",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bootcamps",
+								"5d725a037b292f5f8ceff787",
+								"reviews"
+							]
+						},
+						"description": "### Add Bootcamp Review\n\nThis endpoint makes an HTTP POST request to add a review for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n- Body (raw, JSON):\n    \n    - title (string, required) - The title of the review.\n        \n    - text (string, required) - The text content of the review.\n        \n    - rating (string, required) - The rating of the review.\n        \n\n### Response\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\",\n  \"stack\": \"string\"\n}\n\n ```\n\nThe response of this request is documented as a JSON schema."
+					},
+					"response": []
+				},
+				{
+					"name": "Update A Review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"rating\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/bootcamps/5d725a037b292f5f8ceff787/reviews/684577f02f113391cce520ec",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bootcamps",
+								"5d725a037b292f5f8ceff787",
+								"reviews",
+								"684577f02f113391cce520ec"
+							]
+						},
+						"description": "### Add Bootcamp Review\n\nThis endpoint makes an HTTP POST request to add a review for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n- Body (raw, JSON):\n    \n    - title (string, required) - The title of the review.\n        \n    - text (string, required) - The text content of the review.\n        \n    - rating (string, required) - The rating of the review.\n        \n\n### Response\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\",\n  \"stack\": \"string\"\n}\n\n ```\n\nThe response of this request is documented as a JSON schema."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete A Review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"rating\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/bootcamps/5d725a037b292f5f8ceff787/reviews/684577f02f113391cce520ec",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bootcamps",
+								"5d725a037b292f5f8ceff787",
+								"reviews",
+								"684577f02f113391cce520ec"
+							]
+						},
+						"description": "### Add Bootcamp Review\n\nThis endpoint makes an HTTP POST request to add a review for a specific bootcamp.\n\n### Request Parameters\n\n- Path:\n    \n    - bootcampId (string, required) - The unique identifier of the bootcamp.\n        \n- Body (raw, JSON):\n    \n    - title (string, required) - The title of the review.\n        \n    - text (string, required) - The text content of the review.\n        \n    - rating (string, required) - The rating of the review.\n        \n\n### Response\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\",\n  \"stack\": \"string\"\n}\n\n ```\n\nThe response of this request is documented as a JSON schema."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enrollment",
+			"item": [
+				{
+					"name": "enrollment in particular bootcamp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
 							"raw": "",
 							"options": {
 								"raw": {
@@ -11415,14 +11310,120 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/admin/users/670fa412b59cda04e428d669",
+							"raw": "{{url}}/api/v1/user/bootcamp/5d725a037b292f5f8ceff787/enrollment",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"admin",
-								"users",
-								"670fa412b59cda04e428d669"
+								"api",
+								"v1",
+								"user",
+								"bootcamp",
+								"5d725a037b292f5f8ceff787",
+								"enrollment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enrollment in already enrolled bootcamp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/user/bootcamp/5d726e9b7b292f5f8ceff799/enrollment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"bootcamp",
+								"5d726e9b7b292f5f8ceff799",
+								"enrollment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "withdraw enrollment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/user/withdraw/5d725a037b292f5f8ceff787/enrollment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"withdraw",
+								"5d725a037b292f5f8ceff787",
+								"enrollment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all enrollments for particular user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/user/enrollments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"enrollments"
 							]
 						}
 					},

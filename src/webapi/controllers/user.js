@@ -3,6 +3,7 @@ import ErrorResponse from '../utils/errorResponse.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import sendEmail from '../utils/sendEmail.js';
 import User from '../models/User.js';
+import Review from '../models/Review.js';
 
 // @desc    Register user
 // @route   POST /api/v1/user/register
@@ -190,28 +191,133 @@ const sendTokenResponse = (user, statusCode, res) => {
 // @route   PUT /api/v1/user/bootcamp/:id/enrollment
 // @access  Private
 const enrollBootcamp = asyncHandler(async (req, res, next) => {
+  const bootcampId = req.params.bootcampId;
+
+  // Fetch user with enrollments
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    return res.status(404).json({ success: false, message: 'User not found' });
+  }
+
+  // Check if bootcampId already exists in enrollment
+  const existingEnrollment = user.enrollment.find(
+    (e) => e.bootcamp_id.toString() === bootcampId
+  );
+
+  if (existingEnrollment) {
+    if (existingEnrollment.active_flag === 1) {
+      return res.status(400).json({
+        success: false,
+        message: 'User already actively enrolled in this bootcamp.',
+      });
+    } else {
+      // Reactivate enrollment
+      existingEnrollment.active_flag = 1;
+    }
+  } else {
+    // Safely add new enrollment (no duplicates)
+    user.enrollment.push({
+      bootcamp_id: bootcampId,
+      active_flag: 1,
+    });
+  }
+
+  await user.save();
+
+  return res.status(200).json({
+    success: true,
+    message: 'Enrollment successful.',
+    data: user,
+  });
+});
+
+
+// @desc    enrollment withdraw
+// @route   Put /api/v1/user//withdraw/:bootcampId/enrollment
+// @access  Private
+const withdrawEnrollment = asyncHandler(async (req, res, next) => {
 
   const bootcampId = req.params.bootcampId;
 
-  const existing_bootcamp = await User.findOne({
-    _id: req.user.id,
-    'enrollment.bootcamp_id': bootcampId,
-  });
+  // check if user have active 1 bootcamp and then only update it's active flag 0
+  const user = await User.findOneAndUpdate(
+    {
+      _id: req.user.id,
+      enrollment: {
+        $elemMatch: {
+          bootcamp_id: bootcampId,
+          active_flag: 1,
+        },
+      },
+    },
+    {
+      $set: { 'enrollment.$[elem].active_flag': 0 },
+    },
+    {
+      arrayFilters: [{ 'elem.bootcamp_id': bootcampId }],
+      new: true,
+      runValidators: true,
+    }
+  );
 
-  var user = '';
-
-  if (!existing_bootcamp) {
-    user = await User.findByIdAndUpdate(req.user.id, { $addToSet: { enrollment: { bootcamp_id: bootcampId, active_flag: 1 } } },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
-  } else {
-    user = 'User already enrolled in this bootcamp';
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: 'No active bootcamp enrollment found for given bootcamp ID.',
+    });
   }
 
   return res.status(200).json({ success: true, data: user });
 });
 
-export { register, login, getMe, forgotPassword, resetPassword, updateDetails, updatePassword, logout, enrollBootcamp };
+// @desc    Get enrollments
+// @route   Get /api/v1/enrollments
+// @access  Private
+const getEnrollments = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id).populate('enrollment.bootcamp_id');
+
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: 'User not found.',
+    });
+  }
+
+  // get active 1 bootcamps only
+  const activeEnrollments = user.enrollment.filter(e => e.active_flag === 1);
+
+  if (activeEnrollments.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: 'No active bootcamp enrollments found.',
+    });
+  }
+
+  const bootcampIds = activeEnrollments.map(e => e.bootcamp_id._id);
+
+  // find the review by user for that particular bootcamp
+  const reviews = await Review.find({
+    user: req.user.id,
+    bootcamp: { $in: bootcampIds },
+  });
+
+  // Combine bootcamp and review data
+  const response = activeEnrollments.map(enrollment => {
+    const bootcamp = enrollment.bootcamp_id;
+    const review = reviews.find(r => r.bootcamp.toString() === bootcamp._id.toString());
+
+    return {
+      bootcamp,
+      review: review || null,
+      active_flag: enrollment.active_flag,
+    };
+  });
+
+  return res.status(200).json({
+    success: true,
+    data: response,
+  });
+});
+
+export { register, login, getMe, forgotPassword, resetPassword, updateDetails, updatePassword, logout, enrollBootcamp, withdrawEnrollment, getEnrollments };

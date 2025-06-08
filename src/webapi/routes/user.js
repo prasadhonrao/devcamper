@@ -8,9 +8,11 @@ import {
   resetPassword,
   updateDetails,
   updatePassword,
-  enrollBootcamp
+  enrollBootcamp,
+  withdrawEnrollment,
+  getEnrollments
 } from '../controllers/user.js';
-import { protect } from '../middleware/auth.js';
+import { authorize, protect } from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -23,6 +25,7 @@ router.route('/updatepassword').put(protect, updatePassword);
 router.route('/forgotpassword').post(forgotPassword);
 router.route('/resetpassword/:resettoken').put(resetPassword);
 router.route('/bootcamp/:bootcampId/enrollment').put(protect, enrollBootcamp);
-
+router.route('/withdraw/:bootcampId/enrollment').put(protect, authorize('user'), withdrawEnrollment);
+router.route('/enrollments').get(protect, getEnrollments);
 
 export default router;
